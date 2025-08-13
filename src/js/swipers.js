@@ -1,48 +1,177 @@
 export default function initSwipers() {
-  const productsSlider = new Swiper(".products__wrapper__slider", {
-    loop: true,
-    slidesPerView: 4,
-    spaceBetween: 32,
+  if (
+    !document.querySelector(".products-swiper") ||
+    !document.querySelector(".prices__tiles") ||
+    !document.querySelector(".cases-swiper-next")
+  ) {
+    return;
+  }
+
+  const productsSwiper = new Swiper(".products-swiper", {
+    slidesPerView: 3,
+    spaceBetween: 20,
 
     navigation: {
-      nextEl: ".custom-next",
-      prevEl: ".custom-prev",
+      nextEl: ".products-swiper-next",
+      prevEl: ".products-swiper-prev",
+    },
+
+    pagination: {
+      el: ".swiper-pagination",
     },
 
     breakpoints: {
       // when window width is >= 320px
       320: {
-        slidesPerView: 1.5,
+        slidesPerView: 1.1,
         spaceBetween: 20,
-        loop: true,
       },
       // when window width is >= 480px
       480: {
-        slidesPerView: 1.5,
+        slidesPerView: 1.1,
         spaceBetween: 20,
-        loop: true,
       },
       // when window width is >= 640px
       640: {
         slidesPerView: 2,
         spaceBetween: 20,
-        loop: true,
       },
       1024: {
         slidesPerView: 2,
         spaceBetween: 20,
-        loop: true,
       },
       1300: {
         slidesPerView: 3,
         spaceBetween: 20,
-        loop: true,
       },
       1570: {
-        slidesPerView: 4,
-        spaceBetween: 32,
-        loop: true,
+        slidesPerView: 3,
+        spaceBetween: 20,
       },
     },
   });
+
+  const pricesSwiper = new Swiper(".prices__tiles", {
+    slidesPerView: 3,
+    spaceBetween: 19,
+
+    navigation: {
+      nextEl: ".prices-swiper-next",
+      prevEl: ".prices-swiper-prev",
+    },
+
+    pagination: {
+      el: ".swiper-pagination",
+    },
+
+    breakpoints: {
+      300: {
+        slidesPerView: 1.1,
+        spaceBetween: 15,
+      },
+      360: {
+        slidesPerView: 1.1,
+        spaceBetween: 15,
+      },
+      // when window width is >= 480px
+      400: {
+        slidesPerView: 1.3,
+        spaceBetween: 15,
+      },
+
+      450: {
+        slidesPerView: 1.3,
+        spaceBetween: 15,
+      },
+
+      500: {
+        slidesPerView: 1.5,
+        spaceBetween: 10,
+      },
+      // when window width is >= 640px
+      640: {
+        slidesPerView: 1.5,
+        spaceBetween: 15,
+      },
+      1024: {
+        slidesPerView: 2,
+        spaceBetween: 20,
+      },
+      1300: {
+        slidesPerView: 2,
+        spaceBetween: 19,
+      },
+      1570: {
+        slidesPerView: 3,
+        spaceBetween: 19,
+      },
+    },
+  });
+
+  const casesSwiper = new Swiper(".cases__swiper", {
+    slidesPerView: 1,
+    spaceBetween: 19,
+
+    navigation: {
+      nextEl: document.querySelector(".cases-swiper-next"),
+      prevEl: document.querySelector(".cases-swiper-prev"),
+    },
+
+    pagination: {
+      el: ".cases__pagination",
+    },
+
+    breakpoints: {
+      // when window width is >= 320px
+      360: {
+        pagination: {
+          enabled: true, // включаем пагинацию на <768px
+        },
+        spaceBetween: 15,
+      },
+      // when window width is >= 480px
+      400: {
+        spaceBetween: 5,
+      },
+      // when window width is >= 640px
+      640: {
+        spaceBetween: 5,
+      },
+      1024: {
+        spaceBetween: 20,
+      },
+      1300: {
+        spaceBetween: 19,
+      },
+      1570: {
+        slidesPerView: 1,
+      },
+    },
+  });
+
+  function swiperNav() {
+    document
+      .querySelector(".cases-swiper-next")
+      .classList.remove("swiper-button-disabled");
+    document
+      .querySelector(".cases-swiper-next")
+      .classList.remove("swiper-button-lock");
+    document
+      .querySelector(".cases-swiper-prev")
+      .classList.remove("swiper-button-lock");
+
+    document
+      .querySelector(".products-swiper-prev")
+      .classList.remove("swiper-button-lock");
+
+    document
+      .querySelector(".products-swiper-next")
+      .classList.remove("swiper-button-disabled");
+
+    document
+      .querySelector(".products-swiper-next")
+      .classList.remove("swiper-button-lock");
+  }
+
+  swiperNav();
 }

@@ -7,33 +7,14 @@ module.exports = {
 	],
 	theme: {
 		screens: {
-			"2xl": { max: "1535px" },
+			"2xl": { max: "1420px" },
 			xl: { max: "1279px" },
-			lg: { max: "1023px" },
+			lg: { max: "992px" },
 			md: { max: "767px" },
 			sm: { max: "639px" },
 		},
 		extend: {
-			colors: {
-				grayColor: "#f2f3f5",
-				grayTextColor: "#909090",
-				whiteColor: "#fff",
-				bluePrimaryColor: "#4789eb",
-				darkTextColor: "#090b18",
-				fadeColor: "#0000004D",
-			},
-			fontFamily: {
-				MainFont: ["MainFont", "sans-serif"],
-				BoldFont: ["BoldFont", "sans-serif"],
-			},
-
-			maxWidth: {
-				"container-width": "1300px",
-			},
-
 			width: {
-				"container-width": "1300px",
-
 				// Пользовательские процентные значения для ширины
 				10: "10%",
 				20: "20%",
