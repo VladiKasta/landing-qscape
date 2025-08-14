@@ -1,4 +1,4 @@
-export default function animations() {
+export default function animateFirstBall() {
   const ballFirst = document.getElementById("animated-ball-first");
   const pointOnAnimate = document.querySelector(".title__section");
 

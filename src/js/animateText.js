@@ -1,6 +1,6 @@
 export default function animateTextBlock() {
   const elements = document.querySelectorAll(
-    ".services-list, .our__service > h2, .our__service-list-item, .our__service-bottom__section > h2, .item__bottom,.stat-item,.team__description-text,.team__image-wrapper,.bottom-images,.steps > h1,.stats-accordion,.result-text,.products,.price__title,.prices__wrapper,.price__bottom-tiles,.order-info,.order-form,.trust-info,.slide__task-desription,.slide__task-image",
+    ".services-list, .our__service > h2, .our__service-list-item, .our__service-bottom__section > h2, .item__bottom,.team__description-text,.team__image-wrapper,.bottom-images,.steps > h1,.stats-accordion,.result-text,.products,.price__title,.prices__wrapper,.price__bottom-tiles,.order-info,.order-form,.trust-info,.slide__task-desription,.slide__task-image",
   );
 
   /*   if (window.location.pathname !== "/") {

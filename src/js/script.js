@@ -1,5 +1,6 @@
-import animations from "./animateFiistBall.js";
+import animateFirstBall from "./animateFirstBall.js";
 import animateSecondBall from "./animateSecondBall.js";
+import animateStats from "./animateStats.js";
 import animateTextBlock from "./animateText.js";
 import headerIntersection from "./header.js";
 import inputMask from "./inputMask.js";
@@ -15,7 +16,8 @@ document.addEventListener("DOMContentLoaded", function () {
   dropdownTrigger();
   accordion();
   initSwipers();
-  animations();
+  animateStats();
+  animateFirstBall();
   animateTextBlock();
   animateSecondBall();
 
