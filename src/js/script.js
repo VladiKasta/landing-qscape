@@ -60,6 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let isOpen = true;
     [...accordionHeaders].forEach((el) =>
       el.addEventListener("click", (event) => {
+        console.log(event.currentTarget);
         const arrow = event.currentTarget.querySelector("img");
         const description = event.currentTarget.nextElementSibling;
 
