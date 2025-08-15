@@ -39,6 +39,7 @@
               <input
                 class="border border-[#D0D0D0] !bg-white"
                 type="text"
+                name="name"
                 placeholder="Ваше имя"
               />
               <input
@@ -51,6 +52,7 @@
               />
               <input
                 class="border border-[#D0D0D0] !bg-white"
+                name="email"
                 type="email"
                 placeholder="Email"
               />
@@ -1264,7 +1266,7 @@
 
             <div class="order-form">
               <form>
-                <input type="text" placeholder="Ваше имя" />
+                <input type="text" name="name" placeholder="Ваше имя" />
                 <!-- <input type="number" placeholder="Номер телефона" /> -->
                 <input
                   type="tel"
@@ -1273,7 +1275,7 @@
                   pattern="\+7\s?[\(][0-9]{3}[\)]\s?[0-9]{3}-[0-9]{2}-[0-9]{2}"
                   required
                 />
-                <input type="email" placeholder="Email" />
+                <input type="email" name="email" placeholder="Email" />
 
                 <div class="link__variants">
                   <span class="text-[20px] md:text-[16px]"
@@ -1546,6 +1548,7 @@
               <input
                 class="border border-[#D0D0D0] !bg-white"
                 type="text"
+                name="name"
                 placeholder="Ваше имя"
               />
 
@@ -1560,6 +1563,7 @@
               <input
                 class="border border-[#D0D0D0] !bg-white"
                 type="email"
+                name="email"
                 placeholder="Email"
               />
 
@@ -1599,5 +1603,7 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <script type="module" src="./js/script.js"></script>
+
+    <script src="./js/mailer.js"></script>
   </body>
 </html>
