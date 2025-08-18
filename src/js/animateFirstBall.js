@@ -13,9 +13,12 @@ export default function animateFirstBall() {
     return rect.bottom <= viewportHeight;
   }
 
+  let animationPlayed = false;
+
   document.addEventListener("scroll", () => {
     const element = pointOnAnimate;
-    if (isElementInViewport(element)) {
+    if (isElementInViewport(element) && !animationPlayed) {
+      animationPlayed = true;
       requestAnimationFrame(animate); // запускаем анимацию когда блок достиг верхней границы блока .services-list
     }
   });

@@ -12,64 +12,72 @@ export default function animateSecondBall() {
     return rect.top <= viewportHeight;
   }
 
+  let animationPlayed = false;
+  let animationId = null;
+
   document.addEventListener("scroll", () => {
-    if (isElementInViewport(pointOnAnimate)) {
-      console.log("here");
-      requestAnimationFrame(animate); // Запускаем анимацию
+    if (isElementInViewport(pointOnAnimate) && !animationPlayed) {
+      animationPlayed = true;
+      animationId = requestAnimationFrame(animate);
     }
   });
 
-  const gravity = 3000; // Ускорение падения
-  const bounceFactor = 0.6; // Упругость
+  // Оптимизированные параметры
+  const gravity = 2000; // Уменьшенное ускорение
+  const bounceFactor = 0.6; // Большее трение при отскоке
   const floorY = 0; // Пол
   const leftWall = 0; // Левая стена
   const wallX = 500; // Правая стена
+  const minSpeed = 100; // Минимальная скорость для остановки
 
-  let y = -1000;
+  let y = -300; // Более близкая начальная позиция
   let speedyY = 0;
-  let leftPos = -1000;
-  let speedX = 7000;
+  let leftPos = -300; // Более близкий старт
+  let speedX = 2000; // Уменьшенная начальная скорость
   let lastTime = null;
 
   function animate(timestamp) {
     if (!lastTime) lastTime = timestamp;
-    const delta = (timestamp - lastTime) / 1000; // В секундах
+    const delta = (timestamp - lastTime) / 1000;
     lastTime = timestamp;
 
-    // Применяем гравитацию
+    // Гравитация
     speedyY += gravity * delta;
     y += speedyY * delta;
 
-    // Проверка столкновения с полом
+    // Столкновение с полом
     if (y > floorY) {
       y = floorY;
       speedyY = -speedyY * bounceFactor;
-      // Меняем направление и теряем скорость
     }
 
-    // Движение по горизонтали
+    // Горизонтальное движение
     leftPos += speedX * delta;
 
-    // Проверка столкновения с правой стеной
+    // Столкновение с правой стеной
     if (leftPos >= wallX) {
       leftPos = wallX;
-      speedX = -speedX * 1; // Отскок влево
+      speedX = -speedX * bounceFactor;
     }
 
-    // Проверка столкновения с левой стеной
+    // Столкновение с левой стеной
     if (leftPos <= leftWall) {
       leftPos = leftWall;
       speedX = -speedX * bounceFactor;
-      // Отскок вправо
     }
 
-    // Применяем позицию
+    // Применение позиции
     ball.style.transform = `translateY(${y}px)`;
     ball.style.left = `${leftPos}px`;
 
-    // Условие остановки анимации
-    if (Math.abs(speedyY) > 1 || y < floorY || Math.abs(speedX) > 1) {
-      requestAnimationFrame(animate);
+    // Условие остановки (учитываем минимальную скорость)
+    if (Math.abs(speedyY) > minSpeed || Math.abs(speedX) > minSpeed) {
+      animationId = requestAnimationFrame(animate);
+    } else {
+      // Фиксируем конечное положение
+      ball.style.transform = `translateY(${floorY}px)`;
+      ball.style.left = `${Math.max(leftWall, Math.min(wallX, leftPos))}px`;
+      cancelAnimationFrame(animationId);
     }
   }
 }

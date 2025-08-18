@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
   headerIntersection();
   burgerTrigger();
   popupTrigger();
+
   inputMask();
 
   dropdownTrigger();

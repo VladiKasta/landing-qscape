@@ -136,6 +136,9 @@
 }
 
 @media (max-width: 620px) {
+  .price__bottom-item {
+    padding: 0;
+  }
   .service__section-ball__decor {
     width: 150px;
     height: 150px;

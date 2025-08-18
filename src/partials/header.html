@@ -2,22 +2,51 @@
   <section class="header__wrapper">
     <div class="container">
       <div class="logo-section">
-        <img src="../assets/img/Header/Logo.png" alt="" />
+        <img
+          src="../assets/img/Header/Logo.png"
+          alt=""
+          data-scroll-to="title__section"
+          onclick="smoothScroll(this)"
+        />
       </div>
       <nav class="nav-section">
         <ul class="navigation">
-          <li>Услуги</li>
-          <li>Почему мы</li>
-          <li>Команда</li>
-          <li>Портфолио</li>
-          <li>Тарифы</li>
+          <li data-scroll-to="our__service" onclick="smoothScroll(this)">
+            Услуги
+          </li>
+
+          <li
+            data-scroll-to="our__service-bottom__section"
+            onclick="smoothScroll(this)"
+          >
+            Почему мы
+          </li>
+          <li data-scroll-to="stats" onclick="smoothScroll(this)">Команда</li>
+          <li data-scroll-to="result-text" onclick="smoothScroll(this)">
+            Портфолио
+          </li>
+          <li data-scroll-to="price__title" onclick="smoothScroll(this)">
+            Тарифы
+          </li>
           <li class="dropdown flex items-center justify-center gap-[4px]">
             Ещe <img src="../assets/img/Header/ARROW.svg" alt="" />
             <div class="dropdown-menu">
               <ul>
-                <li>Отзывы</li>
-                <li>Как мы работаем</li>
-                <li>Контакты</li>
+                <li data-scroll-to="trust-info" onclick="smoothScroll(this)">
+                  Отзывы
+                </li>
+                <li
+                  data-scroll-to="price__bottom-tiles"
+                  onclick="smoothScroll(this)"
+                >
+                  Как мы работаем
+                </li>
+                <li
+                  data-scroll-to="order__container"
+                  onclick="smoothScroll(this)"
+                >
+                  Контакты
+                </li>
               </ul>
             </div>
           </li>
@@ -59,7 +88,12 @@
         </div>
 
         <div class="mobile-logo">
-          <img src="../assets/img/Q logo.jpg" alt="" />
+          <img
+            src="../assets/img/Q logo.jpg"
+            alt=""
+            data-scroll-to="title__section"
+            onclick="smoothScroll(this)"
+          />
         </div>
 
         <div class="logo-section">
@@ -91,14 +125,31 @@
 
       <nav class="nav-section-mobile">
         <ul class="navigation">
-          <li>Что мы предлагаем</li>
-          <li>Почему мы</li>
-          <li>Команда</li>
-          <li>Как мы работаем</li>
-          <li>Портфолио</li>
-          <li>Стоимость услуг</li>
-          <li>Отзывы</li>
-          <li>Контакты</li>
+          <li data-scroll-to="our__service" onclick="smoothScroll(this)">
+            Что мы предлагаем
+          </li>
+          <li
+            data-scroll-to="our__service-bottom__section"
+            onclick="smoothScroll(this)"
+          >
+            Почему мы
+          </li>
+          <li data-scroll-to="stats" onclick="smoothScroll(this)">Команда</li>
+          <li data-scroll-to="price__bottom-tiles" onclick="smoothScroll(this)">
+            Как мы работаем
+          </li>
+          <li data-scroll-to="result-text" onclick="smoothScroll(this)">
+            Портфолио
+          </li>
+          <li data-scroll-to="price__title" onclick="smoothScroll(this)">
+            Стоимость услуг
+          </li>
+          <li data-scroll-to="trust-info" onclick="smoothScroll(this)">
+            Отзывы
+          </li>
+          <li data-scroll-to="order__container" onclick="smoothScroll(this)">
+            Контакты
+          </li>
         </ul>
         <div class="contacts">
           <div>
@@ -113,7 +164,12 @@
           </div>
         </div>
         <div class="burger-bottom">
-          <img src="../assets/img/Header/Logo.png" alt="" />
+          <img
+            src="../assets/img/Header/Logo.png"
+            alt=""
+            data-scroll-to="title__section"
+            onclick="smoothScroll(this)"
+          />
           <p class="copyright">
             © ООО «КУСКЕЙП», 2025 Разработка интернет-магазинов на 1С-Битрикс
             «под ключ»
