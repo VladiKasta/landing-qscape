@@ -133,7 +133,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "https://quantom.bitrix24.ru/rest/667/tf8b1hmge49yk5f2/crm.lead.add.json";
 
             const submitButton = this.querySelector('button[type="submit"]');
-            console.log(submitButton);
+            // console.log(submitButton);
             const originalButtonText = submitButton.innerHTML;
             submitButton.disabled = true;
             submitButton.innerHTML = "Отправка...";
@@ -164,7 +164,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     popup.style.display = "none";
                     const popupSuccess = document.querySelector(".popup__success");
-                    console.log(popupSuccess);
+                    // console.log(popupSuccess);
                     popupSuccess.style.display = "block";
                 })
                 .catch((error) => {
