@@ -2,13 +2,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const orderForms = document.querySelectorAll(".order-form form");
     const popup = document.querySelector(".popup");
 
-    // Функция для сопоставления UTM источника с ID источника в Битрикс24
     function getSourceIdFromUTM(utmSource) {
         const sourceMapping = {
             'google': 'GOOGLE',
             'yandex': 'YANDEX',
             'facebook': 'FACEBOOK',
-            'instagram': 'FACEBOOK', // Instagram обычно относят к Facebook
+            'instagram': 'FACEBOOK',
             'vk': 'VK',
             'telegram': 'TELEGRAM',
             'email': 'EMAIL',
@@ -22,7 +21,6 @@ document.addEventListener("DOMContentLoaded", function () {
         return sourceMapping[lowerSource] || utmSource.toUpperCase();
     }
 
-    // Функция для получения UTM-меток из URL
     function getUTMParameters() {
         const urlParams = new URLSearchParams(window.location.search);
         return {
@@ -37,7 +35,6 @@ document.addEventListener("DOMContentLoaded", function () {
     function saveUTMToSession() {
         const utmParams = getUTMParameters();
 
-        // Сохраняем только если есть хотя бы один UTM параметр
         if (Object.values(utmParams).some(value => value !== '')) {
             Object.keys(utmParams).forEach(key => {
                 if (utmParams[key]) {
@@ -45,14 +42,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             });
 
-            // Сохраняем время первого захода с UTM
             if (!sessionStorage.getItem('utm_first_visit')) {
                 sessionStorage.setItem('utm_first_visit', new Date().toISOString());
             }
         }
     }
 
-    // Функция для получения UTM из sessionStorage
     function getStoredUTM() {
         return {
             utm_source: sessionStorage.getItem('utm_source') || '',
@@ -64,7 +59,6 @@ document.addEventListener("DOMContentLoaded", function () {
         };
     }
 
-    // Сохраняем UTM при загрузке страницы
     saveUTMToSession();
 
     orderForms.forEach((form) => {
@@ -101,13 +95,15 @@ document.addEventListener("DOMContentLoaded", function () {
                     NAME: formData.get("name") || "Гость",
                     ASSIGNED_BY_ID: 667,
                     OPENED: "Y",
-                    SOURCE_ID: getSourceIdFromUTM(utmData.utm_source),
                     STATUS_ID: "NEW",
+                    ...(utmData.utm_source ? { SOURCE_ID: "ADVERTISING" } : {SOURCE_ID: "NEW"}),
                     ...(utmData.utm_source && { UTM_SOURCE: utmData.utm_source }),
-                    ...(utmData.utm_medium && { UTM_MEDIUM: utmData.utm_medium }),
-                    ...(utmData.utm_campaign && { UTM_CAMPAIGN: utmData.utm_campaign }),
                     ...(utmData.utm_term && { UTM_TERM: utmData.utm_term }),
-                    ...(utmData.utm_content && { UTM_CONTENT: utmData.utm_content }),
+                    ...(utmData.utm_source && { UF_CRM_1493286245: utmData.utm_source }),
+                    ...(utmData.utm_medium && { UF_CRM_1493286437: utmData.utm_medium }),
+                    ...(utmData.utm_campaign && { UF_CRM_1493286504: utmData.utm_campaign }),
+                    ...(utmData.utm_content && { UF_CRM_1493286561: utmData.utm_content }),
+                    UF_CRM_1493286595: "www.shop.qscape.ru",
                     EMAIL: formData.get("email"),
                     PHONE: formData.get("phone")
                         ? [
