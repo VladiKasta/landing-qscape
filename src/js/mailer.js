@@ -2,25 +2,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const orderForms = document.querySelectorAll(".order-form form");
     const popup = document.querySelector(".popup");
 
-    function getSourceIdFromUTM(utmSource) {
-        const sourceMapping = {
-            'google': 'GOOGLE',
-            'yandex': 'YANDEX',
-            'facebook': 'FACEBOOK',
-            'instagram': 'FACEBOOK',
-            'vk': 'VK',
-            'telegram': 'TELEGRAM',
-            'email': 'EMAIL',
-            'newsletter': 'EMAIL',
-            'direct': 'OTHER'
-        };
-
-        if (!utmSource) return 'WEB';
-
-        const lowerSource = utmSource.toLowerCase();
-        return sourceMapping[lowerSource] || utmSource.toUpperCase();
-    }
-
     function getUTMParameters() {
         const urlParams = new URLSearchParams(window.location.search);
         return {
@@ -62,6 +43,17 @@ document.addEventListener("DOMContentLoaded", function () {
     saveUTMToSession();
 
     orderForms.forEach((form) => {
+        let lastClickedButtonName = ''; // <-- тут будем хранить что за кнопку нажали
+
+        // Слушаем клики по submit-кнопкам
+        const buttons = form.querySelectorAll('button[type="submit"]');
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Лучше использовать data-source, если есть
+                lastClickedButtonName = btn.dataset.source || btn.innerText.trim();
+            });
+        });
+
         form.addEventListener("submit", function (e) {
             e.preventDefault();
 
@@ -96,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     ASSIGNED_BY_ID: 667,
                     OPENED: "Y",
                     STATUS_ID: "NEW",
-                    ...(utmData.utm_source ? { SOURCE_ID: "ADVERTISING" } : {SOURCE_ID: "NEW"}),
+                    ...(utmData.utm_source ? { SOURCE_ID: "ADVERTISING" } : { SOURCE_ID: "NEW" }),
                     ...(utmData.utm_source && { UTM_SOURCE: utmData.utm_source }),
                     ...(utmData.utm_term && { UTM_TERM: utmData.utm_term }),
                     ...(utmData.utm_source && { UF_CRM_1493286245: utmData.utm_source }),
@@ -120,6 +112,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         },
                     ],
                     COMMENTS: comments.join("\n"),
+                    FROM: lastClickedButtonName || 'Неизвестная кнопка',
                 },
                 params: {
                     REGISTER_SONET_EVENT: "Y",
@@ -133,7 +126,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 "https://quantom.bitrix24.ru/rest/667/tf8b1hmge49yk5f2/crm.lead.add.json";
 
             const submitButton = this.querySelector('button[type="submit"]');
-            // console.log(submitButton);
             const originalButtonText = submitButton.innerHTML;
             submitButton.disabled = true;
             submitButton.innerHTML = "Отправка...";
@@ -147,7 +139,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 body: JSON.stringify(leadData),
             })
                 .then((response) => {
-                    // console.log('Статус ответа:', response.status);
                     if (!response.ok) {
                         return response.text().then((text) => {
                             throw new Error(`HTTP ${response.status}: ${text}`);
@@ -164,7 +155,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     popup.style.display = "none";
                     const popupSuccess = document.querySelector(".popup__success");
-                    // console.log(popupSuccess);
                     popupSuccess.style.display = "block";
                 })
                 .catch((error) => {
