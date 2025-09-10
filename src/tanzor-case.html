@@ -1,7 +1,8 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
+    <meta name="robots" content="noindex, nofollow" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>TANZOR</title>
@@ -17,7 +18,10 @@
         <div class="container-bg-grad">
           <div class="container">
             <div class="link-to-main">
-              <a class="text-[18px] md:text-[16px]" href="index.html"
+              <a
+                class="text-[18px] md:text-[16px]"
+                href="index.html"
+                data-action="back"
                 >Вернуться на главную</a
               >
             </div>
@@ -393,42 +397,14 @@
     <!-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> -->
 
     <script>
-      function smoothScroll(element) {
-        if (!element) {
+      function smoothScroll(el) {
+        const target = el?.getAttribute("data-scroll-to");
+        if (!target) return;
+
+        if (location.pathname !== "/") {
+          // редиректим на главную с параметром
+          location.href = `/?scrollTo=${encodeURIComponent(target)}`;
           return;
-        }
-
-        const target = element.getAttribute("data-scroll-to");
-
-        if (!target) {
-          return;
-        }
-
-        const scrollTarget = document.querySelector(`.${target}`);
-
-        if (scrollTarget) {
-          scrollTarget.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          });
-        } else {
-          if (window.location.pathname !== "/") {
-            window.location.pathname = "/";
-
-            window.addEventListener("load", () => {
-              const newScrollTarget = document.querySelector(`.${target}`);
-              if (newScrollTarget) {
-                newScrollTarget.scrollIntoView({
-                  behavior: "smooth",
-                  block: "start",
-                });
-              } else {
-                console.error(`элемент не найден`);
-              }
-            });
-          } else {
-            console.error("элемент не найден");
-          }
         }
       }
     </script>

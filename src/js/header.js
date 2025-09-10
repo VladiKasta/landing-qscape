@@ -3,6 +3,21 @@ export default function headerIntersection() {
   const sections = document.querySelectorAll("[data-theme]");
   const burger = document.getElementById("burger");
 
+  if (
+    window.location.pathname !== "/" &&
+    window.location.pathname !== "/index.html"
+  ) {
+    header.classList.add("light-header");
+    header.style.borderBottom = "1px solid #d0d0d0";
+
+    header.querySelector(".number").style.color = "#031422";
+    header.querySelector(".navigation").style.color = "#031422";
+    burger.style.border = "1px solid #031422";
+    burger
+      .querySelectorAll("span")
+      .forEach((span) => (span.style.background = "#031422"));
+  }
+
   function getVisibleSection() {
     let visibleSection = null;
     let headerRect = header.getBoundingClientRect();
@@ -28,6 +43,7 @@ export default function headerIntersection() {
     if (visibleSection) {
       if (visibleSection.dataset.theme === "dark") {
         header.classList.remove("light-header");
+        header.classList.add("dark-header");
         header.style.borderBottom = "#031422";
 
         header.querySelector(".number").style.color = "white";
@@ -37,7 +53,19 @@ export default function headerIntersection() {
         burger
           .querySelectorAll("span")
           .forEach((span) => (span.style.background = "white"));
-      } else {
+      } /*  else if (visibleSection.dataset.theme === "transparent") {
+        header.classList.remove("dark-header");
+        header.classList.remove("light-header");
+        header.querySelector(".number").style.color = "white";
+        header.querySelector(".navigation").style.color = "white";
+        header.style.borderBottom = "none";
+
+        burger.style.border = "1px solid white";
+        burger
+          .querySelectorAll("span")
+          .forEach((span) => (span.style.background = "white"));
+      }  */ else {
+        header.classList.remove("dark-header");
         header.classList.add("light-header");
         header.style.borderBottom = "1px solid #d0d0d0";
 

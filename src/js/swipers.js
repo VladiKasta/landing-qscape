@@ -35,6 +35,9 @@ export default function initSwipers() {
       640: {
         slidesPerView: 2,
         spaceBetween: 20,
+        pagination: {
+          el: ".swiper-pagination",
+        },
       },
       1024: {
         slidesPerView: 2,
@@ -53,7 +56,7 @@ export default function initSwipers() {
 
   const pricesSwiper = new Swiper(".prices__tiles", {
     slidesPerView: 3,
-    spaceBetween: 19,
+    spaceBetween: 10,
 
     navigation: {
       nextEl: ".prices-swiper-next",
@@ -66,26 +69,26 @@ export default function initSwipers() {
 
     breakpoints: {
       300: {
-        slidesPerView: 1.1,
-        spaceBetween: 15,
+        slidesPerView: 1,
+        centeredSlides: true,
       },
       360: {
-        slidesPerView: 1.1,
-        spaceBetween: 15,
+        slidesPerView: 1,
+        centeredSlides: true,
       },
       // when window width is >= 480px
       400: {
-        slidesPerView: 1.3,
-        spaceBetween: 15,
+        slidesPerView: 1,
+        centeredSlides: true,
       },
 
       450: {
-        slidesPerView: 1.3,
-        spaceBetween: 15,
+        slidesPerView: 1,
+        centeredSlides: true,
       },
 
       500: {
-        slidesPerView: 1.5,
+        slidesPerView: 1.7,
         spaceBetween: 10,
       },
       // when window width is >= 640px
@@ -95,15 +98,15 @@ export default function initSwipers() {
       },
       1024: {
         slidesPerView: 2,
-        spaceBetween: 20,
+        spaceBetween: 10,
       },
-      1300: {
-        slidesPerView: 2,
-        spaceBetween: 19,
-      },
-      1570: {
+      1280: {
         slidesPerView: 3,
-        spaceBetween: 19,
+        spaceBetween: 10,
+        pagination: {
+          el: null,
+          clickable: true,
+        },
       },
     },
   });

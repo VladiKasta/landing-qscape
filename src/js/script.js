@@ -2,6 +2,7 @@ import animateFirstBall from "./animateFirstBall.js";
 import animateSecondBall from "./animateSecondBall.js";
 import animateStats from "./animateStats.js";
 import animateTextBlock from "./animateText.js";
+import circleAnimation from "./circleAnimation.js";
 import headerIntersection from "./header.js";
 import inputMask from "./inputMask.js";
 import popupTrigger from "./popup.js";
@@ -11,32 +12,53 @@ document.addEventListener("DOMContentLoaded", function () {
   headerIntersection();
   burgerTrigger();
   popupTrigger();
-
   inputMask();
-
   dropdownTrigger();
   accordion();
+  accordionDetail();
   initSwipers();
   animateStats();
   animateFirstBall();
   animateTextBlock();
+  circleAnimation();
   animateSecondBall();
+  backLink();
+
+  function backLink() {
+    if (!document.querySelectorAll('a[data-action="back"]')) return;
+    document.querySelectorAll('a[data-action="back"]').forEach((link) => {
+      link.addEventListener("click", function (e) {
+        e.preventDefault(); // Отменяем стандартное поведение
+        window.history.back(); // Возврат назад
+      });
+    });
+  }
 
   function burgerTrigger() {
     const burgerMenuToggleBtn = document.getElementById("burger");
     const burgerMenu = document.querySelector(".burger-menu");
     const burgerMenuCloseBtn = burgerMenu.querySelector(".menu-close-btn");
     const overlay = document.getElementById("overlay");
+    const body = document.querySelector("body");
 
     burgerMenuToggleBtn.addEventListener("click", () => {
       burgerMenu.style.left = "0";
       overlay.classList.toggle("active");
+      body.classList.add("noscroll");
     });
 
     burgerMenuCloseBtn.addEventListener("click", () => {
-      console.log("!");
       burgerMenu.style.left = "-100%";
       overlay.classList.remove("active");
+      body.classList.remove("noscroll");
+    });
+
+    overlay.addEventListener("click", (e) => {
+      if (!e.target.classList.contains("burger-menu")) {
+        burgerMenu.style.left = "-100%";
+        overlay.classList.remove("active");
+        body.classList.remove("noscroll");
+      }
     });
   }
 
@@ -61,6 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const accordionHeaders = document.querySelectorAll("#accordion-header");
 
     let isOpen = true;
+
     [...accordionHeaders].forEach((el) =>
       el.addEventListener("click", (event) => {
         console.log(event.currentTarget);
@@ -79,5 +102,30 @@ document.addEventListener("DOMContentLoaded", function () {
         isOpen = !isOpen;
       }),
     );
+  }
+
+  function accordionDetail() {
+    const accordHeader = document.getElementById("accordion-header-detail");
+    if (accordHeader == null) {
+      return;
+    }
+    const img = accordHeader.querySelector("img");
+    const table = document.querySelector(".compare__table");
+    let isOpen = false;
+
+    const offsetHeight = table.scrollHeight;
+    console.log(table);
+
+    accordHeader.addEventListener("click", () => {
+      if (isOpen) {
+        table.style.maxHeight = 0 + "px";
+        img.style.transform = "rotate(180deg)";
+      } else {
+        table.style.maxHeight = offsetHeight + "px";
+        img.style.transform = "rotate(0deg)";
+      }
+
+      isOpen = !isOpen;
+    });
   }
 });
