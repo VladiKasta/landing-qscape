@@ -14,7 +14,10 @@ const paths = {
 	src: {
 		html: "src/**/*.html", // все HTML, включая partials
 		partials: "src/partials/**/*.html", // сами partials
-		scss: ["src/scss/**/*.scss", "!src/scss/media.scss"], // все кроме media.scss
+		scss: [
+    "src/scss/**/*.scss", // рекурсивно все SCSS файлы
+    "!src/scss/media.scss"
+],
 		media: "src/scss/media.scss", // отдельный путь
 		js: ["node_modules/inputmask/dist/inputmask.min.js", "src/js/**/*.js"],
 	},

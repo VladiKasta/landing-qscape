@@ -75,6 +75,30 @@
       width: unset;
     }
   }
+
+  .privacy-table {
+    display: block;
+  }
+  
+  .privacy-table th,
+  .privacy-table td {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .privacy-table th {
+    border-right: none;
+    border-bottom: 2px solid #34495e;
+  }
+  
+  .privacy-table tr {
+    display: block;
+    margin-bottom: 1rem;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    overflow: hidden;
+  }
 }
 
 @media (max-width: 999px) {
@@ -773,5 +797,38 @@
 @media (min-width: 1420px) {
   #pag-tarifs {
     display: none !important;
+  }
+}
+
+/*/@media (max-width: 480px) {
+  .privacy-container {
+    h1 {
+      font-size: calc((1vw + 1vh) * 3);
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .privacy-container {
+    h1 {
+      font-size: calc((1vw + 1vh) * 2.5);
+      font-size: calc((1vw + 1vh) * 2);
+    }
+
+    h2, h3, h4 {
+      font-size: calc((1vw + 1vh) * 2);
+    }
+  }
+}*/
+
+@media(max-width: 1660px) {
+  .privacy-container {
+    width: 83%;
+  }
+}
+
+@media(max-width: 1440px) {
+  .privacy-container {
+    width: 93%;
   }
 }

@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+$containerWidth: 1420px;
+$violetAccentColor: #af2cd1;
+$violetSecondColor: #d13ec2;
+$primaryBlackColor: #120d23;
+$linksColor: #b630ce;
+$menuHoverColor: #605df5;
+$btnColor: #1f1e1e;
+$btnGradientColor: #0c5288;
+$btnGrayColor: #d0d0d0;
+$blackSecondary: #031422;
+
+$index: calc(1vw + 1vh);
+
+//Стили для заголовков(h*)
+$font-title: "Cygre", sans-serif;
+
+//Стили для подзаголовков
+$font-text: "Gilroy", serif;
+
+//Стили для меняющихся цифр
+$indicators-font: "Cygre-Black", sans-serif;
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("../../assets/fonts/Gilroy-Light.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Cygre";
+  src: url("../../assets/fonts/Cygre-Medium.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Cygre-Black";
+  font-weight: 900;
+  line-height: 100%;
+  text-align: center;
+  src: url("../../assets/fonts/Cygre-Black.woff2") format("woff2");
+}

@@ -1,0 +1,23 @@
+@use "./vars.scss" as *;
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: $font-text;
+  color: #031422;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 140%;
+  box-sizing: border-box;
+}
+
+body.noscroll {
+  overflow: hidden;
+}
+
+a {
+  text-decoration: none;
+}

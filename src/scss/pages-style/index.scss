@@ -1,60 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-$containerWidth: 1420px;
-$violetAccentColor: #af2cd1;
-$violetSecondColor: #d13ec2;
-$primaryBlackColor: #120d23;
-$linksColor: #b630ce;
-$menuHoverColor: #605df5;
-$btnColor: #1f1e1e;
-$btnGradientColor: #0c5288;
-$btnGrayColor: #d0d0d0;
-$blackSecondary: #031422;
-$font-title: "Cygre", sans-serif;
-$font-text: "Gilroy", serif;
-$indicators-font: "Cygre-Black", sans-serif;
-
-@font-face {
-  font-family: "Gilroy";
-  src: url("../assets/fonts/Gilroy-Light.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: "Cygre";
-  src: url("../assets/fonts/Cygre-Medium.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: "Cygre-Black";
-  font-weight: 900;
-  line-height: 100%;
-  text-align: center;
-  src: url("../assets/fonts/Cygre-Black.woff2") format("woff2");
-}
-
-html,
-body {
-  height: 100%;
-}
-
-body {
-  font-family: $font-text;
-  color: #031422;
-  font-size: 16px;
-  letter-spacing: 0;
-  line-height: 140%;
-  box-sizing: border-box;
-}
-
-body.noscroll {
-  overflow: hidden;
-}
-
-a {
-  text-decoration: none;
-}
+@use "../vars.scss" as *;
 
 .wrapper {
   overflow: hidden;
@@ -125,7 +69,7 @@ a {
   position: absolute;
   top: 0;
   right: 0;
-  background-image: url("../assets/img/main-bg.png");
+  background-image: url("../../assets/img/main-bg.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -185,7 +129,7 @@ a {
 .header__wrapper:not(.light-header) {
   #icon-wa:hover {
     background: black;
-    background-image: url("../assets/icons/Header/Icon/Header/Icon/HoverWA.png");
+    background-image: url("../../assets/icons/Header/Icon/Header/Icon/HoverWA.png");
 
     transition: all 0.2s ease;
     img {
@@ -198,7 +142,7 @@ a {
 .header__wrapper:not(.light-header) {
   #icon-tg:hover {
     background: black;
-    background-image: url("../assets/icons/Header/Icon/HoverTG.png");
+    background-image: url("../../assets/icons/Header/Icon/HoverTG.png");
 
     transition: all 0.2s ease;
     img {
@@ -210,7 +154,7 @@ a {
 
 .header__wrapper:not(.dark-header) {
   #icon-wa:hover {
-    background-image: url("../assets/icons/Header/Header/Icon/Hover.png");
+    background-image: url("../../assets/icons/Header/Header/Icon/Hover.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -227,7 +171,7 @@ a {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-image: url("../assets/icons/Header/Icon\ link.png");
+    background-image: url("../../assets/icons/Header/Icon\ link.png");
 
     transition: all 0.2s ease;
     img {
@@ -888,7 +832,7 @@ li {
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url("../assets/img/bg-second-grad 2.png");
+  background-image: url("../../assets/img/bg-second-grad 2.png");
 }
 
 .stats {
@@ -951,7 +895,7 @@ li {
   min-height: 379px;
   width: 50%;
   border-radius: 20px;
-  background-image: url("../assets/icons/lucide_image.png");
+  background-image: url("../../assets/icons/lucide_image.png");
   background-repeat: no-repeat;
   background-size: 108px;
   background-position: center;
@@ -1549,7 +1493,7 @@ li {
 } */
 
 .order__section {
-  background-image: url("../assets/img/bg-unvectored.png");
+  background-image: url("../../assets/img/bg-unvectored.png");
   padding-top: 71px;
 }
 
