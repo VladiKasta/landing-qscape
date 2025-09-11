@@ -1,28 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const orderForms = document.querySelectorAll(".order-form form");
-  const popup = document.querySelector(".popup");
-
-  orderForms.forEach((form) => {
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      const formData = new FormData(this);
-      const contactMethods = Array.from(
-        this.querySelectorAll('input[type="checkbox"]:checked'),
-      )
-        .map((el) => {
-          const label = el.closest("li")
-            ? el.closest("li").textContent.trim()
-            : "";
-          return label.replace(/\s+/g, " ");
-        })
-        .filter((method) => method)
-        .join(", ");
-
-      const comments = [];
-      if (contactMethods) {
-        comments.push("Предпочитаемый способ связи: " + contactMethods);
-      }
-      comments.push("Источник: форма обратной связи на сайте");
     const orderForms = document.querySelectorAll(".order-form form");
     const popups = Array.from(document.querySelectorAll(".popup")); // если несколько попапов
     const ORIGIN_KEY = 'lead_origin_source';

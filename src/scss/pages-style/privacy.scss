@@ -7,14 +7,30 @@
     margin-bottom: 25px;
 
     &__link {
+    margin: 0;
+    width: auto;
+    padding: 0;
+    color: $BackLinkColor;
+    font-size: calc($index * 0.66);
+    display: inline-block;
+    text-decoration: none;
+    
+    &-text {
+        display: inline-block;
+    }
+    
+    hr {
+        background-color: $BackLinkColor;
+        width: 100%; // Растягивается на ширину текста
         margin: 0;
         padding: 0;
-        color: $btnColor;
-        font-size: calc($index * 0.66);
+        height: 1px;
+        border: none;
     }
+}
 
     &__subtitle {
-        font-size: calc((1vw + 1vh) * 0.7);
+        font-size: calc($index * 0.8);
         margin-bottom: calc((1vw + 1vh) * 0.3) !important;
     }
 
@@ -23,24 +39,24 @@
     border-spacing: 0; // Добавляем обнуление промежутков
     margin: 2rem 0;
     font-family: $font-text;
-    border: 1px solid #000;
+    border: 1px solid #132132;
     overflow: hidden;
 
     th {
-        color: $primaryBlackColor;
         padding: 1.2rem;
         text-align: left;
-        font-weight: 600;
-        font-size: calc($index * 0.6);
-        border-right: 2px solid #000102;
-        border-bottom: 1px solid #000000;
-        width: 25%;
+        font-weight: 400;
+        color: $tableColor;
+        border-right: 1px solid #132132;
+        border-bottom: 1px solid #132132;
+        width: 5%;
         vertical-align: top;
     }
 
     td {
         padding: 1.2rem;
-        border-bottom: 1px solid #000000;
+        color: $tableColor;
+        border-bottom: 1px solid #132132;
         vertical-align: top;
         line-height: 1.6;
     }
@@ -63,12 +79,70 @@
 
     ul {
         margin: 0;
-        padding-left: 1.5rem;
     }
 
     li {
-        margin-bottom: 0.5rem;
-        list-style-type: circle !important;
+        margin-bottom: 0rem;
+        color: $tableColor;
+    }          
+
+    li:last-child {
+        margin-bottom: 0;
+    }
+}
+
+    //Table desktop
+
+    &__table-desktop {
+    width: 100%;
+    border-spacing: 0; // Добавляем обнуление промежутков
+    margin: 2rem 0;
+    font-family: $font-text;
+    border: 1px solid #132132;
+    overflow: hidden;
+
+    th {
+        padding: 1.2rem;
+        text-align: left;
+        font-weight: 400;
+        color: $tableColor;
+        border-bottom: 1px solid #132132;
+        width: 5%;
+        vertical-align: top;
+    }
+
+    td {
+        padding: 1.2rem;
+        
+        color: $tableColor;
+        border-bottom: 1px solid #132132;
+        vertical-align: top;
+        line-height: 1.6;
+    }
+
+    tr:first-child th:first-child {
+        border-top-left-radius: 10px;
+    }
+
+    tr:first-child th:last-child {
+        border-top-right-radius: 10px;
+    }
+
+    tr:last-child td:first-child {
+        border-bottom-left-radius: 10px;
+    }
+
+    tr:last-child td:last-child {
+        border-bottom-right-radius: 10px;
+    }
+
+    ul {
+        margin: 0;
+    }
+
+    li {
+        margin-bottom: 0rem;
+        color: $tableColor;
     }          
 
     li:last-child {
@@ -78,30 +152,32 @@
 }
 
 .privacy-container {
-    width: 72.9%;
-    margin-top: 185px;
-    font-style: $font-title;
+    max-width: 1420px;
+    margin-top: 130px;
 
     h1 {
         font-size: calc($index * 1.8);
         margin: 0;
-        font-style: $font-title;
+        font-family: $font-title;
         font-weight: 500 !important;
         line-height: 110%;
-        margin-top: 5vh;
+        margin-top: 4vh;
         margin-bottom: calc($index * 3);
     }
 
     h2, h3, h4 {
-        font-size: 28px;
+        font-size: calc($index * 1);
         margin: 0;
-        font-style: $font-title;
+        line-height: 32px;
+        font-family: $font-title;
         font-weight: 400 !important;
-        margin-bottom: calc($index * 0.5);
+        margin-bottom: calc($index * 0.75);
     }
 
     p {
         font-family: $font-text;
+        color: $privacyColor;
+        line-height: 140%;
         margin-bottom: calc($index * 1.45);
     }
 }

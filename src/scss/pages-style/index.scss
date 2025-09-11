@@ -344,6 +344,7 @@
 
   span {
     font-weight: 400;
+    font-family: $font-text;
     font-style: Regular;
     line-height: 100%;
   }
@@ -503,10 +504,6 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-
-  svg {
-    transform: translateX(20px);
-  }
 
   img {
     display: none;

@@ -8,8 +8,9 @@
 
   <!-- CSS Swiper -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
+  <link rel="icon" href="assets/img/favicon.png" type="image/x-icon">
   <link rel="stylesheet" href="css/pages-style/index.css" />
+  <link rel="stylesheet" href="css/pages-style/cookies-modal.css" />
   <link rel="stylesheet" href="css/media.css" />
 
   <!-- Yandex.Metrika counter -->
@@ -122,13 +123,14 @@
               Разработка интернет-магазинов на 1С-Битрикс
             </h1>
             <span class="text-[32px] md:text-[24px] sm:text-[20px]"
-              >с прицелом на рост продаж и масштабирование</span
+              >с прицелом на рост продаж и масштабирование х2</span
             >
           </div>
           <div class="btn text-[16px] md:text-[14px]" id="open-popup">
             РАССЧИТАТЬ СТОИМОСТЬ ПРОЕКТА
             <img src="./assets/icons/arrowBtn.png" alt="" />
           </div>
+
         </div>
         <div class="video__section-wrapper">
           <div class="video__section">
@@ -168,6 +170,24 @@
           <img src="./assets/img/iphone-new.png" alt="" />
         </div>
       </div>
+
+      <!-- Cookies-modal -->
+          <section class="cookies-modal" id="cookiesModal">
+            <div class="cookies-modal__container">
+              <p>Этот сайт использует файлы с cookies</p>
+              <div class="cookies-modal__choose">
+                <button id="cookiesAccept">
+                  <p>принять</p>
+                  <hr>
+                </button>
+                <button class="cookies-modal__close" id="cookiesClose">
+                  <p>закрыть</p>
+                  <hr>
+                </button>
+              </div>
+              
+            </div>
+          </section>
 
     <div class="service__section" data-theme="light">
       <img id="animated-ball-first" class="service__section-ball__decor" src="./assets/img/ball_11.png" alt="" />
@@ -913,7 +933,18 @@
               <!-- If we need pagination -->
 
             <!-- If we need navigation buttons -->
-            <div class="swiper-pagination products__pagination"></div>
+            <div class="swiper-pagination products__pagination swiper-pagination-bullets swiper-pagination-horizontal">
+              <span class="swiper-pagination-bullet swiper-pagination-bullet-active" aria-current="true"></span>
+              <span class="swiper-pagination-bullet"></span>
+              <span class="swiper-pagination-bullet"></span>
+              <span class="swiper-pagination-bullet"></span>
+              <span class="swiper-pagination-bullet"></span>
+              <span class="swiper-pagination-bullet"></span>
+              <span class="swiper-pagination-bullet"></span>
+              <span class="swiper-pagination-bullet"></span>
+              <span class="swiper-pagination-bullet"></span>
+              <span class="swiper-pagination-bullet"></span>
+            </div>
           </div>
         </div>
 
@@ -1854,6 +1885,7 @@
     </script>
 
     <script src="./js/mailer.js"></script>
+    <script src="./js/cookies-modal.js"></script>
   </body>
 </html>
 
