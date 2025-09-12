@@ -1879,6 +1879,11 @@ li {
   display: flex;
 }
 
+body,
+header {
+  font-family: "Gilroy", serif;
+}
+
 /* Блокировка скролла для body */
 body.no-scroll {
   overflow: hidden;
