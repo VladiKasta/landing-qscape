@@ -106,6 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function accordionDetail() {
     const accordHeader = document.getElementById("accordion-header-detail");
+
     if (accordHeader == null) {
       return;
     }

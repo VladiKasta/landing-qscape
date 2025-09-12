@@ -332,7 +332,6 @@
 .title-text {
   margin-top: 174px;
   color: white;
-  max-width: 780px;
   width: 100%;
   z-index: 100;
   h1 {
@@ -404,6 +403,7 @@
 }
 
 .video__section {
+  top: 5px;
   display: inline-block;
   position: relative;
 }
@@ -970,7 +970,50 @@ li {
     margin-left: 85px;
     gap: 15px;
     padding-bottom: 40px;
+
+    li {
+      list-style: circle;
+    }
   }
+}
+
+.accordion__title {
+
+  hr {
+    width: 0%;
+    animation: accordion__title-line-none 1s;
+  }
+
+  &:hover {
+    hr {
+      animation: accordion__title-line 1s;
+      width: 100%;
+    }
+  }
+
+  &:active {
+    hr {
+      width: 100%;
+    }
+  }
+}
+
+@keyframes accordion__title-line {
+    0%{
+        width: 0%;
+    }
+    100%{
+        width: 100%;
+    }
+}
+
+@keyframes accordion__title-line-none {
+    0%{
+        width: 100%;
+    }
+    100%{
+        width: 0%;
+    }
 }
 
 .ball__decor {
@@ -1244,6 +1287,10 @@ li {
     line-height: 140%;
     margin-top: 14px;
   }
+
+  &-active {
+    background-color: #ececed;
+  }
 }
 
 .colored__plank {
@@ -1255,13 +1302,11 @@ li {
   border-radius: 71px;
 }
 
-.svg-circle-wrapper {
-}
-
 .price {
   margin-top: 12px;
   display: flex;
-  align-items: flex-end;
+  align-items: end;
+  flex-direction: row;
   gap: 8px;
 
   span {
@@ -1272,7 +1317,8 @@ li {
   p {
     font-family: $font-title;
     font-weight: 500;
-
+    margin: 0;
+    padding: 0;
     text-transform: uppercase;
   }
 }
