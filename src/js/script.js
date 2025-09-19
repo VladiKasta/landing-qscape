@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
   circleAnimation();
   animateSecondBall();
   backLink();
+    accordionPricingPlans();
 
   function backLink() {
     if (!document.querySelectorAll('a[data-action="back"]')) return;
@@ -128,5 +129,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
       isOpen = !isOpen;
     });
+  }
+
+  function accordionPricingPlans() {
+      const pricingContent = document.querySelectorAll(".js-accordion-pricing-content");
+
+      const mapPricing = Array.from(pricingContent);
+
+      const mapShortPricing = mapPricing.slice(0, 10)
+      console.log(pricingContent);
+      console.log(mapPricing[1]);
+      console.log(mapShortPricing);
   }
 });

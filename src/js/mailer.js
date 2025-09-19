@@ -252,7 +252,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         clearOriginStore(); // очищаем только после успешного сабмита
                         const popupSuccess = document.querySelector('.popup__success');
                         if (popups.length) popups.forEach(p => p.style && (p.style.display = 'none'));
-                        if (popupSuccess) popupSuccess.style.display = 'block';
+                        if (popupSuccess) popupSuccess.style.display = 'flex';
                     } else if (submitButton) {
                         submitButton.innerHTML = 'Ошибка';
                     }

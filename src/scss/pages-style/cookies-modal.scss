@@ -3,12 +3,12 @@
 .cookies-modal {
     opacity: 0;
     position: fixed;
-    bottom: 150px; /* Фиксированное расстояние от нижнего края */
-    right: 20px; /* Фиксированное расстояние от правого края */
+    bottom: 20px; /* Фиксированное расстояние от нижнего края */
     z-index: 1000;
-    width: 500px; /* Фиксированная ширина вместо vw */
-    max-width: 90%; /* Ограничение для мобильных устройств */
+    width: 100vw; /* Фиксированная ширина вместо vw */
     font-family: $font-text;
+    display: flex;
+    justify-content: center;
     transition: opacity 0.3s ease;
     pointer-events: none;
 
@@ -18,6 +18,7 @@
         align-items: center;
         justify-content: space-between;
         padding: 15px;
+        width: 500px;
         border-radius: 8px;
         background-color: #fff;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
