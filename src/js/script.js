@@ -133,12 +133,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function accordionPricingPlans() {
       const pricingContent = document.querySelectorAll(".js-accordion-pricing-content");
+      const showMoreDetailButton = document.querySelectorAll('.accordion-header-detail');
+      const  = document.querySelectorAll('.accordion-header-detail');
 
-      const mapPricing = Array.from(pricingContent);
+      showMoreDetailButton.addEventListener("click", (e) => {
+        e.preventDefault();
 
-      const mapShortPricing = mapPricing.slice(0, 10)
-      console.log(pricingContent);
-      console.log(mapPricing[1]);
-      console.log(mapShortPricing);
+      })
   }
 });
