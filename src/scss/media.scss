@@ -107,19 +107,19 @@
   .privacy-table {
     display: block;
   }
-  
+
   .privacy-table th,
   .privacy-table td {
     display: block;
     width: 100%;
     box-sizing: border-box;
   }
-  
+
   .privacy-table th {
     border-right: none;
     border-bottom: 2px solid #34495e;
   }
-  
+
   .privacy-table tr {
     display: block;
     margin-bottom: 1rem;
@@ -536,7 +536,8 @@
   }
 
   .section__price {
-    max-width: 200px;
+    max-width: 400px;
+    width: 400px;
   }
 
   .section__advantages div p {
