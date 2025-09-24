@@ -1504,6 +1504,41 @@ li {
   align-items: center;
 }
 
+.hidden-blocks-container {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+.compare-more-show__container {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.compare-more-show__container img {
+  transition: transform 0.3s ease;
+}
+
+.hidden-blocks-container.expanded {
+  max-height: 5000px; // Достаточно большое значение для плавной анимации
+}
+
+.compare-more-show__container.expanded {
+  img {
+    transform: rotate(180deg);
+  }
+
+  p {
+    content: "Скрыть детали";
+  }
+}
+
 .compare__header-container {
   gap: 5px;
 }
@@ -2247,7 +2282,7 @@ body.no-scroll {
 }
 
 .compare-more-show {
-  margin-top: 5vh;
+  margin-top: 8vh;
   width: 100%;
   display: flex;
   align-items: center;
@@ -2262,7 +2297,6 @@ body.no-scroll {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    border-radius: 170px;
     padding: 5px 10px;
 
     img {

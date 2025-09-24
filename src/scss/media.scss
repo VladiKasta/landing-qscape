@@ -913,8 +913,21 @@
   }
 }
 
+@media(max-width: 800px) {
+  .compare-more-show__container {
+    width: 50%;
+  }
+
+}
 
 @media (max-width: 600px) {
+  .compare-more-show {
+    margin: 4vh 0;
+  }
+  .compare-more-show__container {
+    height: 4vh;
+  }
+
   .price-base {
     margin-top: 27px;
     display: flex;
@@ -949,5 +962,6 @@
     margin-top: 0px;
   }
 }
+
 
 

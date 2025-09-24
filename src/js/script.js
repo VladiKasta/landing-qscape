@@ -15,15 +15,14 @@ document.addEventListener("DOMContentLoaded", function () {
   inputMask();
   dropdownTrigger();
   accordion();
-  accordionDetail();
   initSwipers();
   animateStats();
   animateFirstBall();
   animateTextBlock();
   circleAnimation();
   animateSecondBall();
+  initCompareAccordion();
   backLink();
-    accordionPricingPlans();
 
   function backLink() {
     if (!document.querySelectorAll('a[data-action="back"]')) return;
@@ -105,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
     );
   }
 
-  function accordionDetail() {
+  /*function accordionDetail() {
     const accordHeader = document.getElementById("accordion-header-detail");
 
     if (accordHeader == null) {
@@ -129,16 +128,47 @@ document.addEventListener("DOMContentLoaded", function () {
 
       isOpen = !isOpen;
     });
-  }
+  }*/
 
-  function accordionPricingPlans() {
-      const pricingContent = document.querySelectorAll(".js-accordion-pricing-content");
-      const showMoreDetailButton = document.querySelectorAll('.accordion-header-detail');
-      const  = document.querySelectorAll('.accordion-header-detail');
+    function initCompareAccordion() {
+        const container = document.querySelector('.hidden-blocks-container');
+        const button = document.querySelector('.accordion-header-detail');
+        const buttonText = button.querySelector('p');
 
-      showMoreDetailButton.addEventListener("click", (e) => {
-        e.preventDefault();
+        if (!container || !button) {
+            console.error('Элементы аккордеона не найдены');
+            return;
+        }
 
-      })
-  }
+        let isExpanded = false;
+
+        function toggleAccordion() {
+            if (!isExpanded) {
+                // Разворачиваем контейнер
+                const hiddenBlocks = container.querySelectorAll('.compare__headers-detail');
+                const blockHeight = hiddenBlocks[0]?.offsetHeight + 40; // высота блока + margin
+                const totalHeight = hiddenBlocks.length * blockHeight;
+
+                container.style.maxHeight = `${totalHeight}px`;
+                container.classList.add('expanded');
+                button.classList.add('expanded');
+                buttonText.textContent = 'Скрыть детали';
+                isExpanded = true;
+            } else {
+                const startHeight = container.scrollHeight;
+                const scrollOffset = startHeight; // Вычисляем высоту для компенсации
+
+                container.style.maxHeight = '0';
+                container.classList.remove('expanded');
+                button.classList.remove('expanded');
+                buttonText.textContent = 'Показать больше деталей';
+
+                window.scrollBy({ top: -scrollOffset, behavior: 'smooth' });
+                isExpanded = false;
+            }
+        }
+
+        button.addEventListener('click', toggleAccordion);
+    }
+
 });
