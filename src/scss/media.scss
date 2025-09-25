@@ -452,6 +452,21 @@
   }
 }
 
+@media(max-width: 640px) {
+  .section__price-header p {
+    font-size: 15px;
+  }
+  .section__price-main-base p{
+    font-size: 22px !important;
+  }
+  .section__price-main-option__content p {
+    font-size: 22px !important;
+  }
+  .section__price-main p{
+    font-size: 22px !important;
+  }
+}
+
 @media (max-width: 600px) {
   .price__section {
     margin-top: 160px;
@@ -512,15 +527,15 @@
   .section__advantages {
     gap: 8px;
     padding: 10px;
-    width: 143px;
+    width: 170px;
+    height: 448px;
   }
 
   .section__advantages div {
     padding: 0;
     min-height: 53px;
+    height: 75px;
   }
-
-
 
   .colored__plank {
     padding: 0px 7px;
@@ -536,8 +551,8 @@
   }
 
   .section__price {
-    max-width: 400px;
-    width: 400px;
+    max-width: 250px;
+    width: 250px;
   }
 
   .section__advantages div p {
@@ -551,6 +566,10 @@
     flex-direction: column;
     gap: 40px;
     border: 0;
+  }
+
+  .swiper {
+    height: 700px;
   }
 }
 
@@ -735,6 +754,12 @@
 }
 
 @media (max-width: 768px) {
+  .detail__title {
+    font-size: 24px;
+  }
+  .swiper {
+    height: 600px !important;
+  }
   .case__text {
     flex-direction: column;
     justify-content: flex-start;
@@ -867,11 +892,32 @@
 }
 
 @media(max-width: 800px) {
+  .compare__header-item p {
+    font-size: 18px;
+  }
   .compare__header-name {
     p {
       font-size: 18px;
     }
   }
+  .swiper {
+    height: 650px;
+  }
+}
+
+@media(max-width: 710px) {
+  .compare__header-name {
+    p {
+      font-size: 16px;
+    }
+  }
+
+  .compare__header-item {
+    p {
+      font-size: 16px;
+    }
+  }
+
 }
 
 @media(max-width: 710px) {
@@ -882,13 +928,12 @@
   }
 }
 
-@media(max-width: 710px) {
-  .compare__header-name {
-    p {
-      font-size: 16px;
-    }
+@media(min-width: 768px) {
+  .price__tile {
+    max-width: 460px;
   }
 }
+
 
 @media (max-width: 767px) {
   .price-base {
@@ -963,6 +1008,5 @@
     margin-top: 0px;
   }
 }
-
 
 

@@ -88,12 +88,12 @@ export default function initSwipers() {
       },
 
       500: {
-        slidesPerView: 1.7,
+        slidesPerView: 1,
         spaceBetween: 10,
       },
       // when window width is >= 640px
       640: {
-        slidesPerView: 1.5,
+        slidesPerView: 1.2,
         spaceBetween: 15,
       },
       1024: {
