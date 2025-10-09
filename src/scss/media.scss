@@ -252,11 +252,15 @@
   }
 
   .our__service-list-item .list-item-top {
+    gap: 25px;
+  }
+
+  .our__service-list-item .list-item-top {
     justify-content: flex-start;
   }
 
   .our__service-list-item .direction ul {
-    margin-left: 123px;
+    margin-left: 83px;
     margin-top: 30px;
     max-width: none;
     width: unset;
@@ -273,6 +277,14 @@
     padding-bottom: 0;
     padding-top: 50px;
     border-bottom: 0;
+  }
+}
+
+@media (min-width: 1100px) {
+  .stat-item-ten-day {
+    br {
+      display: none;
+    }
   }
 }
 
