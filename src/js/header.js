@@ -33,7 +33,7 @@ export default function headerIntersection() {
     for (let i = 0; i < sections.length; i++) {
       let section = sections[i];
       let sectionRect = section.getBoundingClientRect();
-      
+
       // Проверяем пересекается ли секция с нижней границей header
       if (
         sectionRect.top <= headerBottom &&
@@ -68,6 +68,7 @@ export default function headerIntersection() {
 
         // Меняем цвет текста и элементов на белый
         header.querySelector(".number").style.color = "white";
+        header.querySelector(".email").style.color = "white";
         header.querySelector(".navigation").style.color = "white";
 
         burger.style.border = "1px solid white";
@@ -80,6 +81,7 @@ export default function headerIntersection() {
         header.classList.remove("dark-header");
         header.classList.remove("light-header");
         header.querySelector(".number").style.color = "white";
+        header.querySelector(".email").style.color = "white";
         header.querySelector(".navigation").style.color = "white";
         header.style.borderBottom = "none";
 
@@ -87,7 +89,7 @@ export default function headerIntersection() {
         burger
           .querySelectorAll("span")
           .forEach((span) => (span.style.background = "white"));
-      } 
+      }
       // Для всех остальных случаев (светлая тема)
       else {
         header.classList.remove("dark-header");
@@ -96,6 +98,7 @@ export default function headerIntersection() {
 
         // Меняем цвет текста и элементов на темный
         header.querySelector(".number").style.color = "#031422";
+        header.querySelector(".email").style.color = "#031422";
         header.querySelector(".navigation").style.color = "#031422";
         burger.style.border = "1px solid #031422";
         burger
