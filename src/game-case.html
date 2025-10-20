@@ -24,6 +24,27 @@
       <!-- /Yandex.Metrika counter -->
   </head>
   <body>
+  <div class="popup-overlay" id="popup-overlay" data-popup="calculate">
+      <div class="popup__success flex-col items-center gap-[12px]">
+          <button class="popup-close" id="popup-close">
+              <img src="./assets/icons/x.png" alt="" />
+          </button>
+          <h2
+                  class="text-[hsba(231, 25%, 27%, 1)] mx-auto max-w-[474px] text-center text-[28px] uppercase leading-[36px] md:text-[16px]">
+              ваш запрос успешно отправлен
+          </h2>
+          <p
+                  class="md:text-16px text-[hsba(231, 25%, 27%, 1)] mb-[30px] mt-[30px] text-center text-[20px] leading-[150%]">
+              В течение 30 минут наш менеджер вам перезвонит
+          </p>
+
+          <button type="submit"
+                  class="mx-auto mt-[27px] flex items-center justify-center rounded-[170px] bg-black px-[50px] py-[17px] text-center text-[18px] text-[#ececed] md:text-[16px]"
+                  id="popup-close">
+              ок
+          </button>
+      </div>
+  </div>
     <div class="wrapper">
       @@include('partials/header.html') @@include('partials/burger.html')
 
@@ -372,7 +393,7 @@
             </div>
 
             <div class="order-form">
-              <form>
+              <form onsubmit="ym(104667110,'reachGoal','form_submit')">
                 <input
                         class="border border-[#D0D0D0] !bg-white direction-color"
                         type="text"

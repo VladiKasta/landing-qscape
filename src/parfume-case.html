@@ -540,6 +540,13 @@
           location.href = `/?scrollTo=${encodeURIComponent(target)}`;
           return;
         }
+
+        window.history.pushState(null, null, `#${target}`);
+
+        const tagetElement = document.getElementById(target);
+        if (tagetElement) {
+            targetElement.scrollIntoView({behavior: "smooth"});
+        }
       }
     </script>
 

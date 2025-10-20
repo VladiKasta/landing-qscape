@@ -37,8 +37,8 @@
   <div class="wrapper">
       @@include('partials/header.html')
 
-      <div class="popup-overlay" id="popup-overlay">
-          <div class="popup" ym(103790354,'reachGoal','OPEN_POPUP_TARIF_PRICE')>
+      <div class="popup-overlay" id="popup-overlay" data-popup="calculate">
+          <div class="popup">
           <button class="popup-close" id="popup-close">
               <img src="./assets/icons/x.png" alt="" />
           </button>
@@ -50,8 +50,8 @@
                   class="md:text-16px text-[hsba(231, 25%, 27%, 1)] mb-[30px] mt-[30px] text-center text-[20px] leading-[150%] md:mt-[12px]">
             Мы свяжемся с вами и поможем рассчитать стоимость работы на основе ваших пожеланий
           </p>
-          <div class="order-form order-form-modal !mt-0" onsubmit="ym(104667110,'reachGoal','form_submit')">
-              <form class="!mb-0 !gap-[12px]">
+          <div class="order-form order-form-modal !mt-0" >
+              <form class="!mb-0 !gap-[12px]" onsubmit="ym(104667110,'reachGoal','form_submit')">
                   <input class="border border-[#D0D0D0] !bg-white direction-color" type="text" name="name" placeholder="Ваше имя" />
                   <input class="border border-[#D0D0D0] !bg-white direction-color" type="tel" name="phone" placeholder="Номер телефона"
                          pattern="\+7\s?[\(][0-9]{3}[\)]\s?[0-9]{3}-[0-9]{2}-[0-9]{2}" required />
@@ -60,7 +60,7 @@
                   <span class="btn-label !mb-0 text-[12px] !text-[#031422] md:text-[12px]">Нажимая кнопку, я даю согласие на
               обработку моих персональных
               данных</span>
-                  <button data-source="popup_form_submit_calculate" type="submit" class="text-[18px] md:text-[16px]" disabled>
+                  <button data-source="popup_form_submit_calculate" type="submit" class="text-[18px] md:text-[16px]">
                   ОТПРАВИТЬ
                   <img src="./assets/icons/arrowBtn.png" alt="" />
                   </button>
@@ -97,7 +97,7 @@
             </h1>
               <div class="title__container">
                   <p class="text-[32px] md:text-[24px] sm:text-[20px]"
-                  >с прицелом на рост продаж и масштабирование x2
+                  >Превратите сайт в источник постоянных продаж
                   </p>
               </div>
           </div>
@@ -259,7 +259,7 @@
             </div>
           </div>
 
-        <div class="our__service">
+        <div class="our__service" id="our__service">
           <h2 class="our__service-title text-[52px] md:text-[28px]">
               Наши услуги - лучшее решение для вашего интернет-магазина на 1С-Битрикс
           </h2>
@@ -360,7 +360,7 @@
             </div>
           </div>
 
-            <div class="results__section" data-theme="light">
+            <div class="results__section" data-theme="light" id="results__section">
                 <div class="container">
                     <div class="result-text">
                         <h2 class="text-[52px] leading-[58px] md:text-[28px] md:leading-[30px]">
@@ -743,7 +743,7 @@
                         </div>
                     </div>
 
-                    <div class="price__section">
+                    <div class="price__section" id="price__section">
                         <div class="price__title">
                             <h2 class="text-[52px] leading-[58px] md:text-[28px] md:leading-[30px]">
                                 Стоимость услуг
@@ -2016,7 +2016,7 @@
                 </div>
             </div>
 
-          <div class="our__service-bottom__section">
+          <div class="our__service-bottom__section" id="our__service-bottom__section">
             <h2 class="line text-[52px] leading-[32px] md:text-[28px] md:leading-[22px]">
               Почему нам доверяют компании и предприниматели
             </h2>
@@ -2079,7 +2079,7 @@
       </div>
     </div>
 
-    <div class="team__section" data-theme="dark">
+    <div class="team__section" data-theme="dark" id="team__section">
       <img class="ball__decor" src="./assets/img/ball_2.png" alt="" />
       <div class="container">
         <div class="stats">
@@ -2300,7 +2300,7 @@
           </div>
 
             <div class="order-form">
-              <form>
+              <form onsubmit="ym(104667110,'reachGoal','form_submit')">
                 <input type="text" name="name" placeholder="Ваше имя" />
                 <!-- <input type="number" placeholder="Номер телефона" /> -->
                 <input
@@ -2529,7 +2529,7 @@
     </div>
 
       <div class="container" data-theme="light">
-        <div class="order__container pt-[70px]">
+        <div class="order__container pt-[70px]" id="contacts">
           <div class="order-info">
             <h2
               class="text-[52px] leading-[58px] !text-[#031422] md:text-[28px] md:leading-[30px]"
@@ -2569,7 +2569,7 @@
         </div>
 
         <div class="order-form">
-          <form>
+          <form onsubmit="ym(104667110,'reachGoal','form_submit')">
             <input class="border border-[#D0D0D0] !bg-white direction-color" type="text" name="name" placeholder="Ваше имя" />
 
             <input class="border border-[#D0D0D0] !bg-white direction-color" type="tel" name="phone" placeholder="Номер телефона"

@@ -249,10 +249,21 @@ document.addEventListener("DOMContentLoaded", function () {
                     if (data && data.result) {
                         this.reset();
                         if (formPopupEl) popupSourceMap.delete(formPopupEl);
-                        clearOriginStore(); // очищаем только после успешного сабмита
+                        clearOriginStore();
+
+                        // Универсальное отображение success для всех форм
                         const popupSuccess = document.querySelector('.popup__success');
-                        if (popups.length) popups.forEach(p => p.style && (p.style.display = 'none'));
-                        if (popupSuccess) popupSuccess.style.display = 'flex';
+                        const popupOverlay = document.getElementById('popup-overlay');
+
+                        if (popupSuccess && popupOverlay) {
+                            // Скрываем все попапы внутри overlay
+                            popups.forEach(p => p.style && (p.style.display = 'none'));
+                            // Показываем success
+                            popupSuccess.style.display = 'flex';
+                            // Активируем overlay
+                            popupOverlay.classList.add('active');
+                            document.body.classList.add('no-scroll');
+                        }
                     } else if (submitButton) {
                         submitButton.innerHTML = 'Ошибка';
                     }
