@@ -27,7 +27,16 @@
 
 .title__container {
   display: flex;
-  align-items: end;
+  align-items: center;
+
+  img {
+    transform: rotate(90deg);
+    margin-left: 15px;
+  }
+}
+
+.bold-font {
+  font-weight: 600 !important;
 }
 
 .price-base {
@@ -703,7 +712,7 @@ width: 100%;
   font-family: "Cygre", sans-serif;
   font-weight: 500;
   line-height: 100%;
-  max-width: 770px;
+  max-width: 900px;
 }
 
 .our__service-list-item {
