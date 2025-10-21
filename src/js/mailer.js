@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
     const orderForms = document.querySelectorAll(".order-form form");
-    const popups = Array.from(document.querySelectorAll(".popup")); // если несколько попапов
+    const popups = Array.from(document.querySelectorAll(".popup-overlay"));
     const ORIGIN_KEY = 'lead_origin_source';
     const ORIGIN_TS_KEY = 'lead_origin_ts';
-    const ORIGIN_TTL_MS = 30 * 60 * 1000; // 30 минут
+    const ORIGIN_TTL_MS = 30 * 60 * 1000;
 
     let popupLeadSource = '';
     const popupSourceMap = new WeakMap();
@@ -51,12 +51,11 @@ document.addEventListener("DOMContentLoaded", function () {
         popupLeadSource = '';
     }
 
-    // Захватываем источник по клику на триггер (pointerdown — надёжнее)
     function captureTrigger(e) {
         const trigger = e.target.closest && e.target.closest('[data-source]');
         if (!trigger) return;
 
-        if (trigger.closest && trigger.closest('.popup')) return; // игнор кликов внутри попапа
+        if (trigger.closest && trigger.closest('.popup-overlay')) return;
 
         const raw = trigger.getAttribute('data-source') || '';
         if (!raw) return;
@@ -76,22 +75,36 @@ document.addEventListener("DOMContentLoaded", function () {
     document.addEventListener('pointerdown', captureTrigger, true);
     document.addEventListener('touchstart', captureTrigger, true);
 
+    function getFormType(form) {
+        const overlay = form.closest('.popup-overlay');
+        if (!overlay) return 'unknown';
+
+        const popupType = overlay.dataset.popup;
+        switch(popupType) {
+            case 'calculate': return 'calculate';
+            case 'basic': return 'basic';
+            case 'optimal': return 'optimal';
+            case 'premium': return 'premium';
+            default: return 'unknown';
+        }
+    }
+
     function fallbackSourceFromDOM(button, form) {
         if (button && button.dataset && button.dataset.source) {
             return normalizeSource(button.dataset.source);
         }
-        const formParent = form.closest('[data-theme], .popup, .title__section, .order__section, .price__tile, .results__section');
+
+        const formType = getFormType(form);
+        const formParent = form.closest('[data-theme], .popup-overlay, .title__section, .order__section, .price__tile, .results__section');
         let section = 'unknown';
         let action = 'form_submit';
-        let detail = '';
+        let detail = formType;
 
-        if (form.closest('.popup')) {
+        if (form.closest('.popup-overlay')) {
             section = 'popup';
-            detail = 'calculate';
         } else if (formParent) {
             if (formParent.classList.contains('title__section')) {
                 section = 'hero';
-                detail = 'calculate';
             } else if (formParent.classList.contains('order__section')) {
                 section = 'contact';
                 detail = 'primary';
@@ -114,14 +127,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 detail = 'primary';
             }
         }
+
         if (form.closest('footer') || (form.closest('[data-theme="light"]') && form.closest('[data-theme="light"]').querySelector('footer'))) {
             section = 'footer';
             detail = 'primary';
         }
+
         return `${section}_${action}${detail ? '_' + detail : ''}`;
     }
 
-    // UTM
     function getUTMParameters() {
         const urlParams = new URLSearchParams(window.location.search);
         return {
@@ -132,6 +146,7 @@ document.addEventListener("DOMContentLoaded", function () {
             utm_content: urlParams.get('utm_content') || ''
         };
     }
+
     function saveUTMToSession() {
         const utmParams = getUTMParameters();
         if (Object.values(utmParams).some(v => v !== '')) {
@@ -143,6 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
     }
+
     function getStoredUTM() {
         return {
             utm_source: sessionStorage.getItem('utm_source') || '',
@@ -153,10 +169,10 @@ document.addEventListener("DOMContentLoaded", function () {
             utm_first_visit: sessionStorage.getItem('utm_first_visit') || ''
         };
     }
+
     saveUTMToSession();
 
-    // Сабмиты форм
-    orderForms.forEach((form, formIndex) => {
+    orderForms.forEach((form) => {
         form.addEventListener('submit', function (e) {
             e.preventDefault();
             const submitButton = this.querySelector('button[type="submit"]');
@@ -169,13 +185,16 @@ document.addEventListener("DOMContentLoaded", function () {
             const utmData = getStoredUTM();
             const comments = [];
             if (contactMethods) comments.push("Предпочитаемый способ связи: " + contactMethods);
+
+            const formType = getFormType(this);
+            comments.push(`Тип формы: ${formType}`);
             comments.push("Источник: форма обратной связи на сайте");
 
-            const formPopupEl = this.closest('.popup');
+            const formOverlayEl = this.closest('.popup-overlay');
             let finalSource = '';
 
-            if (formPopupEl) {
-                const mapped = popupSourceMap.get(formPopupEl);
+            if (formOverlayEl) {
+                const mapped = popupSourceMap.get(formOverlayEl);
                 if (mapped) {
                     finalSource = mapped;
                     console.log('[lead-origin] used popupSourceMap ->', finalSource);
@@ -203,12 +222,11 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             finalSource = normalizeSource(finalSource || '');
-            if (orderForms.length > 1) finalSource = `form${formIndex + 1}-${finalSource}`;
             const sourceString = `${finalSource || 'unknown'} | www.shop.qscape.ru`;
 
             const leadData = {
                 fields: {
-                    TITLE: "Заявка с сайта" + (formData.get("name") ? " от " + formData.get("name") : ""),
+                    TITLE: `Заявка с сайта (${formType})` + (formData.get("name") ? " от " + formData.get("name") : ""),
                     NAME: formData.get("name") || "Гость",
                     ASSIGNED_BY_ID: 667,
                     OPENED: "Y",
@@ -229,6 +247,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 params: { REGISTER_SONET_EVENT: "Y" }
             };
 
+            console.log('Form type:', formType);
             console.log('FINAL sourceString:', sourceString);
             console.log('Lead payload:', JSON.stringify(leadData, null, 2));
 
@@ -248,21 +267,23 @@ document.addEventListener("DOMContentLoaded", function () {
                 .then(data => {
                     if (data && data.result) {
                         this.reset();
-                        if (formPopupEl) popupSourceMap.delete(formPopupEl);
+                        if (formOverlayEl) popupSourceMap.delete(formOverlayEl);
                         clearOriginStore();
 
-                        // Универсальное отображение success для всех форм
-                        const popupSuccess = document.querySelector('.popup__success');
-                        const popupOverlay = document.getElementById('popup-overlay');
+                        // Ищем success попап внутри текущего overlay, а не глобально
+                        const currentOverlay = this.closest('.popup-overlay');
+                        if (currentOverlay) {
+                            const popupSuccess = currentOverlay.querySelector('.popup__success');
+                            const mainPopup = currentOverlay.querySelector('.popup');
 
-                        if (popupSuccess && popupOverlay) {
-                            // Скрываем все попапы внутри overlay
-                            popups.forEach(p => p.style && (p.style.display = 'none'));
-                            // Показываем success
-                            popupSuccess.style.display = 'flex';
-                            // Активируем overlay
-                            popupOverlay.classList.add('active');
-                            document.body.classList.add('no-scroll');
+                            if (popupSuccess && mainPopup) {
+                                // Скрываем основную форму
+                                mainPopup.style.display = 'none';
+                                // Показываем success
+                                popupSuccess.style.display = 'flex';
+                                // Оверлей уже активен, не нужно добавлять класс еще раз
+                                console.log('Success popup shown for:', getFormType(this));
+                            }
                         }
                     } else if (submitButton) {
                         submitButton.innerHTML = 'Ошибка';

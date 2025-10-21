@@ -1,59 +1,78 @@
 export default function popupTrigger() {
-    const openBtns = document.querySelectorAll("#open-popup,.leave-msg");
+    const openBtns = document.querySelectorAll("[data-popup-type], .leave-msg");
     const closeBtns = document.querySelectorAll("#popup-close");
-    const overlay = document.getElementById("popup-overlay");
+    const overlays = document.querySelectorAll(".popup-overlay");
 
-    if (!openBtns || !overlay || !closeBtns) {
+    if (!openBtns.length || !overlays.length || !closeBtns.length) {
+        console.error('Popup elements not found');
         return;
     }
 
-    function openPopup() {
-        // Сброс всех попапов в исходное состояние
-        const allPopups = document.querySelectorAll('.popup, .popup__success');
-        allPopups.forEach(popup => {
-            if (popup.classList.contains('popup__success')) {
-                popup.style.display = 'none';
-            } else {
-                popup.style.display = 'block';
-            }
+    function openPopup(popupType) {
+        // Скрыть все overlays
+        overlays.forEach(overlay => {
+            overlay.classList.remove("active");
         });
 
-        overlay.classList.add("active");
-        document.body.classList.add("no-scroll");
+        // Показать нужный overlay
+        const targetOverlay = document.getElementById(`popup-overlay-${popupType}`);
+        if (targetOverlay) {
+            // Сброс всех попапов внутри этого overlay
+            const allPopups = targetOverlay.querySelectorAll('.popup, .popup__success');
+            allPopups.forEach(popup => {
+                if (popup.classList.contains('popup__success')) {
+                    popup.style.display = 'none';
+                } else {
+                    popup.style.display = 'block';
+                }
+            });
+
+            targetOverlay.classList.add("active");
+            document.body.classList.add("no-scroll");
+            console.log(`Opened popup: ${popupType}`);
+        } else {
+            console.error(`Popup overlay not found: popup-overlay-${popupType}`);
+        }
     }
 
     function closePopup() {
-        overlay.classList.remove("active");
+        overlays.forEach(overlay => {
+            overlay.classList.remove("active");
+        });
         document.body.classList.remove("no-scroll");
-
-        // Сбрасываем состояние попапов при закрытии
-        const successPopup = document.querySelector('.popup__success');
-        const mainPopup = document.querySelector('.popup');
-        if (successPopup) successPopup.style.display = 'none';
-        if (mainPopup) mainPopup.style.display = 'block';
 
         history.pushState("", document.title, window.location.pathname + window.location.search);
     }
+
     openBtns.forEach((openBtn) => {
-        openBtn.addEventListener("click", openPopup);
+        openBtn.addEventListener("click", function(e) {
+            e.preventDefault();
+            const popupType = this.dataset.popupType;
+            if (popupType) {
+                openPopup(popupType);
+            } else {
+                console.error('No data-popup-type attribute found');
+            }
+        });
     });
 
     closeBtns.forEach((closeBtn) => {
         closeBtn.addEventListener("click", closePopup);
     });
 
-    overlay.addEventListener("click", (e) => {
-        if (e.target === overlay) {
-            closePopup();
-        }
+    overlays.forEach((overlay) => {
+        overlay.addEventListener("click", (e) => {
+            if (e.target === overlay) {
+                closePopup();
+            }
+        });
     });
 
     function checkHash() {
         if (window.location.hash === '#calculate') {
-            openPopup();
+            openPopup('calculate');
         }
     }
     window.addEventListener('load', checkHash);
-
     window.addEventListener('hashchange', checkHash);
 }

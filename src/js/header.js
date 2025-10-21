@@ -11,11 +11,11 @@ export default function headerIntersection() {
     window.location.pathname !== "/index.html"
   ) {
     // Для всех страниц кроме главной устанавливаем светлую тему header
-    header.classList.add("light-header");
     header.style.borderBottom = "1px solid #d0d0d0";
 
     // Меняем цвет элементов header на темный
     header.querySelector(".number").style.color = "#031422";
+      header.querySelector(".email").style.color = "#031422";
     header.querySelector(".navigation").style.color = "#031422";
     burger.style.border = "1px solid #031422";
     burger

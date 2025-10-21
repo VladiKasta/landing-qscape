@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="robots" content="noindex, nofollow" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Qscape -- разработка интернет-магазинов на 1С-Битрикс</title>
+    <title>Qscape - разработка интернет-магазинов на 1С-Битрикс</title>
     <meta
       name="description"
       content="Создаем надежные и гибкие eCommerce-решения на 1С-Битрикс: от прототипа до стабильной работы, интеграций и готовности к масштабированию. Структурно. Прозрачно. С фокусом на бизнес-результат."
@@ -37,57 +37,7 @@
   <div class="wrapper">
       @@include('partials/header.html')
 
-      <div class="popup-overlay" id="popup-overlay" data-popup="calculate">
-          <div class="popup">
-          <button class="popup-close" id="popup-close">
-              <img src="./assets/icons/x.png" alt="" />
-          </button>
-          <h2
-                  class="text-[hsba(231, 25%, 27%, 1)] mx-auto max-w-[474px] text-center text-[28px] uppercase leading-[36px] md:text-[16px]">
-              Рассчитать стоимость проекта
-          </h2>
-          <p
-                  class="md:text-16px text-[hsba(231, 25%, 27%, 1)] mb-[30px] mt-[30px] text-center text-[20px] leading-[150%] md:mt-[12px]">
-            Мы свяжемся с вами и поможем рассчитать стоимость работы на основе ваших пожеланий
-          </p>
-          <div class="order-form order-form-modal !mt-0" >
-              <form class="!mb-0 !gap-[12px]" onsubmit="ym(104667110,'reachGoal','form_submit')">
-                  <input class="border border-[#D0D0D0] !bg-white direction-color" type="text" name="name" placeholder="Ваше имя" />
-                  <input class="border border-[#D0D0D0] !bg-white direction-color" type="tel" name="phone" placeholder="Номер телефона"
-                         pattern="\+7\s?[\(][0-9]{3}[\)]\s?[0-9]{3}-[0-9]{2}-[0-9]{2}" required />
-                  <input class="border border-[#D0D0D0] !bg-white direction-color" name="email" type="email" placeholder="Email" />
-
-                  <span class="btn-label !mb-0 text-[12px] !text-[#031422] md:text-[12px]">Нажимая кнопку, я даю согласие на
-              обработку моих персональных
-              данных</span>
-                  <button data-source="popup_form_submit_calculate" type="submit" class="text-[18px] md:text-[16px]">
-                  ОТПРАВИТЬ
-                  <img src="./assets/icons/arrowBtn.png" alt="" />
-                  </button>
-              </form>
-          </div>
-      </div>
-
-      <div class="popup__success flex-col items-center gap-[12px]">
-          <button class="popup-close" id="popup-close">
-              <img src="./assets/icons/x.png" alt="" />
-          </button>
-          <h2
-                  class="text-[hsba(231, 25%, 27%, 1)] mx-auto max-w-[474px] text-center text-[28px] uppercase leading-[36px] md:text-[16px]">
-              ваш запрос успешно отправлен
-          </h2>
-          <p
-                  class="md:text-16px text-[hsba(231, 25%, 27%, 1)] mb-[30px] mt-[30px] text-center text-[20px] leading-[150%]">
-              В течение 30 минут наш менеджер вам перезвонит
-          </p>
-
-          <button type="submit"
-                  class="mx-auto mt-[27px] flex items-center justify-center rounded-[170px] bg-black px-[50px] py-[17px] text-center text-[18px] text-[#ececed] md:text-[16px]"
-                  id="popup-close">
-              ок
-          </button>
-      </div>
-  </div>
+      @@include('partials/popup.html')
 
       <div class="title__section" data-theme="dark">
         <div class="container">
@@ -101,10 +51,10 @@
                   </p>
               </div>
           </div>
-          <div class="btn text-[16px] md:text-[14px]" id="open-popup">
-            РАССЧИТАТЬ СТОИМОСТЬ ПРОЕКТА
-            <img src="./assets/icons/arrowBtn.png" alt="" />
-          </div>
+            <div class="btn text-[16px] md:text-[14px]" data-popup-type="calculate">
+                РАССЧИТАТЬ СТОИМОСТЬ ПРОЕКТА
+                <img src="./assets/icons/arrowBtn.png" alt="" />
+            </div>
 
         </div>
         <div class="video__section-wrapper">
@@ -773,7 +723,7 @@
                                             </div>
 
                                             <div class="section__price-footer">
-                                                <button class="leave-msg text-[16px] sm:text-[12px]">
+                                                <button class="leave-msg text-[16px] sm:text-[12px]" data-popup-type="basic">
                                                     Оставить заявку
                                                     <img src="./assets/icons/arrowBtn.png" alt="" />
                                                 </button>
@@ -829,7 +779,7 @@
                                             </div>
 
                                             <div class="section__price-footer">
-                                                <button class="leave-msg text-[16px] sm:text-[12px]">
+                                                <button class="leave-msg text-[16px] sm:text-[12px]" data-popup-type="optimal">
                                                     Оставить заявку
                                                     <img src="./assets/icons/arrowBtn.png" alt="" />
                                                 </button>
@@ -881,7 +831,7 @@
                                             </div>
 
                                             <div class="section__price-footer">
-                                                <button class="leave-msg text-[16px] sm:text-[12px]">
+                                                <button class="leave-msg text-[16px] sm:text-[12px]" data-popup-type="premium">
                                                     Оставить заявку
                                                     <img src="./assets/icons/arrowBtn.png" alt="" />
                                                 </button>
@@ -2300,7 +2250,7 @@
           </div>
 
             <div class="order-form">
-              <form onsubmit="ym(104667110,'reachGoal','form_submit')">
+              <form onsubmit="ym(104667110,'reachGoal','form_order_project')">
                 <input type="text" name="name" placeholder="Ваше имя" />
                 <!-- <input type="number" placeholder="Номер телефона" /> -->
                 <input
@@ -2569,7 +2519,7 @@
         </div>
 
         <div class="order-form">
-          <form onsubmit="ym(104667110,'reachGoal','form_submit')">
+          <form onsubmit="ym(104667110,'reachGoal','submit_request')">
             <input class="border border-[#D0D0D0] !bg-white direction-color" type="text" name="name" placeholder="Ваше имя" />
 
             <input class="border border-[#D0D0D0] !bg-white direction-color" type="tel" name="phone" placeholder="Номер телефона"
@@ -2652,6 +2602,26 @@
               <img src="./assets/icons/arrowBtn.png" alt="" />
             </button>
           </form>
+
+            <div class="popup__success flex-col items-center gap-[12px]">
+                <button class="popup-close" id="popup-close">
+                    <img src="./assets/icons/x.png" alt="" />
+                </button>
+                <h2
+                        class="text-[hsba(231, 25%, 27%, 1)] mx-auto max-w-[474px] text-center text-[28px] uppercase leading-[36px] md:text-[16px]">
+                    ваш запрос успешно отправлен
+                </h2>
+                <p
+                        class="md:text-16px text-[hsba(231, 25%, 27%, 1)] mb-[30px] mt-[30px] text-center text-[20px] leading-[150%]">
+                    В течение 30 минут наш менеджер вам перезвонит
+                </p>
+
+                <button type="submit"
+                        class="mx-auto mt-[27px] flex items-center justify-center rounded-[170px] bg-black px-[50px] py-[17px] text-center text-[18px] text-[#ececed] md:text-[16px]"
+                        id="popup-close">
+                    ок
+                </button>
+            </div>
         </div>
       </div>
     </div>
