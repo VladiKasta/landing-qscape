@@ -1998,9 +1998,50 @@ width: 100%;
   height: 24px;
 }
 
-/* Когда попап активен */
-.popup-overlay.active {
+/* Оверлей на весь экран */
+.popup-overlay-order {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 9999;
   display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Контейнер попапа */
+.popup__success__order {
+  background: white;
+  border-radius: 12px;
+  padding: 40px 30px;
+  max-width: 90%;
+  width: 500px;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Кнопка закрытия */
+.popup-close__order {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.popup-close__order img {
+  width: 20px;
+  height: 20px;
+}
+
+/* Скрываем по умолчанию */
+.popup-overlay-order {
+  display: none;
 }
 .link-to-main {
   /* margin-top: 134px; */

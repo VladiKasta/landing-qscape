@@ -270,19 +270,27 @@ document.addEventListener("DOMContentLoaded", function () {
                         if (formOverlayEl) popupSourceMap.delete(formOverlayEl);
                         clearOriginStore();
 
-                        // Ищем success попап внутри текущего overlay, а не глобально
-                        const currentOverlay = this.closest('.popup-overlay');
-                        if (currentOverlay) {
-                            const popupSuccess = currentOverlay.querySelector('.popup__success');
-                            const mainPopup = currentOverlay.querySelector('.popup');
+                        // Для формы в .order-form
+                        const orderFormContainer = this.closest('.order-form');
+                        if (orderFormContainer) {
+                            const popupOverlay = orderFormContainer.querySelector('.popup-overlay-order');
+                            const mainForm = orderFormContainer.querySelector('form');
 
-                            if (popupSuccess && mainPopup) {
-                                // Скрываем основную форму
-                                mainPopup.style.display = 'none';
-                                // Показываем success
-                                popupSuccess.style.display = 'flex';
-                                // Оверлей уже активен, не нужно добавлять класс еще раз
-                                console.log('Success popup shown for:', getFormType(this));
+                            if (popupOverlay && mainForm) {
+                                popupOverlay.style.display = 'flex';
+                                console.log('Success overlay shown for order-form');
+                            }
+                        } else {
+                            // Для остальных форм
+                            const currentOverlay = this.closest('.popup-overlay');
+                            if (currentOverlay) {
+                                const popupSuccess = currentOverlay.querySelector('.popup__success');
+                                const mainPopup = currentOverlay.querySelector('.popup');
+
+                                if (popupSuccess && mainPopup) {
+                                    mainPopup.style.display = 'none';
+                                    popupSuccess.style.display = 'flex';
+                                }
                             }
                         }
                     } else if (submitButton) {
@@ -299,9 +307,17 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     document.addEventListener('click', (e) => {
-        const close = e.target.closest && e.target.closest('.popup-close, .popup-overlay, [data-popup-close], #popup-close');
+        if (e.target.closest('#popup-close') || e.target.closest('.popup-close__order') || e.target.classList.contains('popup-overlay-order')) {
+            const overlay = e.target.closest('.popup-overlay-order');
+            if (overlay) {
+                overlay.style.display = 'none';
+            }
+        }
+
+        // Ваш существующий код для других попапов
+        const close = e.target.closest && e.target.closest('.popup-close, .popup-overlay, [data-popup-close]');
         if (close) {
-            console.log('[lead-origin] popup close detected (source kept for pending submit)');
+            console.log('[lead-origin] popup close detected');
         }
     });
 });
