@@ -272,6 +272,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                         // Для формы в .order-form
                         const orderFormContainer = this.closest('.order-form');
+                        const currentOverlay = this.closest('.popup-overlay');
                         if (orderFormContainer) {
                             const popupOverlay = orderFormContainer.querySelector('.popup-overlay-order');
                             const mainForm = orderFormContainer.querySelector('form');
@@ -280,19 +281,18 @@ document.addEventListener("DOMContentLoaded", function () {
                                 popupOverlay.style.display = 'flex';
                                 console.log('Success overlay shown for order-form');
                             }
-                        } else {
-                            // Для остальных форм
-                            const currentOverlay = this.closest('.popup-overlay');
-                            if (currentOverlay) {
-                                const popupSuccess = currentOverlay.querySelector('.popup__success');
-                                const mainPopup = currentOverlay.querySelector('.popup');
-
-                                if (popupSuccess && mainPopup) {
-                                    mainPopup.style.display = 'none';
-                                    popupSuccess.style.display = 'flex';
-                                }
-                            }
                         }
+                            const popupSuccess = currentOverlay.querySelector('.popup__success');
+                            const mainPopup = currentOverlay.querySelector('.popup');
+
+                            if (popupSuccess && mainPopup) {
+                                // Скрываем основную форму
+                                mainPopup.style.display = 'none';
+                                // Показываем success
+                                popupSuccess.style.display = 'flex';
+                                // Оверлей уже активен, не нужно добавлять класс еще раз
+                                console.log('Success popup shown for:', getFormType(this));
+                            }
                     } else if (submitButton) {
                         submitButton.innerHTML = 'Ошибка';
                     }

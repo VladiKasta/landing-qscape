@@ -1998,6 +1998,11 @@ width: 100%;
   height: 24px;
 }
 
+/* Когда попап активен */
+.popup-overlay.active {
+  display: flex;
+}
+
 /* Оверлей на весь экран */
 .popup-overlay-order {
   position: fixed;
