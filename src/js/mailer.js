@@ -178,16 +178,56 @@ document.addEventListener("DOMContentLoaded", function () {
             const submitButton = this.querySelector('button[type="submit"]');
             const formData = new FormData(this);
 
-            const contactMethods = Array.from(this.querySelectorAll('input[type="checkbox"]:checked'))
-                .map(el => (el.closest('li') ? el.closest('li').textContent.trim() : '').replace(/\s+/g, ' '))
-                .filter(Boolean).join(', ');
+            // const contactMethods = Array.from(this.querySelectorAll('input[type="checkbox"]:checked'))
+            //     .map(el => (el.closest('li') ? el.closest('li').textContent.trim() : '').replace(/\s+/g, ' '))
+            //     .filter(Boolean).join(', ');
+
+            let contactMethods = "";
+
+            if (!contactMethods && getFormType(this) === "unknown") {
+            const selectedRadio = this.querySelector('input[type="radio"][name="choice"]:checked');
+            if (selectedRadio) {
+                const label = this.querySelector(`label[for="${selectedRadio.id}"] .radio-text`);
+                contactMethods = label ? label.textContent.trim() : selectedRadio.value;
+            }
+        }
 
             const utmData = getStoredUTM();
-            const comments = [];
-            if (contactMethods) comments.push("Предпочитаемый способ связи: " + contactMethods);
-
             const formType = getFormType(this);
-            comments.push(`Тип формы: ${formType}`);
+            const userName = formData.get("name") || "Гость";
+
+            // формировани TITLE и кастомных полей(реализую через switch - case, т.к. более читаемо)
+            let title = "";
+            let customFields = {};
+
+            switch (formType) {
+                case "calculate":
+                    title = `Заявка на рассчет стоимости от ${userName}`;
+                    break;
+                case "basic":
+                    title = `Заявка на создание сайта (тариф: Базовый) от ${userName}`;
+                    customFields = { UF_CRM_TARIFF: "Базовый" };
+                    break;
+                case "optimal":
+                    title = `Заявка на создание сайта (тариф: Оптимальный) от ${userName}`;
+                    customFields = { UF_CRM_TARIFF: "Оптимальный" };
+                    break;
+                case "premium":
+                    title = `Заявка на создание сайта (тариф: Премиум) от ${userName}`;
+                    customFields = { UF_CRM_TARIFF: "Премиум" };
+                    break;
+                default:
+                    title = `Заявка на консультацию от ${userName}`;
+                    if (contactMethods) {
+                        customFields = { UF_CRM_CONTACT_METHOD: contactMethods };
+                    }
+                    break;
+            }
+
+            const comments = [];
+            if (contactMethods && formType === "unknown") {
+                comments.push("Предпочитаемый способ связи: " + contactMethods);
+            }
             comments.push("Источник: форма обратной связи на сайте");
 
             const formOverlayEl = this.closest('.popup-overlay');
@@ -197,37 +237,37 @@ document.addEventListener("DOMContentLoaded", function () {
                 const mapped = popupSourceMap.get(formOverlayEl);
                 if (mapped) {
                     finalSource = mapped;
-                    console.log('[lead-origin] used popupSourceMap ->', finalSource);
+                    // console.log('[lead-origin] used popupSourceMap ->', finalSource);
                 } else if (popupLeadSource) {
                     finalSource = popupLeadSource;
-                    console.log('[lead-origin] used popupLeadSource ->', finalSource);
+                    // console.log('[lead-origin] used popupLeadSource ->', finalSource);
                 } else {
                     const stored = getOriginStore();
                     if (stored) {
                         finalSource = stored;
-                        console.log('[lead-origin] used sessionStorage ->', finalSource);
+                        // console.log('[lead-origin] used sessionStorage ->', finalSource);
                     } else {
                         finalSource = fallbackSourceFromDOM(null, this);
-                        console.log('[lead-origin] used fallback DOM for popup form ->', finalSource);
+                        // console.log('[lead-origin] used fallback DOM for popup form ->', finalSource);
                     }
                 }
             } else {
                 if (submitButton && submitButton.dataset && submitButton.dataset.source) {
                     finalSource = normalizeSource(submitButton.dataset.source);
-                    console.log('[lead-origin] used submit button dataset ->', finalSource);
+                    // console.log('[lead-origin] used submit button dataset ->', finalSource);
                 } else {
                     finalSource = fallbackSourceFromDOM(submitButton, this);
-                    console.log('[lead-origin] used fallback DOM for normal form ->', finalSource);
+                    // console.log('[lead-origin] used fallback DOM for normal form ->', finalSource);
                 }
             }
 
             finalSource = normalizeSource(finalSource || '');
-            const sourceString = `${finalSource || 'unknown'} | www.shop.qscape.ru`;
+            const sourceString = `${finalSource || 'unknown'}`;
 
             const leadData = {
                 fields: {
-                    TITLE: `Заявка с сайта (${formType})` + (formData.get("name") ? " от " + formData.get("name") : ""),
-                    NAME: formData.get("name") || "Гость",
+                    TITLE: title,
+                    NAME: userName,
                     ASSIGNED_BY_ID: 667,
                     OPENED: "Y",
                     STATUS_ID: "NEW",
@@ -238,18 +278,20 @@ document.addEventListener("DOMContentLoaded", function () {
                     ...(utmData.utm_medium && { UF_CRM_1493286437: utmData.utm_medium }),
                     ...(utmData.utm_campaign && { UF_CRM_1493286504: utmData.utm_campaign }),
                     ...(utmData.utm_content && { UF_CRM_1493286561: utmData.utm_content }),
-                    UF_CRM_1493286595: sourceString,
+                    UF_CRM_1493286595: 'www.shop.qscape.ru',
+                    UF_CRM_FORMNAME: sourceString,
                     EMAIL: formData.get("email"),
                     PHONE: formData.get("phone") ? [{ VALUE: formData.get("phone"), VALUE_TYPE: "WORK" }] : [],
                     WEB: [{ VALUE: "www.shop.qscape.ru", VALUE_TYPE: "WORK" }],
-                    COMMENTS: comments.join("\n")
+                    COMMENTS: comments.join("\n"),
+                    ...customFields
                 },
                 params: { REGISTER_SONET_EVENT: "Y" }
             };
 
-            console.log('Form type:', formType);
-            console.log('FINAL sourceString:', sourceString);
-            console.log('Lead payload:', JSON.stringify(leadData, null, 2));
+            // console.log('Form type:', formType);
+            // console.log('FINAL sourceString:', sourceString);
+            // console.log('Lead payload:', JSON.stringify(leadData, null, 2));
 
             const originalButtonText = submitButton ? submitButton.innerHTML : '';
             if (submitButton) { submitButton.disabled = true; submitButton.innerHTML = 'Отправка...'; }
@@ -282,17 +324,14 @@ document.addEventListener("DOMContentLoaded", function () {
                                 console.log('Success overlay shown for order-form');
                             }
                         }
-                            const popupSuccess = currentOverlay.querySelector('.popup__success');
-                            const mainPopup = currentOverlay.querySelector('.popup');
+                        const popupSuccess = currentOverlay.querySelector('.popup__success');
+                        const mainPopup = currentOverlay.querySelector('.popup');
 
-                            if (popupSuccess && mainPopup) {
-                                // Скрываем основную форму
-                                mainPopup.style.display = 'none';
-                                // Показываем success
-                                popupSuccess.style.display = 'flex';
-                                // Оверлей уже активен, не нужно добавлять класс еще раз
-                                console.log('Success popup shown for:', getFormType(this));
-                            }
+                        if (popupSuccess && mainPopup) {
+                            mainPopup.style.display = 'none';
+                            popupSuccess.style.display = 'flex';
+                            console.log('Success popup shown for:', getFormType(this));
+                        }
                     } else if (submitButton) {
                         submitButton.innerHTML = 'Ошибка';
                     }
@@ -314,7 +353,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
 
-        // Ваш существующий код для других попапов
         const close = e.target.closest && e.target.closest('.popup-close, .popup-overlay, [data-popup-close]');
         if (close) {
             console.log('[lead-origin] popup close detected');
