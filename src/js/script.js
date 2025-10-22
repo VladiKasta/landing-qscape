@@ -9,20 +9,20 @@ import popupTrigger from "./popup.js";
 import initSwipers from "./swipers.js";
 
 document.addEventListener("DOMContentLoaded", function () {
-  headerIntersection();
-  burgerTrigger();
-  popupTrigger();
-  inputMask();
-  dropdownTrigger();
-  accordion();
-  initSwipers();
-  animateStats();
-  animateFirstBall();
-  animateTextBlock();
-  circleAnimation();
-  animateSecondBall();
-  initCompareAccordion();
-  backLink();
+    headerIntersection();
+    burgerTrigger();
+    popupTrigger();
+    inputMask();
+    dropdownTrigger();
+    accordion();
+    initSwipers();
+    animateStats();
+    animateFirstBall();
+    animateTextBlock();
+    circleAnimation();
+    animateSecondBall();
+    initCompareAccordion();
+    backLink();
 
   function backLink() {
     if (!document.querySelectorAll('a[data-action="back"]')) return;
@@ -170,5 +170,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
         button.addEventListener('click', toggleAccordion);
     }
-
 });

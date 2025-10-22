@@ -5,10 +5,11 @@
     <meta name="robots" content="noindex, nofollow" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>GAMESHOP</title>
-      <link rel="icon" href="assets/img/Favicon-ex.png" type="image/x-icon">
-    <link rel="stylesheet" href="css/pages-style/index.css" />
-    <link rel="stylesheet" href="css/media.css" />
+    <title>Разработка интернет-магазина BBS</title>
+      <link rel="icon" href="../assets/img/Favicon-ex.png" type="image/x-icon">
+  <link rel="stylesheet" href="../css/pages-style/index.css" />
+    <link rel="stylesheet" href="../css/media.css" />
+
       <!-- Yandex.Metrika counter -->
       <script type="text/javascript">
           (function(m,e,t,r,i,k,a){
@@ -24,37 +25,16 @@
       <!-- /Yandex.Metrika counter -->
   </head>
   <body>
-  <div class="popup-overlay" id="popup-overlay" data-popup="calculate">
-      <div class="popup__success flex-col items-center gap-[12px]">
-          <button class="popup-close" id="popup-close">
-              <img src="./assets/icons/x.png" alt="" />
-          </button>
-          <h2
-                  class="text-[hsba(231, 25%, 27%, 1)] mx-auto max-w-[474px] text-center text-[28px] uppercase leading-[36px] md:text-[16px]">
-              ваш запрос успешно отправлен
-          </h2>
-          <p
-                  class="md:text-16px text-[hsba(231, 25%, 27%, 1)] mb-[30px] mt-[30px] text-center text-[20px] leading-[150%]">
-              В течение 30 минут наш менеджер вам перезвонит
-          </p>
-
-          <button type="submit"
-                  class="mx-auto mt-[27px] flex items-center justify-center rounded-[170px] bg-black px-[50px] py-[17px] text-center text-[18px] text-[#ececed] md:text-[16px]"
-                  id="popup-close">
-              ок
-          </button>
-      </div>
-  </div>
     <div class="wrapper">
-      @@include('partials/header.html') @@include('partials/burger.html')
+      @@include('../partials/header.html') @@include('../partials/burger.html')
 
-      <main class="main">
-        <div class="container-bg-grad" data-theme="white">
+      <main class="main" data-theme="white">
+        <div class="container-bg-grad" >
           <div class="container">
             <div class="link-to-main">
               <a
                 class="text-[18px] md:text-[16px]"
-                href="index.html"
+                href="../index.html"
                 data-action="back"
                 >Вернуться на главную</a
               >
@@ -64,40 +44,40 @@
               <h1
                 class="text-[52px] leading-[58px] md:text-[28px] md:leading-[32px]"
               >
-                GameShop
+                BBS
               </h1>
 
               <h2
                 class="text-[24px] uppercase leading-[32px] md:text-[16px] md:leading-[22px]"
               >
-                Федеральный интернет-магазин GameShop с динамической маршрутизацией и CRM-архитектурой
+                Интернет-магазин с высокой безопасностью, 30 000+ SKU и Битрикс24
               </h2>
             </div>
 
             <div class="source">
-              <a class="text-[16px] leading-[140%]" href="https://100pristavok.ru/ " target="_blank">100pristavok.ru </a>
-              <span class="text-[16px] leading-[140%]">02.2024</span>
+              <a class="text-[16px] leading-[140%]" href="https://bbs-diplom.qscape.ru/" target="_blank">bbs-diplom.ru</a>
+              <span class="text-[16px] leading-[140%]">04.2024</span>
             </div>
 
             <div class="case__text">
               <p class="mt-[65px] text-[18px] md:mt-0 md:text-[16px]">
-                GameShop — это не просто магазин игр. Это целая вселенная: 24 года на рынке,
-                40+ магазинов по всей России, 80 000 покупателей в месяц. Здесь соседствуют
-                ретро-приставки и PS5, trade-in и ремонт, коллекционные фигурки и геймеры
-                всех возрастов. Особенность — франшиза: каждый магазин работает как самостоятельный
-                бизнес со своим складом, ценами, клиентами и CRM. Наша задача была соединить всё
-                это в одну цифровую систему.
+                BBS — это режимное предприятие, чья продукция определяет судьбы:
+                дипломы, аттестаты, удостоверения. Всё под контролем Минфина и
+                ФНС, всё официально и строго. Но прежний сайт не отражал уровень
+                ответственности: был медленным, устаревшим и небезопасным.
+                Мы создали цифровое ответвление режимного объекта — где скорость,
+                защита и эстетика работают на доверие.
               </p>
 
               <div class="case__devices">
                 <img
                   class="laptop-img"
-                  src="./assets/img/game-shop/desktop.png"
+                  src="../assets/img/BBS/bbc-one/Mockup.png"
                   alt="#"
                 />
                 <img
                   class="phone-img"
-                  src="./assets/img/game-shop/mobile.png"
+                  src="../assets/img/BBS/bbc-one/bbs-one-page/Mockup.png"
                   alt=""
                 />
               </div>
@@ -113,49 +93,35 @@
                   <h2 class="text-[28px] uppercase md:text-[22px]">Задача</h2>
 
                   <p class="text-[18px] md:text-[16px]">
-                    Создать платформу, которая управляет сетью как единым
-                    организмом, но при этом даёт каждому франчайзи полную автономию —
-                    без хаоса и дублей.
+                    Перестроить интернет-магазин в цифровую крепость — быструю,
+                    безопасную и масштабируемую, сохранив узнаваемость бренда и
+                    встроив его в бизнес-процессы.
                   </p>
                   <p class="text-[18px] md:text-[16px]">
-                    <strong>Цель:</strong> сделать сайт «умным диспетчером», который знает, что и где
-                    есть, и помогает продать это клиенту — без участия человека.
+                    <strong>Цель:</strong> превратить сайт в цифровой цех режимного предприятия —
+                    где каждый заказ защищён, каждый документ понятен, а клиент уверен в результате.
                   </p>
                 </div>
               </div>
 
               <ul class="text-[18px] md:text-[16px]">
-                <li class="list-style-none">
-                  Представьте:
+                <li>
+                  30 000+ SKU без оптимизации: поиск и фильтры тормозили.
                 </li>
                 <li>
-                  Клиент в Костроме видит остатки и цены своего магазина.
+                  Нет усиленной безопасности, хотя продукция подлежит госучёту.
                 </li>
                 <li>
-                 Клиент в Ярославле — свои акции и историю заказов.
-                </li>
-                <li>Управляющая компания получает агрегированные данные по всей сети.
+                  Скорость загрузки 5+ секунд — госучреждения и вузы уходили.
                 </li>
                 <li>
-                  Каждый франчайзи работает со своей 1С и CRM, не мешая другим.
+                  Устаревший дизайн — не транслировал премиальность.
                 </li>
                 <li>
-                  10 000+ товаров, онлайн-оплата, СМС-вход — всё должно работать стабильно.
-                </li>
-                <li class="list-style-none">
-                  Проблемы до:
+                 Нет синхронизации с Битрикс24 — всё обрабатывалось вручную.
                 </li>
                 <li>
-                  Нет привязки каталога к локации — клиент видит то, чего нет в его городе.
-                </li>
-                <li>
-                  CRM не разделена — франчайзи получали чужие заказы, офис не видел картину целиком.
-                </li>
-                <li>
-                  1С не интегрирована — остатки и цены обновлялись вручную, с ошибками.
-                </li>
-                <li>
-                  Сайт «падал» под нагрузкой каталога и фильтров.
+                 Интерфейс не помогал различать юридически важные документы
                 </li>
               </ul>
             </div>
@@ -169,43 +135,60 @@
                   <h2 class="text-[28px] uppercase md:text-[22px]">Решение</h2>
 
                   <p class="text-[18px] md:text-[16px]">
-                    Франчайзинговая операционная система на 1С-Битрикс. Каждый магазин —
-                    филиал, сайт — штаб-квартира.
+                    Интерфейс как печать доверия. Технологии — как система безопасности.
                   </p>
                 </div>
               </div>
 
               <ul class="text-[18px] md:text-[16px]">
                 <li>
-                  Динамическая маршрутизация: выбор города подгружает каталог, цены и
-                  CRM именно этого франчайзи
+                  Архитектура под 30 000+ SKU:<br>
+                  • оптимизированный каталог с фильтрами по уровню образования и назначению<br>
+                  • скорость загрузки 0.8 сек благодаря lazy load, кэшированию и CDN<br>
+                  • поиск с автодополнением по ГОСТам, сериям и артикулам
                 </li>
                 <li>
-                  Двойная CRM:<br>
-                  • управляющая компания — агрегированные KPI, маркетинг, акции<br>
-                  • франчайзи — только свои клиенты, заказы и история
+                 Усиленная безопасность:<br>
+                  • SSL с расширенной валидацией (EV)<br>
+                  • двухфакторная авторизация для B2B-клиентов<br>
+                  • аудит доступа к карточкам номерной продукции<br>
+                  • шифрование данных на уровне базы в соответствии с требованиями ФНС
                 </li>
                 <li>
-                  Независимая интеграция с 1С каждого магазина через API: обмен каждые 5 минут
+                  Интеграция с Битрикс24:<br>
+                  • синхронизация остатков, заказов и статусов в реальном времени<br>
+                  • автоматическое создание сделок и задач<br>
+                  • экспорт спецификаций в нужных для госзаказчиков форматах
                 </li>
                 <li>
-                  Авторизация по СМС — быстрый вход без паролей
+                  Дизайн — эволюция, а не революция:<br>
+                  • сохранены фирменные цвета и типографика<br>
+                  • обновлённый визуальный язык: фактуры бумаги, печати, акценты на подписях<br>
+                  • карточка товара — как официальный бланк: ГОСТ, серия, регистрационный номер
                 </li>
                 <li>
-                  Оптимизация под 10 000+ товаров: кэширование, CDN, автодополнение в поиске,
-                  ленивая загрузка изображений
+                  UX для госсектора и вузов:<br>
+                  • фильтр «по назначению документа»: для школ, для вузов, для курсов<br>
+                  • подсказки с выдержками из нормативных актов<br>
+                  • блок «Юридическая значимость» — прямо в карточке<br>
+                  • образцы заполнения для избежания ошибок
                 </li>
                 <li>
-                  Масштабируемость: подключение нового франчайзи занимает 1 день (1С,
-                  CRM, зона ответственности)
+                  Производительность как стандарт:<br>
+                  • performance-аудит на каждом этапе<br>
+                  • оптимизация изображений — текстура бумаги и водяные знаки без потери скорости<br>
+                  • адаптивность под госпорталы и системы заказчиков
                 </li>
               </ul>
             </div>
           </div>
 
           <div class="img-examples__section">
-            <img src="./assets/img/game-shop/playstation.png" alt="" />
-            <img src="./assets/img/game-shop/shop-item.png" alt="" />
+            <img
+              src="../assets/img/BBS/ed0afedc037a657956096eeb5556f5ec8470e330.jpg"
+              alt=""
+            />
+            <img src="../assets/img/BBS/bbs-two/img.png" alt="" />
           </div>
 
           <div class="our__service-list-item">
@@ -218,35 +201,37 @@
                   </h2>
 
                   <p class="text-[18px] md:text-[16px]">
-                    Платформа, которая работает как федеральная сеть, но ощущается как локальный
-                    магазин у дома.
+                    Сайт, который работает как госструктура: быстро, надёжно,
+                    без сбоев — и при этом эстетично.
                   </p>
                 </div>
               </div>
 
               <ul class="text-[18px] md:text-[16px]">
                 <li>
-                  Конверсия выросла на 47% — клиенты видят только доступные товары.
+                  Скорость загрузки: 0.8 сек (вместо 5.2) даже при 30 000+ SKU
                 </li>
                 <li>
-                  Отказы из-за «нет в наличии» упали на 82%.
+                  Конверсия в заказ выросла на 44% благодаря «говорящему» UX
                 </li>
                 <li>
-                  Скорость загрузки каталога — 1.2 сек даже при 10 000+ SKU.
+                  Звонков в поддержку стало на 62% меньше — клиенты сами находят ГОСТы и инструкции
                 </li>
                 <li>
-                  Подключение нового франчайзи — 1 день вместо 2 недель.
+                  Время обработки заказа сократилось с 2 часов до 15 минут благодаря интеграции
+                  с Битрикс24
                 </li>
                 <li>
-                  Рост онлайн-продаж на 68% за полгода благодаря удобному UX.
+                  B2B-заказы от госучреждений выросли на 58% за счёт усиленной безопасности
+                  и экспорта данных
                 </li>
                 <li>
-                  Бонус-эффект: сайт стал инструментом управления — франчайзи
-                  используют его как CRM-панель и складской монитор, а головной
-                  офис — как live-дашборд по всей сети.
+                  Бонус-эффект: сайт стали использовать как методическое пособие — его
+                  рекомендуют даже региональные отделения ФНC.
                 </li>
                 <li class="list-style-none">
-                  GameShop теперь — не просто сайт, а операционная система франшизы.
+                  BBS теперь не просто продаёт бланки. Он задаёт стандарт цифрового
+                  взаимодействия в сфере госдокументов.
                 </li>
               </ul>
             </div>
@@ -255,7 +240,7 @@
         <div class="img-examples-2__section">
           <div class="ex-image__wrapper">
             <img
-              src="./assets/img/game-shop/main.png"
+              src="../assets/img/BBS/bbs-three/screenshot-322.png"
               alt=""
             />
           </div>
@@ -263,14 +248,14 @@
           <div class="ex-image__wrapper-row">
             <div class="ex-image__wrapper">
               <img
-                src="./assets/img/game-shop/partners.png"
+                src="../assets/img/BBS/bbs-three/screenshot-435.png"
                 alt=""
               />
             </div>
 
             <div class="ex-image__wrapper">
               <img
-                src="./assets/img/game-shop/card.png"
+                src="../assets/img/BBS/bbs-three/screenshot-546.png"
                 alt=""
               />
             </div>
@@ -307,18 +292,18 @@
 
               <div>
                 <span class="case-name text-[20px] md:text-[16px]"
-                  >Руслан Аскеров</span
+                  >Александр Ягодкин</span
                 >
                 <span class="case-position text-[16px]"
-                  >Backend-разработчик</span
+                  >Fullstack-разработчик</span
                 >
               </div>
 
               <div>
                 <span class="case-name text-[20px] md:text-[16px]"
-                  >Калентьев Арсений</span
+                  >Ирина Латышева</span
                 >
-                <span class="case-position text-[16px]">Project Manager </span>
+                <span class="case-position text-[16px]">Project Manager</span>
               </div>
             </ul>
           </div>
@@ -327,7 +312,7 @@
         <div class="case__title-bottom">
           <div class="container">
             <div class="link-to-main">
-              <a class="text-[18px] md:text-[16px]" href="comfort-case.html"
+              <a class="text-[18px] md:text-[16px]" href="../parfume-case/"
                 >Следущий проект</a
               >
             </div>
@@ -335,19 +320,19 @@
               <h1
                 class="text-[52px] leading-[58px] md:text-[28px] md:leading-[32px]"
               >
-                COMFORT SPACE
+                PARFUM PARADISE
               </h1>
 
               <h2
                 class="text-[24px] uppercase leading-[32px] md:text-[16px] md:leading-[22px]"
               >
-                Премиальный корпоративный сайт с SEO, каталогом и доверительным UX
+                Luxury-бутик с бонусами, подарками и доставкой в 1 клик
               </h2>
             </div>
 
             <div class="source">
-              <a class="text-[16px] leading-[140%]" href="http://comfortspace.ru/ " target="_blank">comfortspace.ru </a>
-              <span class="text-[16px] leading-[140%]">06.2024</span>
+              <a class="text-[16px] leading-[140%]" href="https://pp.qscape.ru/" target="_blank">parfum-paradise.ru</a>
+              <span class="text-[16px] leading-[140%]">09.2025</span>
             </div>
           </div>
         </div>
@@ -370,7 +355,7 @@
 
               <div class="employee__wrapper">
                 <div class="avatar">
-                  <img src="./assets/img/face-2.png" alt="" />
+                  <img src="../assets/img/face-2.png" alt="" />
                 </div>
 
                 <div>
@@ -494,14 +479,14 @@
                   class="text-[18px] md:text-[16px]"
                 >
                   Оставить заявкy
-                  <img src="./assets/icons/arrowBtn.png" alt="" />
+                  <img src="../assets/icons/arrowBtn.png" alt="" />
                 </button>
               </form>
                 <div class="popup-overlay-order" style="display: none;">
                     <div class="popup__success__order">
                         <div class="popup__success__order-content flex-col items-center gap-[12px]">
                             <button class="popup-close__order" id="popup-close">
-                                <img src="./assets/icons/x.png" alt="" />
+                                <img src="../assets/icons/x.png" alt="" />
                             </button>
                             <h2 class="text-[hsba(231, 25%, 27%, 1)] mx-auto max-w-[474px] text-center text-[28px] uppercase leading-[36px] md:text-[16px]">
                                 ваш запрос успешно отправлен
@@ -520,7 +505,7 @@
         </div>
       </main>
 
-      @@include('partials/footer.html')
+      @@include('../partials/footer.html')
     </div>
 
     <!-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> -->
@@ -538,7 +523,7 @@
       }
     </script>
 
-    <script type="module" src="/js/script.js"></script>
-    <script src="./js/mailer.js"></script>
+    <script type="module" src="../js/script.js"></script>
+    <script src="../js/mailer.js"></script>
   </body>
 </html>

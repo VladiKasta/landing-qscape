@@ -8,10 +8,10 @@
 
   <!-- CSS Swiper -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  <link rel="icon" href="assets/img/favicon-ico.png" type="image/x-icon">
-  <link rel="stylesheet" href="css/pages-style/privacy.css" />
-  <link rel="stylesheet" href="css/pages-style/index.css" />
-  <link rel="stylesheet" href="css/media.css" />
+  <link rel="icon" href="../assets/img/favicon-ico.png" type="image/x-icon">
+  <link rel="stylesheet" href="../css/pages-style/privacy.css" />
+  <link rel="stylesheet" href="../css/pages-style/index.css" />
+  <link rel="stylesheet" href="../css/media.css" />
 
       <!-- Yandex.Metrika counter -->
       <script type="text/javascript">
@@ -30,11 +30,11 @@
 
 <body>
   <div class="wrapper">
-    @@include('partials/header.html')
+    @@include('../partials/header.html')
 
     <section class="privacy" data-theme="white">
         <div class="privacy-container">
-            <a href="index.html" class="privacy__link">
+            <a href="../index.html" class="privacy__link">
                 <span class="privacy__link-text">Вернуться на главную</span>
                 <hr>
             </a>
@@ -484,12 +484,12 @@
         </div>
     </section>
 
-    @@include('partials/footer.html')
+    @@include('../partials/footer.html')
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-  <script type="module" src="./js/script.js"></script>
+  <script type="module" src="../js/script.js"></script>
   <script>
     function smoothScroll(element) {
       if (!element) {
@@ -562,7 +562,7 @@
       });
     </script>
 
-    <script src="./js/mailer.js"></script>
+    <script src="../js/mailer.js"></script>
   </body>
 </html>
 

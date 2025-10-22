@@ -5,12 +5,11 @@
     <meta name="robots" content="noindex, nofollow" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>TANZOR</title>
+    <title>Разработка интернет-магазина КРАСКИ ЗДЕСЬ</title>
 
-      <link rel="icon" href="assets/img/Favicon-ex.png" type="image/x-icon">
-    <link rel="stylesheet" href="css/pages-style/index.css" />
-    <link rel="stylesheet" href="css/media.css" />
-
+      <link rel="icon" href="../assets/img/Favicon-ex.png" type="image/x-icon">
+  <link rel="stylesheet" href="../css/pages-style/index.css" />
+    <link rel="stylesheet" href="../css/media.css" />
       <!-- Yandex.Metrika counter -->
       <script type="text/javascript">
           (function(m,e,t,r,i,k,a){
@@ -26,38 +25,18 @@
       <!-- /Yandex.Metrika counter -->
   </head>
   <body>
-  <div class="popup-overlay" id="popup-overlay" data-popup="calculate">
-      <div class="popup__success flex-col items-center gap-[12px]">
-          <button class="popup-close" id="popup-close">
-              <img src="./assets/icons/x.png" alt="" />
-          </button>
-          <h2
-                  class="text-[hsba(231, 25%, 27%, 1)] mx-auto max-w-[474px] text-center text-[28px] uppercase leading-[36px] md:text-[16px]">
-              ваш запрос успешно отправлен
-          </h2>
-          <p
-                  class="md:text-16px text-[hsba(231, 25%, 27%, 1)] mb-[30px] mt-[30px] text-center text-[20px] leading-[150%]">
-              В течение 30 минут наш менеджер вам перезвонит
-          </p>
-
-          <button type="submit"
-                  class="mx-auto mt-[27px] flex items-center justify-center rounded-[170px] bg-black px-[50px] py-[17px] text-center text-[18px] text-[#ececed] md:text-[16px]"
-                  id="popup-close">
-              ок
-          </button>
-      </div>
-  </div>
-    <div class="wrapper">
-      @@include('partials/header.html') @@include('partials/burger.html')
+    <div class="wrapper" data-theme="light">
+      @@include('../partials/header.html')
+        @@include('../partials/burger.html')
 
       <main class="main">
-        <div class="container-bg-grad" data-theme="white">
+        <div class="container-bg-grad">
           <div class="container">
-            <div class="link-to-main">
+            <div class="link-to-main"  data-theme="white">
               <a
                 class="text-[18px] md:text-[16px]"
-                href="index.html"
-                data-action="back"
+                href="../index.html"
+                data-action="back" target="_blank"
                 >Вернуться на главную</a
               >
             </div>
@@ -66,43 +45,38 @@
               <h1
                 class="text-[52px] leading-[58px] md:text-[28px] md:leading-[32px]"
               >
-                TANZOR
+                КРАСКИ ЗДЕСЬ
               </h1>
 
               <h2
                 class="text-[24px] uppercase leading-[32px] md:text-[16px] md:leading-[22px]"
               >
-                Редизайн сайта с сохранением фирменного стиля и технологичным UX
+                Высокоскоростной интернет-магазин на 1С-Битрикс для B2B и DIY сегментов
               </h2>
             </div>
 
             <div class="source">
-              <a class="text-[16px] leading-[140%]" href="https://www.tanzor.ru/" target="_blank">tanzor.ru</a>
-              <span class="text-[16px] leading-[140%]">09.2024</span>
+              <a class="text-[16px] leading-[140%]" target="_blank" href="https://kraski-zdes.ru/ ">kraski-zdes.ru</a>
+              <span class="text-[16px] leading-[140%]">07.2024</span>
             </div>
 
             <div class="case__text">
               <p class="mt-[65px] text-[18px] md:mt-0 md:text-[16px]">
-                С 1994 года компания «ТАНЗОР» занимается разработкой и производством
-                специализированных материалов: от УФ-лаков и красок до биоразлагаемых
-                покрытий.Старый сайт компании не справлялся с своей задачей. Его дизайн
-                и структура устарели, из-за чего посетители не могли в полной мере
-                оценить expertise и достижения компании.
-                <br>
-                Вместо косметического редизайна мы создали принципиально новый
-                онлайн-ресурс — удобный и современный инструмент, который точно
-                представляет деятельность и уровень «ТАНЗОРА».
+                «КРАСКИ ЗДЕСЬ» — это не просто магазин. Это экосистема для тех, кто живёт ремонтами:
+                от домашних мастеров до архитекторов и подрядчиков. Здесь можно купить материалы,
+                получить консультацию сертифицированного колориста, увидеть выкрас вживую. И теперь
+                всё это доступно в цифровом формате — без потери скорости и профессионализма.
               </p>
 
               <div class="case__devices">
                 <img
                   class="laptop-img"
-                  src="./assets/img/tanzor/tanzor-one/Mockup.png"
+                  src="../assets/img/kraski-zdes/desktop.png"
                   alt="#"
                 />
                 <img
                   class="phone-img"
-                  src="./assets/img/tanzor/tanzor-one/tanzor-one/Mockup.png"
+                  src="../assets/img/kraski-zdes/mobile.png"
                   alt=""
                 />
               </div>
@@ -118,52 +92,44 @@
                   <h2 class="text-[28px] uppercase md:text-[22px]">Задача</h2>
 
                   <p class="text-[18px] md:text-[16px]">
-                    Создать современный и функциональный сайт, который будет удобен
-                    для ключевых специалистов: инженеров, закупщиков и экологов.
-                    Мы стремились, чтобы каждый нашел необходимую информацию быстро
-                    и легко, а сам ресурс соответствовал международным стандартам.
+                    Перевести офлайн-экспертизу в онлайн — без задержек и ошибок.
+                    Сделать сайт быстрее, умнее и надёжнее конкурентов, даже при каталоге в
+                    10 000+ SKU.
                   </p>
                   <p class="text-[18px] md:text-[16px]">
-                    <strong>Цель:</strong> сделать сайт не «корпоративной визиткой», а инженерным
-                    порталом — где клиент за 3 клика находит нужный лак, понимает
-                    его применение, видит экологический след и оформляет заказ
-                    как профессионал.
+                    <strong>Цель:</strong> создать цифровой аналог фирменного магазина с сервисом, атмосферой и
+                    экспертами — но в браузере. И чтобы всё работало на скорости реактивного самолёта.
                   </p>
                 </div>
               </div>
 
               <ul class="text-[18px] md:text-[16px]">
                 <li class="list-style-none">
-                  ТАНЗОР работает с клиентами, для которых важны не картинки,
-                  а спецификации, не «скидки», а совместимость и экологичность.
-                  Но сайт этого не отражал:
-                </li>
-                  <li class="list-style-none">
-                      Но сайт этого не отражал:
-                  </li>
-                <li>
-                  Дизайн устарел — не соответствовал статусу компании, участвовавшей
-                  в Drupa и создавшей первое в России УФ-производство.
+                  Клиенты компании — это два разных мира:
                 </li>
                 <li>
-                  Нет чёткой визуальной иерархии: 30 лет истории, 9 городов, 4
-                  направления бизнеса — всё «сливалось».
+                  DIY-новички, которые боятся ошибиться с выбором при первом ремонте
                 </li>
                 <li>
-                  Фильтры товаров — не заточены под технические параметры: тип
-                  печати, вязкость, совместимость с оборудованием, экологические сертификаты.
+                  Профессионалы, которым нужна точность, совместимость и срочная доставка
+                </li>
+                <li class="list-style-none">
+                  Старый сайт не справлялся:
                 </li>
                 <li>
-                  Личный кабинет — как для розницы: нет разделения B2B (спецификации,
-                  отсрочки, аналитика) и B2C (история, избранное).
+                  Каталог обновлялся вручную, цены устаревали за час.
                 </li>
                 <li>
-                  Оформление заказа — без технических подсказок: «Этот лак совместим с
-                  вашим станком?», «Нужна ли дополнительная сушка?»
+                 Не было интеграции с 1С, половина времени менеджеров уходила на ручные правки.
                 </li>
                 <li>
-                  Нет визуального акцента на экологичности — хотя это ключевое конкурентное
-                  преимущество.
+                  Скорость загрузки — больше 7 секунд.
+                </li>
+                <li>
+                  Нет гибких способов оплаты для юрлиц и бригад.
+                </li>
+                <li>
+                  Интерфейс не помогал выбрать решение, а показывал только список товаров.
                 </li>
               </ul>
             </div>
@@ -177,115 +143,45 @@
                   <h2 class="text-[28px] uppercase md:text-[22px]">Решение</h2>
 
                   <p class="text-[18px] md:text-[16px]">
-                    Мы разработали интерфейс, который сочетает в себе три ключевые идеи:
-                    фундаментальность научного журнала, структурированность промышленного
-                    каталога и принципиальность экологического манифеста. Все это воплощено
-                    в единой, гармоничной дизайн-системе.
+                    Инженерный подход к миру красок: 1С-Битрикс как цифровая фабрика, а не просто CMS.
                   </p>
                 </div>
               </div>
 
               <ul class="text-[18px] md:text-[16px]">
-                <li class="list-style-none">
-                  Каждый элемент интерфейса был продуман для решения конкретных бизнес-задач и передачи ценностей бренда.
+                <li>
+                  Основа на 1С-Битрикс «Бизнес» — масштабируемо и стабильно для B2B-логики.
                 </li>
                 <li>
-                  <strong>Главная страница — как панель управления инновациями:</strong>
+                  Автоматическая выгрузка каталога из CSV каждые 15 минут — никакой ручной рутины.
                 </li>
                 <li>
-                  Лента достижений: «1996 — первые УФ-лаки в России», «2021 —
-                  первое производство УФ-красок полного цикла» — с анимированными
-                  иконками и ссылками на подробности.
+                  Интеграция с 1С:УТ — заказы, оплаты, доставки в едином цикл.
                 </li>
                 <li>
-                  Интерактивная карта сети продаж — с фильтром по типу продукции
-                  и наличию лабораторий.
+                  Фильтры по применению: «для ванной», «для дерева», «антигрибковая», «износостойкая».
                 </li>
                 <li>
-                  Блок «Безотходное производство» — с видео-визуализацией цикла переработки.
+                  Гибкие платежи: множество различных методов оплаты, повторные заказы с сохранёнными реквизитами.
                 </li>
                 <li>
-                  <strong>Фирменный стиль:</strong>
+                  Performance-оптимизация: скорость загрузки до 0.9 сек (кэширование, CDN, композитные технологии,
+                  сжатие фото без потери качества).
                 </li>
                 <li>
-                  Сохранена корпоративная палитра (графит, глубокий синий, акценты меди), но
-                  обновлена типографика — более строгая, техническая.
+                  UX-консультант: карточка товара содержит не только характеристики, но и
+                  «Вам потребуется», «Калькулятор расхода», «Другие вариации товара».
                 </li>
                 <li>
-                  Иконографика — как в научных журналах: схемы, молекулы, графики вязкости,
-                  значки экологичности.
-                </li>
-                <li>
-                  Анимации используются не для украшения, а для объяснения сложных процессов:
-                  как происходит УФ-отверждение или разлагается биопокрытие.
-                </li>
-
-                <li>
-                  <strong>Фильтрация товаров — как подбор реагентов в лаборатории:</strong>
-                </li>
-                <li>
-                   Группировка по: типу печати (офсет, флексо, цифровая), оборудованию
-                  (Heidelberg, Sakata INX), вязкости, блеску, экологическому сертификату (REACH,
-                  GOTS).
-                </li>
-                <li>
-                  «Умные» подсказки: «Этот лак требует сушки при 80°C», «Не совместим с
-                  оборудованием X».
-                </li>
-                <li>
-                  Режим «Сравнить 4 позиции» — с таблицей технических характеристик и экологического
-                  следа.
-                </li>
-
-                <li>
-                  <strong>Личный кабинет (B2B / B2C):</strong>
-                </li>
-                <li>
-                   Для корпоративных клиентов (B2B): доступна история заказов и спецификаций,
-                  настройка отсрочки платежа, выгрузка данных в Excel и PDF, а также API для
-                  интеграции с корпоративными ERP-системами.
-                </li>
-                <li>
-                  Для частных клиентов (B2C): реализованы стандартные функции: избранное,
-                  быстрый повтор
-                  заказа и подписка на уведомления о новинках.
-                </li>
-
-                <li>
-                  <strong>Оформление заказа с техническим аудитом:</strong>
-                </li>
-                <li>
-                  Чек-лист совместимости: «У вас есть УФ-сушилка?», «Нужна консультация
-                  по нанесению?»
-                </li>
-                <li>
-                  Блок «Экологический след этого заказа» — с расчётом CO₂ и переработанных
-                  материалов.
-                </li>
-                <li>
-                  Возможность прикрепить техзадание или ТЗ от дизайнера.
-                </li>
-
-                <li>
-                  <strong>Страница «Нам не всё равно» в формате цифрового манифеста:</strong>
-                </li>
-                <li>
-                  Интерактивный таймлайн экологических инициатив.
-                </li>
-                <li>
-                  Видео интервью с химиками: «Как мы создали биоразлагаемое покрытие».
-                </li>
-                <li>
-                  Наглядное сравнение «Пластик vs. Наше покрытие» дополнено анимацией, показывающей разницу в
-                  скорости разложения.
+                  Мобильная адаптация для стройплощадки: крупные кнопки, удобный UI.
                 </li>
               </ul>
             </div>
           </div>
 
           <div class="img-examples__section">
-            <img src="./assets/img/tanzor/tanzor-two/img.png" alt="" />
-            <img src="./assets/img/tanzor/tanzor-two/tanzor-two/img.png" alt="" />
+            <img src="../assets/img/kraski-zdes/consulate.png" alt="" />
+            <img src="../assets/img/kraski-zdes/parametres.png" alt="" />
           </div>
 
           <div class="our__service-list-item">
@@ -298,38 +194,37 @@
                   </h2>
 
                   <p class="text-[18px] md:text-[16px]">
-                    Нам удалось создать не просто новый дизайн, а полностью изменить восприятие
-                    бренда. ТАНЗОР теперь позиционируется не как поставщик, а как лидер, формирующий
-                    будущее всей индустрии.
+                    Сайт, который работает как профессиональный колорист —
+                    быстро, точно, с пониманием задачи.
                   </p>
                 </div>
               </div>
 
               <ul class="text-[18px] md:text-[16px]">
+                <li>
+                  Скорость загрузки страниц сократилась с 7 до 0.9 сек,
+                  показатель отказов снизился на 63%.
+                </li>
+                <li>
+                    Синхронизация товаров каждые 15 минут исключила ошибки при оформлении заказа
+                </li>
+                <li>
+                  Конверсия выросла на 38% за счёт «говорящего» UX и фильтров по применению.
+                </li>
+                <li>
+                 B2B-сегмент увеличился на 55% — за счёт удобных платежей и сохранения реквизитов.
+                </li>
+                <li>
+                  Нагрузка на поддержку снизилась на 40% — клиенты сами находят ответы в
+                  карточках товаров.
+                </li>
+                <li>
+                  Бонус-эффект: сайт стал образовательным ресурсом — DIY-пользователи делятся
+                  «гайдами» в соцсетях, а профессионалы используют как справочник.
+                </li>
                 <li class="list-style-none">
-                  Описание результата:
-                </li>
-                <li>
-                 Узнаваемость бренда в digital-среде выросла на 70% — за счёт сохранения ДНК
-                  и современной подачи.
-                </li>
-                <li>
-                 Время подбора товара сократилось на 65% — благодаря «умным» фильтрам и техническим
-                  подсказкам.
-                </li>
-                <li>
-                  Рост запросов на экологичные решения — на 52% — за счёт визуализации и прозрачности
-                  «зелёных» технологий.
-                </li>
-                <li>Дополнительный эффект реализации: сайт стал использоваться как учебное
-                  пособие — преподаватели полиграфических вузов направляют студентов «изучать
-                  фильтры на ТАНЗОР — там лучше, чем в методичках». Партнёры (Sakata INX, drupa)
-                  начали цитировать дизайн как «новый стандарт B2B в индустрии».
-                </li>
-                <li class="list-style-none">
-                  ТАНЗОР теперь не просто компания. Это цифровой авангард промышленной науки —
-                  где каждый пиксель несёт смысл, каждый фильтр — точность, а каждый раздел —
-                  ответственность перед будущим.
+                  «КРАСКИ ЗДЕСЬ» теперь не просто точка продаж — это цифровая мастерская,
+                  где каждый клиент чувствует себя экспертом.
                 </li>
               </ul>
             </div>
@@ -338,7 +233,7 @@
         <div class="img-examples-2__section">
           <div class="ex-image__wrapper">
             <img
-              src="./assets/img/tanzor/tanzor-three/screenshot-221.png"
+              src="../assets/img/kraski-zdes/main.png"
               alt=""
             />
           </div>
@@ -346,14 +241,14 @@
           <div class="ex-image__wrapper-row">
             <div class="ex-image__wrapper">
               <img
-                src="./assets/img/tanzor/tanzor-three/tanzor-three/screenshot-234.png"
+                src="../assets/img/kraski-zdes/shtukaturka.png"
                 alt=""
               />
             </div>
 
             <div class="ex-image__wrapper">
               <img
-                src="./assets/img/tanzor/tanzor-three/tanzor-three/tanzor-three/screenshot-546.png"
+                src="../assets/img/kraski-zdes/cards.png"
                 alt=""
               />
             </div>
@@ -384,31 +279,38 @@
                   >Александра Гришагина</span
                 >
                 <span class="case-position text-[16px]"
-                  >UX/UI Designer</span
+                  >UX/UI Designer </span
                 >
               </div>
 
               <div>
                 <span class="case-name text-[20px] md:text-[16px]"
-                  >Владислав Ворошилов</span
+                  > Владислав Ворошилов</span
                 >
                 <span class="case-position text-[16px]"
-                  > Frontend-разработчик</span
+                  >Frontend-разработчик</span
                 >
               </div>
 
               <div>
                 <span class="case-name text-[20px] md:text-[16px]"
-                  >Глеб Шевцов</span
+                  >Артём Степанов</span
                 >
                 <span class="case-position text-[16px]">Backend-разработчик</span>
               </div>
 
               <div>
                 <span class="case-name text-[20px] md:text-[16px]"
-                > Ирина Латышева</span
+                >Глеб Шевцов</span
                 >
-                <span class="case-position text-[16px]"> Project Manager</span>
+                <span class="case-position text-[16px]">Backend-разработчик</span>
+              </div>
+
+              <div>
+                <span class="case-name text-[20px] md:text-[16px]"
+                >Ирина Латышева</span
+                >
+                <span class="case-position text-[16px]">Project Manager </span>
               </div>
             </ul>
           </div>
@@ -417,7 +319,7 @@
         <div class="case__title-bottom">
           <div class="container">
             <div class="link-to-main">
-              <a class="text-[18px] md:text-[16px]" href="terek-case.html"
+              <a class="text-[18px] md:text-[16px]" href="../game-case/"
                 >Следущий проект</a
               >
             </div>
@@ -425,19 +327,19 @@
               <h1
                 class="text-[52px] leading-[58px] md:text-[28px] md:leading-[32px]"
               >
-                ТЕРЕКАЛМАЗ
+                GameShop
               </h1>
 
               <h2
                 class="text-[24px] uppercase leading-[32px] md:text-[16px] md:leading-[22px]"
               >
-                B2B-маркетплейс для лидера алмазного инструмента с автоматизацией
+                Федеральный интернет-магазин GameShop с динамической маршрутизацией и CRM-архитектурой
               </h2>
             </div>
 
             <div class="source">
-              <a class="text-[16px] leading-[140%]" href="http://terekalmaz.qscape.ru/" target="_blank">terekalmaz.ru</a>
-              <span class="text-[16px] leading-[140%]">06.2025</span>
+              <a class="text-[16px] leading-[140%]" href="https://100pristavok.ru/ " target="_blank">100pristavok.ru/ </a>
+              <span class="text-[16px] leading-[140%]">02.2024</span>
             </div>
           </div>
         </div>
@@ -460,7 +362,7 @@
 
               <div class="employee__wrapper">
                 <div class="avatar">
-                  <img src="./assets/img/face-2.png" alt="" />
+                  <img src="../assets/img/face-2.png" alt="" />
                 </div>
 
                 <div>
@@ -584,14 +486,14 @@
                   class="text-[18px] md:text-[16px]"
                 >
                   Оставить заявкy
-                  <img src="./assets/icons/arrowBtn.png" alt="" />
+                  <img src="../assets/icons/arrowBtn.png" alt="" />
                 </button>
               </form>
                 <div class="popup-overlay-order" style="display: none;">
                     <div class="popup__success__order">
                         <div class="popup__success__order-content flex-col items-center gap-[12px]">
                             <button class="popup-close__order" id="popup-close">
-                                <img src="./assets/icons/x.png" alt="" />
+                                <img src="../assets/icons/x.png" alt="" />
                             </button>
                             <h2 class="text-[hsba(231, 25%, 27%, 1)] mx-auto max-w-[474px] text-center text-[28px] uppercase leading-[36px] md:text-[16px]">
                                 ваш запрос успешно отправлен
@@ -610,7 +512,7 @@
         </div>
       </main>
 
-      @@include('partials/footer.html')
+      @@include('../partials/footer.html')
     </div>
 
     <!-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> -->
@@ -628,7 +530,7 @@
       }
     </script>
 
-    <script type="module" src="/js/script.js"></script>
-    <script src="./js/mailer.js"></script>
+    <script type="module" src="../js/script.js"></script>
+    <script src="../js/mailer.js"></script>
   </body>
 </html>

@@ -5,11 +5,11 @@
     <meta name="robots" content="noindex, nofollow" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>CIR-LOK</title>
+    <title>Разработка интернет-магазина Parfum-Paradise</title>
 
-      <link rel="icon" href="assets/img/Favicon-ex.png" type="image/x-icon">
-  <link rel="stylesheet" href="css/pages-style/index.css" />
-    <link rel="stylesheet" href="css/media.css" />
+      <link rel="icon" href="../assets/img/Favicon-ex.png" type="image/x-icon">
+    <link rel="stylesheet" href="../css/pages-style/index.css" />
+    <link rel="stylesheet" href="../css/media.css" />
 
       <!-- Yandex.Metrika counter -->
       <script type="text/javascript">
@@ -26,29 +26,9 @@
       <!-- /Yandex.Metrika counter -->
   </head>
   <body>
-  <div class="popup-overlay" id="popup-overlay" data-popup="calculate">
-      <div class="popup__success flex-col items-center gap-[12px]">
-          <button class="popup-close" id="popup-close">
-              <img src="./assets/icons/x.png" alt="" />
-          </button>
-          <h2
-                  class="text-[hsba(231, 25%, 27%, 1)] mx-auto max-w-[474px] text-center text-[28px] uppercase leading-[36px] md:text-[16px]">
-              ваш запрос успешно отправлен
-          </h2>
-          <p
-                  class="md:text-16px text-[hsba(231, 25%, 27%, 1)] mb-[30px] mt-[30px] text-center text-[20px] leading-[150%]">
-              В течение 30 минут наш менеджер вам перезвонит
-          </p>
-
-          <button type="submit"
-                  class="mx-auto mt-[27px] flex items-center justify-center rounded-[170px] bg-black px-[50px] py-[17px] text-center text-[18px] text-[#ececed] md:text-[16px]"
-                  id="popup-close">
-              ок
-          </button>
-      </div>
-  </div>
     <div class="wrapper">
-      @@include('partials/header.html') @@include('partials/burger.html')
+      @@include('../partials/header.html')
+        @@include('../partials/burger.html')
 
       <main class="main">
         <div class="container-bg-grad" data-theme="white">
@@ -56,7 +36,6 @@
             <div class="link-to-main">
               <a
                 class="text-[18px] md:text-[16px]"
-                href="index.html"
                 data-action="back"
                 >Вернуться на главную</a
               >
@@ -66,40 +45,41 @@
               <h1
                 class="text-[52px] leading-[58px] md:text-[28px] md:leading-[32px]"
               >
-                CIR-LOK
+                Parfum-Paradise
               </h1>
 
               <h2
                 class="text-[24px] uppercase leading-[32px] md:text-[16px] md:leading-[22px]"
               >
-                B2B-каталог с фильтрацией более 100 параметров и CSV-автоматизацией
+                Luxury-бутик с бонусами, подарками и доставкой в 1 клик
               </h2>
             </div>
 
             <div class="source">
-              <a class="text-[16px] leading-[140%]" href="https://cir-lok.ru/" target="_blank">cir-lok.ru</a>
-              <span class="text-[16px] leading-[140%]">09.2023</span>
+              <a class="text-[16px] leading-[140%]" href="https://pp.qscape.ru/" target="_blank">parfum-paradise.ru</a>
+              <span class="text-[16px] leading-[140%]">09.2025</span>
             </div>
 
             <div class="case__text">
               <p class="mt-[65px] text-[18px] md:mt-0 md:text-[16px]">
-                CIR-LOK — это инженерный авторитет. С 2005 года компания поставляет
-                арматуру сверхвысокого давления, вакуумные системы и компоненты
-                для нефтегаза, энергетики, полупроводников и НИИ. Но глубина
-                ассортимента терялась в цифре: 10 000+ SKU и сотни параметров
-                без удобного поиска превращались в хаос. Мы создали не просто
-                магазин, а CAD-каталог в браузере.
+                Parfum-Paradise — это не просто магазин, а архив эмоций: 1500+ премиальных
+                брендов, 20 лет на рынке, тысячи историй, начавшихся с одного аромата.
+                Но прежний сайт не передавал глубину бренда: устаревший дизайн, базовые
+                фильтры и тяжёлый процесс покупки превращали выбор в бюрократию. Мы создали
+                digital-бутик, где клиент выбирает не товар, а настроение. Где бонусы —
+                это комплимент, а авторизация — звонком, потому что пароль слишком банален
+                для Chanel №5.
               </p>
 
               <div class="case__devices">
                 <img
                   class="laptop-img"
-                  src="./assets/img/cir/cir-one/Mockup.png"
+                  src="../assets/img/parfume/parfume-one/Mockup.png"
                   alt="#"
                 />
                 <img
                   class="phone-img"
-                  src="./assets/img/cir/cir-one/cir-one/Mockup.png"
+                  src="../assets/img/parfume/parfume-one/parfume-one/Mockup.png"
                   alt=""
                 />
               </div>
@@ -115,35 +95,35 @@
                   <h2 class="text-[28px] uppercase md:text-[22px]">Задача</h2>
 
                   <p class="text-[18px] md:text-[16px]">
-                    Превратить технический каталог в цифровой инструмент выбора —
-                    где инженер за 3 клика находит фитинг с нужным давлением,
-                    стандартом и материалом, без звонков и ошибок.
+                    Превратить устаревший сайт в цифровой luxury-бутик —
+                    сохранить данные, но добавить эмоции, скорость и лояльность.
                   </p>
                   <p class="text-[18px] md:text-[16px]">
-                    <strong>Цель:</strong> сделать сайт не витриной, а инженерным калькулятором
-                    выбора — где каждый фильтр ведёт к точному решению.
+                    <strong>Цель:</strong> сделать сайт-консультант, который помнит ваши вкусы,
+                    дарит бонусы и подарки, показывает стоимость доставки заранее
+                    и ведёт клиента как персональный парфюмер.
                   </p>
                 </div>
               </div>
 
               <ul class="text-[18px] md:text-[16px]">
                 <li>
-                  10 000+ позиций без структуры и фильтров.
+                  Устаревший дизайн, не отражавший премиальность.
                 </li>
                 <li>
-                  Нет поиска по ключевым параметрам (давление, стандарт, соединение, температура).
+                  Перенос 20+ лет данных без потерь.
                 </li>
                 <li>
-                  Выгрузка товаров вручную, данные устаревают.
+                  Неудобная авторизация — пароли забывались, корзины бросались.
                 </li>
                 <li>
-                  Отсутствие SEO — инженеры не находят позиции в поиске.
+                 Нет гибкой бонусной системы и автоматических подарков.
                 </li>
                 <li>
-                  Реклама в Директе показывалась неподходящей аудитории.
+                  Доставка не рассчитывалась онлайн.
                 </li>
                 <li>
-                  Интерфейс «как для розницы», а клиент — технический специалист.
+                  Фильтры ограничены «мужской/женский», без нот, сезонов и настроений.
                 </li>
               </ul>
             </div>
@@ -157,45 +137,65 @@
                   <h2 class="text-[28px] uppercase md:text-[22px]">Решение</h2>
 
                   <p class="text-[18px] md:text-[16px]">
-                    Технический интерфейс для тех, кто думает в стандартах, давлениях и допусках.
+                    Интерфейс как парфюмерный орган — чувственный и точный.
+                    Технология — как швейцарские часы.
                   </p>
                 </div>
               </div>
 
               <ul class="text-[18px] md:text-[16px]">
                 <li>
-                 Фильтр-конструктор из 100+ параметров:<br>
-                  • группировка по отраслям (нефтегаз, полупроводники, лаборатории)<br>
-                  • фильтры по материалу, давлению, стандарту, типу соединения, температуре, среде<br>
-                  • сохранение шаблонов поиска («Мой фильтр для ТЭЦ»)
+                  Полный редизайн в стиле luxury:<br>
+                  • бархат, золото, стекло, плавные анимации<br>
+                  • главная — витрина бутика с видео и парящими флаконами<br>
+                  • шрифты с засечками, как у нишевых брендов
                 </li>
                 <li>
-                  Автоматическая выгрузка из CSV каждые 4 часа с поддержкой
-                  мультиязычных описаний, чертежей и сертификатов.
+                  Перенос и расширение legacy-данных:<br>
+                  • сохранены инфоблоки и фильтры<br>
+                  • новые фильтры по нотам, сезонам, настроениям, случаям<br>
+                  • «умный поиск»: «как Chanel №5, но с нотой ванили»
                 </li>
                 <li>
-                  SEO под инженерные запросы: страницы под артикулы, стандарты и узкие
-                  спецификации + статьи («Как выбрать фитинг для водородной станции»).
+                  Обзор функциональных возможностей позволил определить mvp
+                  и карту развития площадки
                 </li>
                 <li>
-                 Реклама в Яндекс.Директ с точным таргетингом на инженеров,
-                  технологов и закупщиков в нужных отраслях.
+                  Авторизация по звонку:<br>
+                  • клиент вводит номер → получает звонок → нажимает «1» → вход выполнен<br>
+                  • никакого пароля, капчи и СМС
                 </li>
                 <li>
-                  Интерфейс как документация: чертежи вместо картинок, таблицы
-                  совместимости, кликабельные сертификаты в PDF.
+                 Гибкая бонусная система:<br>
+                  • бонусы за покупки, отзывы, дни рождения<br>
+                  • можно копить, комбинировать, дарить<br>
+                  • история бонусов как личный дневник ароматов
                 </li>
                 <li>
-                  Архитектура под масштаб: модульное расширение каталога и
-                  API для интеграции с ERP клиентов.
+                  Подарки за сумму:<br>
+                  • от 5 000 ₽ — выбор из 3 подарков<br>
+                  • от 10 000 ₽ — премиум-подарки (мини-флаконы, косметички, сертификаты)<br>
+                  • анимация открытия подарка при оформлении заказа
+                </li>
+                <li>
+                  Калькулятор доставки в реальном времени:<br>
+                  • интеграция с 7 службами доставки<br>
+                  • стоимость и сроки видны заранее, ещё в корзине<br>
+                  • опция подарочной упаковки с доплатой
+                </li>
+                <li>
+                  Архитектура на 1С-Битрикс Бизнес:<br>
+                  • готовность к пиковым нагрузкам (8 марта, Новый год)<br>
+                  • интеграция с CRM для персональных рекомендаций<br>
+                  • API под будущее мобильное приложение<br>
                 </li>
               </ul>
             </div>
           </div>
 
           <div class="img-examples__section">
-            <img src="./assets/img/cir/cir-two/img.png" alt="" />
-            <img src="./assets/img/cir/cir-two/cir-two/img.png" alt="" />
+            <img src="../assets/img/parfume/parfume-two/img.png" alt="" />
+            <img src="../assets/img/parfume/parfume-two/parfume-two/img.png" alt="" />
           </div>
 
           <div class="our__service-list-item">
@@ -208,34 +208,39 @@
                   </h2>
 
                   <p class="text-[18px] md:text-[16px]">
-                    Платформа, которая сократила путь от запроса до заказа с 3 дней до 7 минут.
+                    Сайт, который не просто продаёт — он дарит эмоции и возвращает клиентов.
                   </p>
                 </div>
               </div>
 
               <ul class="text-[18px] md:text-[16px]">
                 <li>
-                 Время поиска нужной позиции снизилось на 89%: теперь 2–3 фильтра
-                  вместо 2 часов ручного поиска.
+                  Конверсия выросла на 57% благодаря эмоциональному дизайну и фильтрам
+                  по настроению.
                 </li>
                 <li>
-                 Конверсия в заявки выросла на 52% — за счёт релевантной рекламы и SEO-страниц.
+                  Средний чек увеличился на 39% за счёт бонусов и подарков.
                 </li>
                 <li>
-                  Средний чек увеличился на 33% — через блоки «совместимые компоненты».
+                  Отказы на авторизации упали на 83%— звонок стал самым популярным
+                  способом входа.
                 </li>
                 <li>
-                  Органический трафик вырос на 170% — благодаря статьям и технической семантике.
+                 Повторные покупки выросли на 68% — клиенты возвращаются за бонусами и
+                  рекомендациями.
                 </li>
                 <li>
-                 Звонков в поддержку стало на 60% меньше — спецификации и чертежи доступны онлайн.
+                  Скорость оформления заказа сократилась на 70% — калькулятор доставки исключил
+                  «сюрпризы» на финальном шаг.
                 </li>
                 <li>
-                  Бонус-эффект: сайт начали использовать как внутренний справочник инженеры ТЭЦ,
-                  НИИ и промышленных предприятий.
+                  Бонус-эффект: сайт стал «ароматическим гидом» — клиенты делятся карточками
+                  с нотами и настроениями в соцсетях, блогеры делают обзоры «как выбрать
+                  аромат на Parfum-Paradise».
                 </li>
                 <li class="list-style-none">
-                  CIR-LOK теперь не просто дистрибьютор, а цифровой эталон в мире промышленной арматуры.
+                  Parfum-Paradise теперь не просто магазин. Это цифровой мир ароматов,
+                  где каждый клиент чувствует себя VIP-гостем.
                 </li>
               </ul>
             </div>
@@ -244,7 +249,7 @@
         <div class="img-examples-2__section">
           <div class="ex-image__wrapper">
             <img
-              src="./assets/img/cir/cir-three/screen-222.png"
+              src="../assets/img/parfume/parfume-three/screenshot-222.png"
               alt=""
             />
           </div>
@@ -252,14 +257,14 @@
           <div class="ex-image__wrapper-row">
             <div class="ex-image__wrapper">
               <img
-                src="./assets/img/cir/cir-three/cir-three/screen-333.png"
+                src="../assets/img/parfume/parfume-three/parfume-three/screenshot-234.png"
                 alt=""
               />
             </div>
 
             <div class="ex-image__wrapper">
               <img
-                src="./assets/img/cir/cir-three/cir-three/cir-three/screen-546.png"
+                src="../assets/img/parfume/parfume-three/parfume-three/parfume-three/screenshot-546.png"
                 alt=""
               />
             </div>
@@ -296,19 +301,44 @@
 
               <div>
                 <span class="case-name text-[20px] md:text-[16px]"
-                  > Руслан Аскеров</span
+                  >Александр Ягодкин</span
                 >
                 <span class="case-position text-[16px]"
-                  >Backend-разработчик</span
+                  >Frontend-разработчик</span
                 >
               </div>
 
               <div>
                 <span class="case-name text-[20px] md:text-[16px]"
-                  >Александр Ягодкин</span
+                >Владислав Ворошилов</span
                 >
-                <span class="case-position text-[16px]">Frontend-разработчик</span>
+                <span class="case-position text-[16px]"
+                >Frontend-разработчик</span
+                >
               </div>
+
+              <div>
+                <span class="case-name text-[20px] md:text-[16px]"
+                > Руслан Аскеров</span
+                >
+                <span class="case-position text-[16px]">Backend-разработчик</span>
+              </div>
+
+              <div>
+                <span class="case-name text-[20px] md:text-[16px]"
+                  >Артём Степанов</span
+                >
+                <span class="case-position text-[16px]">Backend-разработчик</span>
+              </div>
+
+              <div>
+                <span class="case-name text-[20px] md:text-[16px]"
+                >Глеб Шевцов</span
+                >
+                <span class="case-position text-[16px]">Backend-разработчик</span>
+              </div>
+
+
 
               <div>
                 <span class="case-name text-[20px] md:text-[16px]"
@@ -323,7 +353,7 @@
         <div class="case__title-bottom">
           <div class="container">
             <div class="link-to-main">
-              <a class="text-[18px] md:text-[16px]" href="doorhan-case.html"
+              <a class="text-[18px] md:text-[16px]" href="../tanzor-case/"
                 >Следущий проект</a
               >
             </div>
@@ -331,19 +361,19 @@
               <h1
                 class="text-[52px] leading-[58px] md:text-[28px] md:leading-[32px]"
               >
-                DoorHan
+                TANZOR
               </h1>
 
               <h2
                 class="text-[24px] uppercase leading-[32px] md:text-[16px] md:leading-[22px]"
               >
-                Цифровой конструктор DoorHan с B2B/B2C-кабинетами
+                Редизайн сайта с сохранением фирменного стиля и технологичным UX
               </h2>
             </div>
 
             <div class="source">
-              <a class="text-[16px] leading-[140%]" href="https://moscow.doorhan.ru/" target="_blank">doorhan.ru</a>
-              <span class="text-[16px] leading-[140%]">06.2023</span>
+              <a class="text-[16px] leading-[140%]" href="https://www.tanzor.ru/" target="_blank">tanzor.ru</a>
+              <span class="text-[16px] leading-[140%]">09.2024</span>
             </div>
           </div>
         </div>
@@ -366,7 +396,7 @@
 
               <div class="employee__wrapper">
                 <div class="avatar">
-                  <img src="./assets/img/face-2.png" alt="" />
+                  <img src="../assets/img/face-2.png" alt="" />
                 </div>
 
                 <div>
@@ -490,14 +520,15 @@
                   class="text-[18px] md:text-[16px]"
                 >
                   Оставить заявкy
-                  <img src="./assets/icons/arrowBtn.png" alt="" />
+                  <img src="../assets/icons/arrowBtn.png" alt="" />
                 </button>
               </form>
+
                 <div class="popup-overlay-order" style="display: none;">
                     <div class="popup__success__order">
                         <div class="popup__success__order-content flex-col items-center gap-[12px]">
                             <button class="popup-close__order" id="popup-close">
-                                <img src="./assets/icons/x.png" alt="" />
+                                <img src="../assets/icons/x.png" alt="" />
                             </button>
                             <h2 class="text-[hsba(231, 25%, 27%, 1)] mx-auto max-w-[474px] text-center text-[28px] uppercase leading-[36px] md:text-[16px]">
                                 ваш запрос успешно отправлен
@@ -516,7 +547,7 @@
         </div>
       </main>
 
-      @@include('partials/footer.html')
+      @@include('../partials/footer.html')
     </div>
 
     <!-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> -->
@@ -531,10 +562,17 @@
           location.href = `/?scrollTo=${encodeURIComponent(target)}`;
           return;
         }
+
+        window.history.pushState(null, null, `#${target}`);
+
+        const tagetElement = document.getElementById(target);
+        if (tagetElement) {
+            targetElement.scrollIntoView({behavior: "smooth"});
+        }
       }
     </script>
 
-    <script type="module" src="/js/script.js"></script>
-    <script src="./js/mailer.js"></script>
+    <script type="module" src="../js/script.js"></script>
+    <script src="../js/mailer.js"></script>
   </body>
 </html>

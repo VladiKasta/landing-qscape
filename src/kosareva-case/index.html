@@ -5,11 +5,11 @@
     <meta name="robots" content="noindex, nofollow" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>BBS</title>
-      <link rel="icon" href="assets/img/Favicon-ex.png" type="image/x-icon">
-  <link rel="stylesheet" href="css/pages-style/index.css" />
-    <link rel="stylesheet" href="css/media.css" />
+    <title>Разработка интернет-магазина Oksana Kosareva</title>
 
+      <link rel="icon" href="../assets/img/Favicon-ex.png" type="image/x-icon">
+  <link rel="stylesheet" href="../css/pages-style/index.css" />
+    <link rel="stylesheet" href="../css/media.css" />
       <!-- Yandex.Metrika counter -->
       <script type="text/javascript">
           (function(m,e,t,r,i,k,a){
@@ -25,38 +25,17 @@
       <!-- /Yandex.Metrika counter -->
   </head>
   <body>
+    <div class="wrapper" data-theme="light">
+      @@include('../partials/header.html')
+        @@include('../partials/burger.html')
 
-  <div class="popup-overlay" id="popup-overlay" data-popup="calculate">
-      <div class="popup__success flex-col items-center gap-[12px]">
-          <button class="popup-close" id="popup-close">
-              <img src="./assets/icons/x.png" alt="" />
-          </button>
-          <h2
-                  class="text-[hsba(231, 25%, 27%, 1)] mx-auto max-w-[474px] text-center text-[28px] uppercase leading-[36px] md:text-[16px]">
-              ваш запрос успешно отправлен
-          </h2>
-          <p
-                  class="md:text-16px text-[hsba(231, 25%, 27%, 1)] mb-[30px] mt-[30px] text-center text-[20px] leading-[150%]">
-              В течение 30 минут наш менеджер вам перезвонит
-          </p>
-
-          <button type="submit"
-                  class="mx-auto mt-[27px] flex items-center justify-center rounded-[170px] bg-black px-[50px] py-[17px] text-center text-[18px] text-[#ececed] md:text-[16px]"
-                  id="popup-close">
-              ок
-          </button>
-      </div>
-  </div>
-    <div class="wrapper">
-      @@include('partials/header.html') @@include('partials/burger.html')
-
-      <main class="main" data-theme="white">
-        <div class="container-bg-grad" >
+      <main class="main">
+        <div class="container-bg-grad" data-theme="white">
           <div class="container">
             <div class="link-to-main">
               <a
                 class="text-[18px] md:text-[16px]"
-                href="index.html"
+                href="../index.html"
                 data-action="back"
                 >Вернуться на главную</a
               >
@@ -66,40 +45,39 @@
               <h1
                 class="text-[52px] leading-[58px] md:text-[28px] md:leading-[32px]"
               >
-                BBS
+                Oksana Kosareva
               </h1>
 
               <h2
                 class="text-[24px] uppercase leading-[32px] md:text-[16px] md:leading-[22px]"
               >
-                Интернет-магазин с высокой безопасностью, 30 000+ SKU и Битрикс24
+                Цифровая экосистема slow fashion с рассрочкой, 1С и CRM
               </h2>
             </div>
 
             <div class="source">
-              <a class="text-[16px] leading-[140%]" href="https://bbs-diplom.qscape.ru/" target="_blank">bbs-diplom.ru</a>
-              <span class="text-[16px] leading-[140%]">04.2024</span>
+              <a class="text-[16px] leading-[140%]" href="https://oksanakosareva.ru/" target="_blank">oksanakosareva.ru</a>
+              <span class="text-[16px] leading-[140%]">01.2025</span>
             </div>
 
             <div class="case__text">
               <p class="mt-[65px] text-[18px] md:mt-0 md:text-[16px]">
-                BBS — это режимное предприятие, чья продукция определяет судьбы:
-                дипломы, аттестаты, удостоверения. Всё под контролем Минфина и
-                ФНС, всё официально и строго. Но прежний сайт не отражал уровень
-                ответственности: был медленным, устаревшим и небезопасным.
-                Мы создали цифровое ответвление режимного объекта — где скорость,
-                защита и эстетика работают на доверие.
+                С 1998 года COSAREVE выпускает лимитированные коллекции из итальянского
+                льна, работает с авторскими принтами и внедряет экологичные практики.
+                Отказ от полиэтиленовой упаковки здесь сделали задолго до того, как
+                это стало нормой. Теперь философия slow fashion продолжает жить и в
+                цифровом пространстве.
               </p>
 
               <div class="case__devices">
                 <img
                   class="laptop-img"
-                  src="assets/img/BBS/bbc-one/Mockup.png"
+                  src="../assets/img/kosareva/kosareva-one/Mockup.png"
                   alt="#"
                 />
                 <img
                   class="phone-img"
-                  src="assets/img/BBS/bbc-one/bbs-one-page/Mockup.png"
+                  src="./assets/img/kosareva/kosareva-one/kosareva-one/Mockup.png"
                   alt=""
                 />
               </div>
@@ -115,35 +93,39 @@
                   <h2 class="text-[28px] uppercase md:text-[22px]">Задача</h2>
 
                   <p class="text-[18px] md:text-[16px]">
-                    Перестроить интернет-магазин в цифровую крепость — быструю,
-                    безопасную и масштабируемую, сохранив узнаваемость бренда и
-                    встроив его в бизнес-процессы.
+                    Превратить интернет-магазин в отражение философии бренда —
+                    современное, технологичное и удобное решение, которое сохраняет
+                    ценности и усиливает стиль.
                   </p>
                   <p class="text-[18px] md:text-[16px]">
-                    <strong>Цель:</strong> превратить сайт в цифровой цех режимного предприятия —
-                    где каждый заказ защищён, каждый документ понятен, а клиент уверен в результате.
+                    <strong>Цель:</strong> создать цифровое ателье — технологичное, удобное и полностью
+                    соответствующее философии slow fashion.
                   </p>
                 </div>
               </div>
 
               <ul class="text-[18px] md:text-[16px]">
-                <li>
-                  30 000+ SKU без оптимизации: поиск и фильтры тормозили.
+                <li class="list-style-none">
+                  COSAREVE строит бренд на уважении к женщине, природе и деталям.
+                  Но сайт не соответствовал этим принципам:
                 </li>
                 <li>
-                  Нет усиленной безопасности, хотя продукция подлежит госучёту.
+                  Интерфейс был сухим и не транслировал ценность slow fashion
                 </li>
                 <li>
-                  Скорость загрузки 5+ секунд — госучреждения и вузы уходили.
+                  Отсутствовали автоматизация и интеграции: загрузка товаров и
+                  изображений занимала часы
                 </li>
                 <li>
-                  Устаревший дизайн — не транслировал премиальность.
+                  Не было возможности оформить рассрочку, что снижало конверсию
                 </li>
                 <li>
-                 Нет синхронизации с Битрикс24 — всё обрабатывалось вручную.
+                  Основная аудитория пользовалась смартфонами, но архитектура под
+                  приложение не была заложена
                 </li>
                 <li>
-                 Интерфейс не помогал различать юридически важные документы
+                  CRM и 1С не были связаны: клиенты получали дубли писем, менеджеры
+                  тратили время на рутину
                 </li>
               </ul>
             </div>
@@ -157,60 +139,53 @@
                   <h2 class="text-[28px] uppercase md:text-[22px]">Решение</h2>
 
                   <p class="text-[18px] md:text-[16px]">
-                    Интерфейс как печать доверия. Технологии — как система безопасности.
+                    Slow digital для fast-мира: технологичный, но человечный. Экологичный
+                    — даже в коде.
                   </p>
                 </div>
               </div>
 
               <ul class="text-[18px] md:text-[16px]">
-                <li>
-                  Архитектура под 30 000+ SKU:<br>
-                  • оптимизированный каталог с фильтрами по уровню образования и назначению<br>
-                  • скорость загрузки 0.8 сек благодаря lazy load, кэшированию и CDN<br>
-                  • поиск с автодополнением по ГОСТам, сериям и артикулам
+                <li class="list-style-none">
+                  Мы подошли к проекту как к созданию digital-коллекции — с тем же вниманием
+                  к деталям, что и к пошиву платья:
                 </li>
                 <li>
-                 Усиленная безопасность:<br>
-                  • SSL с расширенной валидацией (EV)<br>
-                  • двухфакторная авторизация для B2B-клиентов<br>
-                  • аудит доступа к карточкам номерной продукции<br>
-                  • шифрование данных на уровне базы в соответствии с требованиями ФНС
+                  Разработали архитектуру сайта на основе API-first и компонентного подхода,
+                  сразу заложив фундамент для мобильного приложения.
                 </li>
                 <li>
-                  Интеграция с Битрикс24:<br>
-                  • синхронизация остатков, заказов и статусов в реальном времени<br>
-                  • автоматическое создание сделок и задач<br>
-                  • экспорт спецификаций в нужных для госзаказчиков форматах
+                  Подключили рассрочку «Долями» от Т-Банка — гибкие условия позволяют клиентам
+                  инвестировать в гардероб постепенно.
                 </li>
                 <li>
-                  Дизайн — эволюция, а не революция:<br>
-                  • сохранены фирменные цвета и типографика<br>
-                  • обновлённый визуальный язык: фактуры бумаги, печати, акценты на подписях<br>
-                  • карточка товара — как официальный бланк: ГОСТ, серия, регистрационный номер
+                  Интегрировали 1С и CRM в реальном времени: остатки, заказы и история коммуникаций
+                  синхронизируются автоматически.
                 </li>
                 <li>
-                  UX для госсектора и вузов:<br>
-                  • фильтр «по назначению документа»: для школ, для вузов, для курсов<br>
-                  • подсказки с выдержками из нормативных актов<br>
-                  • блок «Юридическая значимость» — прямо в карточке<br>
-                  • образцы заполнения для избежания ошибок
+                 Настроили «умное» сжатие изображений: ткани и принты сохраняют глубину и фактуру,
+                  а страницы загружаются меньше чем за секунду
                 </li>
                 <li>
-                  Производительность как стандарт:<br>
-                  • performance-аудит на каждом этапе<br>
-                  • оптимизация изображений — текстура бумаги и водяные знаки без потери скорости<br>
-                  • адаптивность под госпорталы и системы заказчиков
+                  Реализовали автоматическую выгрузку каталога для маркетплейсов и партнёров с
+                  обновлением по расписанию.
+                </li>
+                <li>
+                  Построили дизайн вокруг ценностей бренда: минимализм, чистые цвета, пространство
+                  и акцент на материале. Интерфейс не кричит — он деликатно подчёркивает философию
+                  slow fashion.
+                </li>
+                <li>
+                 Встроили сторителлинг прямо в карточки товаров: от истории ткани до деталей кроя,
+                  превращая каждую покупку в осознанный выбор.
                 </li>
               </ul>
             </div>
           </div>
 
           <div class="img-examples__section">
-            <img
-              src="assets/img/BBS/ed0afedc037a657956096eeb5556f5ec8470e330.jpg"
-              alt=""
-            />
-            <img src="assets/img/BBS/bbs-two/img.png" alt="" />
+            <img src="../assets/img/kosareva/kosareva-two/img.png" alt="" />
+            <img src="../assets/img/kosareva/kosareva-two/kosareva-two/img.png" alt="" />
           </div>
 
           <div class="our__service-list-item">
@@ -223,37 +198,36 @@
                   </h2>
 
                   <p class="text-[18px] md:text-[16px]">
-                    Сайт, который работает как госструктура: быстро, надёжно,
-                    без сбоев — и при этом эстетично.
+                    Цифровая платформа, которая не просто продаёт, а вдохновляет.
                   </p>
                 </div>
               </div>
 
               <ul class="text-[18px] md:text-[16px]">
                 <li>
-                  Скорость загрузки: 0.8 сек (вместо 5.2) даже при 30 000+ SKU
+                  Конверсия выросла на 41%: клиенты видят не цену, а ценность.
                 </li>
                 <li>
-                  Конверсия в заказ выросла на 44% благодаря «говорящему» UX
+                  Средний чек увеличился на 28% благодаря рассрочке и рекомендациям в
+                  карточках товаров.
                 </li>
                 <li>
-                  Звонков в поддержку стало на 62% меньше — клиенты сами находят ГОСТы и инструкции
+                  Изображения стали загружаться в 3 раза быстрее, сохранив высокое
+                  качество изображений.
                 </li>
                 <li>
-                  Время обработки заказа сократилось с 2 часов до 15 минут благодаря интеграции
-                  с Битрикс24
+                  Ошибки в заказах сократились на 90% за счёт сквозной интеграции 1С и CRM.
                 </li>
                 <li>
-                  B2B-заказы от госучреждений выросли на 58% за счёт усиленной безопасности
-                  и экспорта данных
+                  Архитектура готова к мобильному приложению
                 </li>
                 <li>
-                  Бонус-эффект: сайт стали использовать как методическое пособие — его
-                  рекомендуют даже региональные отделения ФНC.
+                  Бонус-эффект: сайт превратился в образовательный инструмент. Карточки
+                  товаров стали «манифестами slow fashion» и расходятся в соцсетях.
                 </li>
                 <li class="list-style-none">
-                  BBS теперь не просто продаёт бланки. Он задаёт стандарт цифрового
-                  взаимодействия в сфере госдокументов.
+                  COSAREVA теперь не просто бренд — это сообщество. И digital-платформа стала
+                  его центром.
                 </li>
               </ul>
             </div>
@@ -262,7 +236,7 @@
         <div class="img-examples-2__section">
           <div class="ex-image__wrapper">
             <img
-              src="assets/img/BBS/bbs-three/screenshot-322.png"
+              src="../assets/img/kosareva/kosareva-three/screenshot-222.png"
               alt=""
             />
           </div>
@@ -270,14 +244,14 @@
           <div class="ex-image__wrapper-row">
             <div class="ex-image__wrapper">
               <img
-                src="assets/img/BBS/bbs-three/screenshot-435.png"
+                src="../assets/img/kosareva/kosareva-three/kosareva-three/screenshot-322.png"
                 alt=""
               />
             </div>
 
             <div class="ex-image__wrapper">
               <img
-                src="assets/img/BBS/bbs-three/screenshot-546.png"
+                src="../assets/img/kosareva/kosareva-three/kosareva-three/screenshot-546.png"
                 alt=""
               />
             </div>
@@ -308,7 +282,7 @@
                   >Александра Гришагина</span
                 >
                 <span class="case-position text-[16px]"
-                  >UX/UI Designer</span
+                  >UX/UI Designer </span
                 >
               </div>
 
@@ -317,15 +291,33 @@
                   >Александр Ягодкин</span
                 >
                 <span class="case-position text-[16px]"
-                  >Fullstack-разработчик</span
+                  >Frontend-разработчик</span
                 >
               </div>
 
               <div>
                 <span class="case-name text-[20px] md:text-[16px]"
-                  >Ирина Латышева</span
+                  >Артём Степанов</span
                 >
-                <span class="case-position text-[16px]">Project Manager</span>
+                <span class="case-position text-[16px]">Backend-разработчик</span>
+              </div>
+
+              <div>
+                <span class="case-name text-[20px] md:text-[16px]"
+                >Руслан Аскеров</span
+                >
+                <span class="case-position text-[16px]"
+                >Backend-разработчик</span
+                >
+              </div>
+
+              <div>
+                <span class="case-name text-[20px] md:text-[16px]"
+                >Ирина Латышева</span
+                >
+                <span class="case-position text-[16px]"
+                >Project Manager</span
+                >
               </div>
             </ul>
           </div>
@@ -334,7 +326,7 @@
         <div class="case__title-bottom">
           <div class="container">
             <div class="link-to-main">
-              <a class="text-[18px] md:text-[16px]" href="parfume-case.html"
+              <a class="text-[18px] md:text-[16px]" href="../kraski-case/"
                 >Следущий проект</a
               >
             </div>
@@ -342,19 +334,19 @@
               <h1
                 class="text-[52px] leading-[58px] md:text-[28px] md:leading-[32px]"
               >
-                PARFUM PARADISE
+                КРАСКИ ЗДЕСЬ
               </h1>
 
               <h2
                 class="text-[24px] uppercase leading-[32px] md:text-[16px] md:leading-[22px]"
               >
-                Luxury-бутик с бонусами, подарками и доставкой в 1 клик
+                Высокоскоростной интернет-магазин на 1С-Битрикс для B2B и DIY сегментов
               </h2>
             </div>
 
             <div class="source">
-              <a class="text-[16px] leading-[140%]" href="https://pp.qscape.ru/" target="_blank">parfum-paradise.ru</a>
-              <span class="text-[16px] leading-[140%]">09.2025</span>
+              <a class="text-[16px] leading-[140%]" href="https://kraski-zdes.ru/?ysclid=mfxm79407164520438" target="_blank">kraski-zdes.ru</a>
+              <span class="text-[16px] leading-[140%]">07.2024</span>
             </div>
           </div>
         </div>
@@ -377,7 +369,7 @@
 
               <div class="employee__wrapper">
                 <div class="avatar">
-                  <img src="./assets/img/face-2.png" alt="" />
+                  <img src="../assets/img/face-2.png" alt="" />
                 </div>
 
                 <div>
@@ -501,14 +493,15 @@
                   class="text-[18px] md:text-[16px]"
                 >
                   Оставить заявкy
-                  <img src="./assets/icons/arrowBtn.png" alt="" />
+                  <img src="../assets/icons/arrowBtn.png" alt="" />
                 </button>
               </form>
+
                 <div class="popup-overlay-order" style="display: none;">
                     <div class="popup__success__order">
                         <div class="popup__success__order-content flex-col items-center gap-[12px]">
                             <button class="popup-close__order" id="popup-close">
-                                <img src="./assets/icons/x.png" alt="" />
+                                <img src="../assets/icons/x.png" alt="" />
                             </button>
                             <h2 class="text-[hsba(231, 25%, 27%, 1)] mx-auto max-w-[474px] text-center text-[28px] uppercase leading-[36px] md:text-[16px]">
                                 ваш запрос успешно отправлен
@@ -527,7 +520,7 @@
         </div>
       </main>
 
-      @@include('partials/footer.html')
+      @@include('../partials/footer.html')
     </div>
 
     <!-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> -->
@@ -545,7 +538,7 @@
       }
     </script>
 
-    <script type="module" src="/js/script.js"></script>
-    <script src="./js/mailer.js"></script>
+    <script type="module" src="../js/script.js"></script>
+    <script src="../js/mailer.js"></script>
   </body>
 </html>
