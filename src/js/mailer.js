@@ -280,7 +280,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     ...(utmData.utm_content && { UF_CRM_1493286561: utmData.utm_content }),
                     UF_CRM_1493286595: 'www.shop.qscape.ru',
                     UF_CRM_FORMNAME: sourceString,
-                    EMAIL: formData.get("email"),
+                    EMAIL: formData.get("email") ? [{ VALUE: formData.get("email"), VALUE_TYPE: "WORK" }] : [],
                     PHONE: formData.get("phone") ? [{ VALUE: formData.get("phone"), VALUE_TYPE: "WORK" }] : [],
                     WEB: [{ VALUE: "www.shop.qscape.ru", VALUE_TYPE: "WORK" }],
                     COMMENTS: comments.join("\n"),
