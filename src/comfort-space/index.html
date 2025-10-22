@@ -1,535 +1,498 @@
 <!doctype html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="robots" content="noindex, nofollow" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Разработка корпоративного сайта Comfort Space</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-      <link rel="icon" href="../assets/img/Favicon-ex.png" type="image/x-icon">
+  <title>Разработка корпоративного сайта Comfort Space</title>
+
+  <link rel="icon" href="../assets/img/Favicon-ex.png" type="image/x-icon">
   <link rel="stylesheet" href="../css/pages-style/index.css" />
-    <link rel="stylesheet" href="../css/media.css" />
-      <!-- Yandex.Metrika counter -->
-      <script type="text/javascript">
-          (function(m,e,t,r,i,k,a){
-              m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-              m[i].l=1*new Date();
-              for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-              k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-          })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=104667110', 'ym');
+  <link rel="stylesheet" href="../css/media.css" />
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+    (function (m, e, t, r, i, k, a) {
+      m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+      m[i].l = 1 * new Date();
+      for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+      k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+    })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=104667110', 'ym');
 
-          ym(104667110, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
-      </script>
-      <noscript><div><img src="https://mc.yandex.ru/watch/104667110" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-      <!-- /Yandex.Metrika counter -->
-  </head>
-  <body>
-    <div class="wrapper">
-      @@include('../partials/header.html')
-        @@include('../partials/burger.html')
+    ym(104667110, 'init', { ssr: true, webvisor: true, clickmap: true, ecommerce: "dataLayer", accurateTrackBounce: true, trackLinks: true });
+  </script>
+  <noscript>
+    <div><img src="https://mc.yandex.ru/watch/104667110" style="position:absolute; left:-9999px;" alt="" /></div>
+  </noscript>
+  <!-- /Yandex.Metrika counter -->
 
-      <main class="main">
-        <div class="container-bg-grad" data-theme="white">
-          <div class="container">
-            <div class="link-to-main">
-              <a
-                class="text-[18px] md:text-[16px]"
-                href="../index.html"
-                data-action="back"
-                >Вернуться на главную</a
-              >
-            </div>
+  <script>
+    (function () {
+      const utmKeys = [
+        "utm_source",
+        "utm_medium",
+        "utm_campaign",
+        "utm_term",
+        "utm_content",
+      ];
 
-            <div class="case__title">
-              <h1
-                class="text-[52px] leading-[58px] md:text-[28px] md:leading-[32px]"
-              >
-                COMFORT SPACE
-              </h1>
+      // 1️⃣ Сохраняем utm из URL в sessionStorage
+      const params = new URLSearchParams(window.location.search);
+      utmKeys.forEach((key) => {
+        const value = params.get(key);
+        if (value) {
+          sessionStorage.setItem(key, value);
+        }
+      });
 
-              <h2
-                class="text-[24px] uppercase leading-[32px] md:text-[16px] md:leading-[22px]"
-              >
-                Премиальный корпоративный сайт с SEO, каталогом и доверительным UX
-              </h2>
-            </div>
+      // 2️⃣ При клике по ссылке добавляем utm обратно в адрес
+      document.addEventListener(
+        "click",
+        function (e) {
+          const link = e.target.closest("a");
+          if (!link) return;
 
-            <div class="source">
-              <a class="text-[16px] leading-[140%]" href="http://comfortspace.ru/" target="_blank">comfortspace.ru </a>
-              <span class="text-[16px] leading-[140%]">06.2024</span>
-            </div>
+          // Проверяем: внутренняя ли ссылка (чтобы не трогать внешние)
+          const isInternal = link.hostname === window.location.hostname;
+          if (!isInternal || link.href.includes("#")) return;
 
-            <div class="case__text">
-              <p class="mt-[65px] text-[18px] md:mt-0 md:text-[16px]">
-                COMFORT SPACE — это создатель атмосферы, а не просто поставщик маркиз и пергол.
-                За 15+ лет компания реализовала более 10 000 проектов для Marriott, Novikov
-                Group, Radisson и частных резиденций. Террасы превращаются в оазисы, веранды
-                — во всесезонные салоны, рестораны — в уютные острова вне зависимости от
-                погоды. Теперь тот же уровень эстетики и экспертизы бренд получил и в digital.
-              </p>
+          // Создаём объект URL для редактирования
+          const url = new URL(link.href);
 
-              <div class="case__devices">
-                <img
-                  class="laptop-img"
-                  src="../assets/img/comfort/comfort-one/Mockup.png"
-                  alt="#"
-                />
-                <img
-                  class="phone-img"
-                  src="../assets/img/comfort/comfort-one/comfort-one/Mockup.png"
-                  alt=""
-                />
-              </div>
+          utmKeys.forEach((key) => {
+            const saved = sessionStorage.getItem(key);
+            if (saved && !url.searchParams.has(key)) {
+              url.searchParams.set(key, saved);
+            }
+          });
+
+          // Обновляем ссылку перед переходом
+          link.href = url.toString();
+        },
+        true,
+      );
+
+      // 3️⃣ (опционально) Восстанавливаем utm в URL, если их нет
+      const currentUrl = new URL(window.location.href);
+      let changed = false;
+      utmKeys.forEach((key) => {
+        const saved = sessionStorage.getItem(key);
+        if (saved && !currentUrl.searchParams.has(key)) {
+          currentUrl.searchParams.set(key, saved);
+          changed = true;
+        }
+      });
+      if (changed) {
+        window.history.replaceState({}, "", currentUrl);
+      }
+    })();
+  </script>
+</head>
+
+<body>
+  <div class="wrapper">
+    @@include('../partials/header.html')
+    @@include('../partials/burger.html')
+
+    <main class="main">
+      <div class="container-bg-grad" data-theme="white">
+        <div class="container">
+          <div class="link-to-main">
+            <a class="text-[18px] md:text-[16px]" href="../index.html" data-action="back">Вернуться на главную</a>
+          </div>
+
+          <div class="case__title">
+            <h1 class="text-[52px] leading-[58px] md:text-[28px] md:leading-[32px]">
+              COMFORT SPACE
+            </h1>
+
+            <h2 class="text-[24px] uppercase leading-[32px] md:text-[16px] md:leading-[22px]">
+              Премиальный корпоративный сайт с SEO, каталогом и доверительным UX
+            </h2>
+          </div>
+
+          <div class="source">
+            <a class="text-[16px] leading-[140%]" href="http://comfortspace.ru/" target="_blank">comfortspace.ru </a>
+            <span class="text-[16px] leading-[140%]">06.2024</span>
+          </div>
+
+          <div class="case__text">
+            <p class="mt-[65px] text-[18px] md:mt-0 md:text-[16px]">
+              COMFORT SPACE — это создатель атмосферы, а не просто поставщик маркиз и пергол.
+              За 15+ лет компания реализовала более 10 000 проектов для Marriott, Novikov
+              Group, Radisson и частных резиденций. Террасы превращаются в оазисы, веранды
+              — во всесезонные салоны, рестораны — в уютные острова вне зависимости от
+              погоды. Теперь тот же уровень эстетики и экспертизы бренд получил и в digital.
+            </p>
+
+            <div class="case__devices">
+              <img class="laptop-img" src="../assets/img/comfort/comfort-one/Mockup.png" alt="#" />
+              <img class="phone-img" src="../assets/img/comfort/comfort-one/comfort-one/Mockup.png" alt="" />
             </div>
           </div>
         </div>
-        <div class="solution__section container">
-          <div class="our__service-list-item">
-            <div class="direction">
-              <div class="list-item-top">
-                <span class="text-[28px] md:text-[22px]">/01</span>
-                <div class="max-w-[518px]">
-                  <h2 class="text-[28px] uppercase md:text-[22px]">Задача</h2>
-
-                  <p class="text-[18px] md:text-[16px]">
-                    Превратить сайт в инструмент генерации спроса — не за счёт агрессивных
-                    баннеров, а через архитектуру доверия, визуальную роскошь и безупречную
-                    работу каждого элемента.
-                  </p>
-                  <p class="text-[18px] md:text-[16px]">
-                    <strong>Цель:</strong> создать digital-консультанта, который ведёт клиента от вдохновения
-                    к заказу, сохраняя эстетику и статус бренда.
-                  </p>
-                </div>
-              </div>
-
-              <ul class="text-[18px] md:text-[16px]">
-                <li class="list-style-none">
-                  Старый сайт не соответствовал уровню бренда:
-                </li>
-                <li>
-                  Интерфейс выглядел типовым и не передавал премиальность.
-                </li>
-                <li>
-                  Каталог терялся в тексте, клиенты не понимали, что подойдёт именно им.
-                </li>
-                <li>
-                 Масштабные проекты и партнёрства с мировыми брендами не были показаны на сайте.
-                </li>
-                <li>
-                  SEO не приводило лиды из органики.
-                </li>
-                <li>
-                  Форма заявки была незаметной, путь к консультации — размытым.
-                </li>
-                <li>
-                  Контент был сухим и не передавал эмоцию комфорта.
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="our__service-list-item">
-            <div class="direction">
-              <div class="list-item-top">
-                <span class="text-[28px] md:text-[22px]">/02</span>
-                <div class="max-w-[518px]">
-                  <h2 class="text-[28px] uppercase md:text-[22px]">Решение</h2>
-
-                  <p class="text-[18px] md:text-[16px]">
-                    Интерфейс как интерьер: роскошный, функциональный, продуманный до мелочей.
-                  </p>
-                </div>
-              </div>
-
-              <ul class="text-[18px] md:text-[16px]">
-                <li class="list-style-none">
-                  Мы проектировали сайт как премиальное пространство:
-                </li>
-                <li>
-                  Главная страница — видеобэкграунды, плавные переходы, минимум текста,
-                  максимум эмоции.
-                </li>
-                <li>
-                 Блок «10 000+ проектов» — интерактивная карта с кейсами по регионам.
-                </li>
-                <li>
-                  Партнёрские бренды (Somfy, Brustor, Dickson) — интерактивные карточки с
-                  пояснениями.
-                </li>
-                <li>
-                  Каталог как «решения для»: ресторана, загородного дома, зимнего сада.
-                </li>
-                <li>
-                 Каждая карточка продукта — 3D-визуализация, видео установки, сравнение материалов.
-                </li>
-                <li>
-                  Фильтры по типу объекта, бюджету, сезонности, стилю интерьера.
-                </li>
-                <li>
-                 SEO-архитектура: глубокая семантика, локальные страницы, блог «Энциклопедия комфорта».
-                </li>
-                <li>
-                  Путь к заявке встроен в UX: форма после каждого кейса и продукта, калькулятор
-                  стоимости, возможность прикрепить фото/план.
-                </li>
-                <li>
-                  Контент ручной работы: уникальные описания, реальные фото и видео, тексты
-                  в «голосе бренда».
-                </li>
-                <li>
-                  1С-Битрикс как CRM-ядро: заявки в воронке, маршрутизация по регионам, интеграция с
-                  календарями менеджеров.
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="img-examples__section">
-            <img src="../assets/img/comfort/comfort-two/img.png" alt="" />
-            <img src="../assets/img/comfort/comfort-two/comfort-two/img.png" alt="" />
-          </div>
-
-          <div class="our__service-list-item">
-            <div class="direction">
-              <div class="list-item-top">
-                <span class="text-[28px] md:text-[22px]">/03</span>
-                <div class="max-w-[518px]">
-                  <h2 class="text-[28px] uppercase md:text-[22px]">
-                    Результат
-                  </h2>
-
-                  <p class="text-[18px] md:text-[16px]">
-                    Сайт, который вдохновляет, консультирует и приводит к сделке.
-                  </p>
-                </div>
-              </div>
-
-              <ul class="text-[18px] md:text-[16px]">
-                <li>
-                  Рост органического трафика на 210% за 4 месяца — благодаря SEO и контенту.
-                </li>
-                <li>
-                  Конверсия в заявку выросла на 65% — за счёт «говорящего» UX и форм в нужных точках.
-                </li>
-                <li>
-                  Среднее время на сайте выросло на 120%.
-                </li>
-                <li>
-                  Количество запросов от premium-частных клиентов увеличилось на 40%.
-                </li>
-                <li>
-                  Средний чек вырос на 28%.
-                </li>
-                <li>
-                  Бонус-эффект: сайт стал презентационным инструментом менеджеров — на встречах
-                  клиенты видят проекты и сразу готовы подписывать договор.
-                </li>
-                <li class="list-style-none">
-                  COMFORT SPACE теперь — не просто компания, а стандарт комфорта. Его digital-представительство
-                  работает 24/7 и транслирует ту же эстетику, что и реализованные проекты.
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="img-examples-2__section">
-          <div class="ex-image__wrapper">
-            <img
-              src="../assets/img/comfort/comfort-three/screen-222.png"
-              alt=""
-            />
-          </div>
-
-          <div class="ex-image__wrapper-row">
-            <div class="ex-image__wrapper">
-              <img
-                src="../assets/img/comfort/comfort-three/comfort-three/screen-435.png"
-                alt=""
-              />
-            </div>
-
-            <div class="ex-image__wrapper">
-              <img
-                src="../assets/img/comfort/comfort-three/comfort-three/comfort-three/comfort-546.png"
-                alt=""
-              />
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="our__service-list-item container !mb-[164px] !pb-0 !pt-[100px]"
-        >
+      </div>
+      <div class="solution__section container">
+        <div class="our__service-list-item">
           <div class="direction">
             <div class="list-item-top">
-              <span class="text-[28px] md:text-[22px]">/04</span>
+              <span class="text-[28px] md:text-[22px]">/01</span>
               <div class="max-w-[518px]">
-                <h2 class="text-[28px] uppercase md:text-[22px]">команда</h2>
+                <h2 class="text-[28px] uppercase md:text-[22px]">Задача</h2>
 
                 <p class="text-[18px] md:text-[16px]">
-                  Для выполнения поставленных задач в короткие сроки
-                  сформировали проектную команду из технических специалистов,
-                  разработчиков, проджект-менеджера со стороны QScape
-                  и аналитиков со стороны заказчика
+                  Превратить сайт в инструмент генерации спроса — не за счёт агрессивных
+                  баннеров, а через архитектуру доверия, визуальную роскошь и безупречную
+                  работу каждого элемента.
+                </p>
+                <p class="text-[18px] md:text-[16px]">
+                  <strong>Цель:</strong> создать digital-консультанта, который ведёт клиента от вдохновения
+                  к заказу, сохраняя эстетику и статус бренда.
                 </p>
               </div>
             </div>
 
-            <ul class="grid__list">
-              <div>
-                <span class="case-name text-[20px] md:text-[16px]"
-                  >Александра Гришагина</span
-                >
-                <span class="case-position text-[16px]"
-                  >UX/UI Designer</span
-                >
-              </div>
-
-              <div>
-                <span class="case-name text-[20px] md:text-[16px]"
-                  >Руслан Аскеров</span
-                >
-                <span class="case-position text-[16px]"
-                  > Backend-разработчик</span
-                >
-              </div>
-
-              <div>
-                <span class="case-name text-[20px] md:text-[16px]"
-                  >Владислав Ворошилов</span
-                >
-                <span class="case-position text-[16px]">Frontend-разработчик</span>
-              </div>
-
-              <div>
-                <span class="case-name text-[20px] md:text-[16px]"
-                >Ирина Латышева</span
-                >
-                <span class="case-position text-[16px]">Project Manager</span>
-              </div>
+            <ul class="text-[18px] md:text-[16px]">
+              <li class="list-style-none">
+                Старый сайт не соответствовал уровню бренда:
+              </li>
+              <li>
+                Интерфейс выглядел типовым и не передавал премиальность.
+              </li>
+              <li>
+                Каталог терялся в тексте, клиенты не понимали, что подойдёт именно им.
+              </li>
+              <li>
+                Масштабные проекты и партнёрства с мировыми брендами не были показаны на сайте.
+              </li>
+              <li>
+                SEO не приводило лиды из органики.
+              </li>
+              <li>
+                Форма заявки была незаметной, путь к консультации — размытым.
+              </li>
+              <li>
+                Контент был сухим и не передавал эмоцию комфорта.
+              </li>
             </ul>
           </div>
         </div>
 
-        <div class="case__title-bottom">
-          <div class="container">
-            <div class="link-to-main">
-              <a class="text-[18px] md:text-[16px]" href="../pedolymp/"
-                >Следущий проект</a
-              >
-            </div>
-            <div class="case__title">
-              <h1
-                class="text-[52px] leading-[58px] md:text-[28px] md:leading-[32px]"
-              >
-                ПЕДАГОГИЧЕСКАЯ ОЛИМПИАДА
-              </h1>
+        <div class="our__service-list-item">
+          <div class="direction">
+            <div class="list-item-top">
+              <span class="text-[28px] md:text-[22px]">/02</span>
+              <div class="max-w-[518px]">
+                <h2 class="text-[28px] uppercase md:text-[22px]">Решение</h2>
 
-              <h2
-                class="text-[24px] uppercase leading-[32px] md:text-[16px] md:leading-[22px]"
-              >
-                Образовательно-сертификационный портал с онлайн-олимпиадами и
-                автоматической выдачей сертификатов
-              </h2>
-            </div>
-
-            <div class="source">
-              <a class="text-[16px] leading-[140%]" href="https://pedolymp.ru/ " target="_blank">pedolymp.ru</a>
-              <span class="text-[16px] leading-[140%]">08.2025</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="container" data-theme="light">
-          <div class="order__container pt-[70px]">
-            <div class="order-info">
-              <h2
-                class="text-[52px] leading-[58px] !text-[#031422] md:text-[28px] md:leading-[30px]"
-              >
-                Обсудим проект?
-              </h2>
-              <div class="order-text">
-                <p class="text-[18px] !text-[#031422] md:text-[16px]">
-                  Мы внимательно проанализируем ваш запрос и подготовим
-                  индивидуальные рекомендации для максимального роста вашего
-                  интернет-магазина на 1С-Битрикс
+                <p class="text-[18px] md:text-[16px]">
+                  Интерфейс как интерьер: роскошный, функциональный, продуманный до мелочей.
                 </p>
               </div>
+            </div>
 
-              <div class="employee__wrapper">
-                <div class="avatar">
-                  <img src="../assets/img/face-2.png" alt="" />
-                </div>
+            <ul class="text-[18px] md:text-[16px]">
+              <li class="list-style-none">
+                Мы проектировали сайт как премиальное пространство:
+              </li>
+              <li>
+                Главная страница — видеобэкграунды, плавные переходы, минимум текста,
+                максимум эмоции.
+              </li>
+              <li>
+                Блок «10 000+ проектов» — интерактивная карта с кейсами по регионам.
+              </li>
+              <li>
+                Партнёрские бренды (Somfy, Brustor, Dickson) — интерактивные карточки с
+                пояснениями.
+              </li>
+              <li>
+                Каталог как «решения для»: ресторана, загородного дома, зимнего сада.
+              </li>
+              <li>
+                Каждая карточка продукта — 3D-визуализация, видео установки, сравнение материалов.
+              </li>
+              <li>
+                Фильтры по типу объекта, бюджету, сезонности, стилю интерьера.
+              </li>
+              <li>
+                SEO-архитектура: глубокая семантика, локальные страницы, блог «Энциклопедия комфорта».
+              </li>
+              <li>
+                Путь к заявке встроен в UX: форма после каждого кейса и продукта, калькулятор
+                стоимости, возможность прикрепить фото/план.
+              </li>
+              <li>
+                Контент ручной работы: уникальные описания, реальные фото и видео, тексты
+                в «голосе бренда».
+              </li>
+              <li>
+                1С-Битрикс как CRM-ядро: заявки в воронке, маршрутизация по регионам, интеграция с
+                календарями менеджеров.
+              </li>
+            </ul>
+          </div>
+        </div>
 
-                <div>
-                  <div class="employee__name">
-                    <span class="text-[18px] md:text-[16px] direction-color"
-                    >Монахов Роман Робертович</span
-                    >
-                  </div>
-                  <div class="employee__position mt-[15px] direction-color">
-                    Генеральный директор
-                  </div>
+        <div class="img-examples__section">
+          <img src="../assets/img/comfort/comfort-two/img.png" alt="" />
+          <img src="../assets/img/comfort/comfort-two/comfort-two/img.png" alt="" />
+        </div>
 
-                  <div class="employee__text mt-[15px]">
-                    <p class="text-[18px] md:text-[16px] direction-color">
-                      «Мы поможем выбрать оптимальное решение под ваш бизнес.»
-                    </p>
-                  </div>
-                </div>
+        <div class="our__service-list-item">
+          <div class="direction">
+            <div class="list-item-top">
+              <span class="text-[28px] md:text-[22px]">/03</span>
+              <div class="max-w-[518px]">
+                <h2 class="text-[28px] uppercase md:text-[22px]">
+                  Результат
+                </h2>
+
+                <p class="text-[18px] md:text-[16px]">
+                  Сайт, который вдохновляет, консультирует и приводит к сделке.
+                </p>
               </div>
             </div>
 
-            <div class="order-form">
-              <form onsubmit="ym(104667110,'reachGoal','form_portfolio')">
-                <input
-                        class="border border-[#D0D0D0] !bg-white direction-color"
-                        type="text"
-                        name="name"
-                        placeholder="Ваше имя"
-                />
+            <ul class="text-[18px] md:text-[16px]">
+              <li>
+                Рост органического трафика на 210% за 4 месяца — благодаря SEO и контенту.
+              </li>
+              <li>
+                Конверсия в заявку выросла на 65% — за счёт «говорящего» UX и форм в нужных точках.
+              </li>
+              <li>
+                Среднее время на сайте выросло на 120%.
+              </li>
+              <li>
+                Количество запросов от premium-частных клиентов увеличилось на 40%.
+              </li>
+              <li>
+                Средний чек вырос на 28%.
+              </li>
+              <li>
+                Бонус-эффект: сайт стал презентационным инструментом менеджеров — на встречах
+                клиенты видят проекты и сразу готовы подписывать договор.
+              </li>
+              <li class="list-style-none">
+                COMFORT SPACE теперь — не просто компания, а стандарт комфорта. Его digital-представительство
+                работает 24/7 и транслирует ту же эстетику, что и реализованные проекты.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="img-examples-2__section">
+        <div class="ex-image__wrapper">
+          <img src="../assets/img/comfort/comfort-three/screen-222.png" alt="" />
+        </div>
 
-                <input
-                        class="border border-[#D0D0D0] !bg-white direction-color"
-                        type="tel"
-                        name="phone"
-                        placeholder="Номер телефона"
-                        pattern="\+7\s?[\(][0-9]{3}[\)]\s?[0-9]{3}-[0-9]{2}-[0-9]{2}"
-                        required
-                />
-                <input
-                        class="border border-[#D0D0D0] !bg-white direction-color"
-                        type="email"
-                        name="email"
-                        placeholder="Email"
-                />
+        <div class="ex-image__wrapper-row">
+          <div class="ex-image__wrapper">
+            <img src="../assets/img/comfort/comfort-three/comfort-three/screen-435.png" alt="" />
+          </div>
 
-                <div class="link__variants">
-                  <span class="text-[20px] !text-[#031422] md:text-[16px]"
-                    >Как лучше связаться?</span
-                  >
-                  <ul>
-                    <li>
-                      <input
-                              class="radio-input"
-                              type="radio"
-                              name="choice"
-                              id="choice4"
-                              value="4"
-                      />
-                      <label
-                              class="radio-label flex items-center gap-5"
-                              for="choice4"
-                      >
-                        <span class="custom-radio"></span>
-                        <span
-                                class="radio-text text-[18px] !text-[#031422] md:text-[16px]"
-                        >Telegram</span
-                        >
-                      </label>
-                    </li>
+          <div class="ex-image__wrapper">
+            <img src="../assets/img/comfort/comfort-three/comfort-three/comfort-three/comfort-546.png" alt="" />
+          </div>
+        </div>
+      </div>
 
-                    <li>
-                      <input
-                              class="radio-input"
-                              type="radio"
-                              name="choice"
-                              id="choice5"
-                              value="5"
-                      />
-                      <label
-                              class="radio-label flex items-center gap-5"
-                              for="choice5"
-                      >
-                        <span class="custom-radio"></span>
-                        <span
-                                class="radio-text text-[18px] !text-[#031422] md:text-[16px]"
-                        >Whats App</span
-                        >
-                      </label>
-                    </li>
+      <div class="our__service-list-item container !mb-[164px] !pb-0 !pt-[100px]">
+        <div class="direction">
+          <div class="list-item-top">
+            <span class="text-[28px] md:text-[22px]">/04</span>
+            <div class="max-w-[518px]">
+              <h2 class="text-[28px] uppercase md:text-[22px]">команда</h2>
 
-                    <li>
-                      <input
-                              class="radio-input"
-                              type="radio"
-                              name="choice"
-                              id="choice6"
-                              value="6"
-                      />
-                      <label
-                              class="radio-label flex items-center gap-5"
-                              for="choice6"
-                      >
-                        <span class="custom-radio"></span>
-                        <span
-                                class="radio-text color text-[18px] !text-[#031422] md:text-[16px]"
-                        >Телефон</span
-                        >
-                      </label>
-                    </li>
-                  </ul>
+              <p class="text-[18px] md:text-[16px]">
+                Для выполнения поставленных задач в короткие сроки
+                сформировали проектную команду из технических специалистов,
+                разработчиков, проджект-менеджера со стороны QScape
+                и аналитиков со стороны заказчика
+              </p>
+            </div>
+          </div>
+
+          <ul class="grid__list">
+            <div>
+              <span class="case-name text-[20px] md:text-[16px]">Александра Гришагина</span>
+              <span class="case-position text-[16px]">UX/UI Designer</span>
+            </div>
+
+            <div>
+              <span class="case-name text-[20px] md:text-[16px]">Руслан Аскеров</span>
+              <span class="case-position text-[16px]"> Backend-разработчик</span>
+            </div>
+
+            <div>
+              <span class="case-name text-[20px] md:text-[16px]">Владислав Ворошилов</span>
+              <span class="case-position text-[16px]">Frontend-разработчик</span>
+            </div>
+
+            <div>
+              <span class="case-name text-[20px] md:text-[16px]">Ирина Латышева</span>
+              <span class="case-position text-[16px]">Project Manager</span>
+            </div>
+          </ul>
+        </div>
+      </div>
+
+      <div class="case__title-bottom">
+        <div class="container">
+          <div class="link-to-main">
+            <a class="text-[18px] md:text-[16px]" href="../pedolymp/">Следущий проект</a>
+          </div>
+          <div class="case__title">
+            <h1 class="text-[52px] leading-[58px] md:text-[28px] md:leading-[32px]">
+              ПЕДАГОГИЧЕСКАЯ ОЛИМПИАДА
+            </h1>
+
+            <h2 class="text-[24px] uppercase leading-[32px] md:text-[16px] md:leading-[22px]">
+              Образовательно-сертификационный портал с онлайн-олимпиадами и
+              автоматической выдачей сертификатов
+            </h2>
+          </div>
+
+          <div class="source">
+            <a class="text-[16px] leading-[140%]" href="https://pedolymp.ru/ " target="_blank">pedolymp.ru</a>
+            <span class="text-[16px] leading-[140%]">08.2025</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="container" data-theme="light">
+        <div class="order__container pt-[70px]">
+          <div class="order-info">
+            <h2 class="text-[52px] leading-[58px] !text-[#031422] md:text-[28px] md:leading-[30px]">
+              Обсудим проект?
+            </h2>
+            <div class="order-text">
+              <p class="text-[18px] !text-[#031422] md:text-[16px]">
+                Мы внимательно проанализируем ваш запрос и подготовим
+                индивидуальные рекомендации для максимального роста вашего
+                интернет-магазина на 1С-Битрикс
+              </p>
+            </div>
+
+            <div class="employee__wrapper">
+              <div class="avatar">
+                <img src="../assets/img/face-2.png" alt="" />
+              </div>
+
+              <div>
+                <div class="employee__name">
+                  <span class="text-[18px] md:text-[16px] direction-color">Монахов Роман Робертович</span>
+                </div>
+                <div class="employee__position mt-[15px] direction-color">
+                  Генеральный директор
                 </div>
 
-                <span
-                  class="btn-label text-[12px] !text-[#031422] md:text-[12px]"
-                  >Нажимая кнопку, я даю согласие на обработку моих персональных
-                  данных</span
-                >
-                <button
-                  id="open-popup"
-                  type="submit"
-                  class="text-[18px] md:text-[16px]"
-                >
-                  Оставить заявкy
-                  <img src="../assets/icons/arrowBtn.png" alt="" />
-                </button>
-              </form>
-
-                <div class="popup-overlay-order" style="display: none;">
-                    <div class="popup__success__order">
-                        <div class="popup__success__order-content flex-col items-center gap-[12px]">
-                            <button class="popup-close__order" id="popup-close">
-                                <img src="../assets/icons/x.png" alt="" />
-                            </button>
-                            <h2 class="text-[hsba(231, 25%, 27%, 1)] mx-auto max-w-[474px] text-center text-[28px] uppercase leading-[36px] md:text-[16px]">
-                                ваш запрос успешно отправлен
-                            </h2>
-                            <p class="md:text-16px text-[hsba(231, 25%, 27%, 1)] mb-[30px] mt-[30px] text-center text-[20px] leading-[150%]">
-                                В течение 30 минут наш менеджер вам перезвонит
-                            </p>
-                            <button type="submit" class="mx-auto mt-[27px] flex items-center justify-center rounded-[170px] bg-black px-[50px] py-[17px] text-center text-[18px] text-[#ececed] md:text-[16px]" id="popup-close">
-                                ок
-                            </button>
-                        </div>
-                    </div>
+                <div class="employee__text mt-[15px]">
+                  <p class="text-[18px] md:text-[16px] direction-color">
+                    «Мы поможем выбрать оптимальное решение под ваш бизнес.»
+                  </p>
                 </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="order-form">
+            <form onsubmit="ym(104667110,'reachGoal','form_portfolio')">
+              <input class="border border-[#D0D0D0] !bg-white direction-color" type="text" name="name"
+                placeholder="Ваше имя" />
+
+              <input class="border border-[#D0D0D0] !bg-white direction-color" type="tel" name="phone"
+                placeholder="Номер телефона" pattern="\+7\s?[\(][0-9]{3}[\)]\s?[0-9]{3}-[0-9]{2}-[0-9]{2}" required />
+              <input class="border border-[#D0D0D0] !bg-white direction-color" type="email" name="email"
+                placeholder="Email" />
+
+              <div class="link__variants">
+                <span class="text-[20px] !text-[#031422] md:text-[16px]">Как лучше связаться?</span>
+                <ul>
+                  <li>
+                    <input class="radio-input" type="radio" name="choice" id="choice4" value="4" />
+                    <label class="radio-label flex items-center gap-5" for="choice4">
+                      <span class="custom-radio"></span>
+                      <span class="radio-text text-[18px] !text-[#031422] md:text-[16px]">Telegram</span>
+                    </label>
+                  </li>
+
+                  <li>
+                    <input class="radio-input" type="radio" name="choice" id="choice5" value="5" />
+                    <label class="radio-label flex items-center gap-5" for="choice5">
+                      <span class="custom-radio"></span>
+                      <span class="radio-text text-[18px] !text-[#031422] md:text-[16px]">Whats App</span>
+                    </label>
+                  </li>
+
+                  <li>
+                    <input class="radio-input" type="radio" name="choice" id="choice6" value="6" />
+                    <label class="radio-label flex items-center gap-5" for="choice6">
+                      <span class="custom-radio"></span>
+                      <span class="radio-text color text-[18px] !text-[#031422] md:text-[16px]">Телефон</span>
+                    </label>
+                  </li>
+                </ul>
+              </div>
+
+              <span class="btn-label text-[12px] !text-[#031422] md:text-[12px]">Нажимая кнопку, я даю согласие на
+                обработку моих персональных
+                данных</span>
+              <button id="open-popup" type="submit" class="text-[18px] md:text-[16px]">
+                Оставить заявкy
+                <img src="../assets/icons/arrowBtn.png" alt="" />
+              </button>
+            </form>
+
+            <div class="popup-overlay-order" style="display: none;">
+              <div class="popup__success__order">
+                <div class="popup__success__order-content flex-col items-center gap-[12px]">
+                  <button class="popup-close__order" id="popup-close">
+                    <img src="../assets/icons/x.png" alt="" />
+                  </button>
+                  <h2
+                    class="text-[hsba(231, 25%, 27%, 1)] mx-auto max-w-[474px] text-center text-[28px] uppercase leading-[36px] md:text-[16px]">
+                    ваш запрос успешно отправлен
+                  </h2>
+                  <p
+                    class="md:text-16px text-[hsba(231, 25%, 27%, 1)] mb-[30px] mt-[30px] text-center text-[20px] leading-[150%]">
+                    В течение 30 минут наш менеджер вам перезвонит
+                  </p>
+                  <button type="submit"
+                    class="mx-auto mt-[27px] flex items-center justify-center rounded-[170px] bg-black px-[50px] py-[17px] text-center text-[18px] text-[#ececed] md:text-[16px]"
+                    id="popup-close">
+                    ок
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </main>
+      </div>
+    </main>
 
-      @@include('../partials/footer.html')
-    </div>
+    @@include('../partials/footer.html')
+  </div>
 
-    <!-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> -->
 
-    <script>
-      function smoothScroll(el) {
-        const target = el?.getAttribute("data-scroll-to");
-        if (!target) return;
+  <script>
+    function smoothScroll(el) {
+      const target = el?.getAttribute("data-scroll-to");
+      if (!target) return;
 
-        if (location.pathname !== "/") {
-          // редиректим на главную с параметром
-          location.href = `/?scrollTo=${encodeURIComponent(target)}`;
-          return;
-        }
+      if (location.pathname !== "/") {
+        // редиректим на главную с параметром
+        location.href = `/?scrollTo=${encodeURIComponent(target)}`;
+        return;
       }
-    </script>
+    }
+  </script>
 
-    <script type="module" src="../js/script.js"></script>
-    <script src="../js/mailer.js"></script>
-  </body>
+  <script type="module" src="../js/script.js"></script>
+  <script src="../js/mailer.js"></script>
+</body>
+
 </html>
