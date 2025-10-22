@@ -291,7 +291,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // console.log('Form type:', formType);
             // console.log('FINAL sourceString:', sourceString);
-            // console.log('Lead payload:', JSON.stringify(leadData, null, 2));
+            console.log('Lead payload:', JSON.stringify(leadData, null, 2));
 
             const originalButtonText = submitButton ? submitButton.innerHTML : '';
             if (submitButton) { submitButton.disabled = true; submitButton.innerHTML = 'Отправка...'; }
@@ -315,22 +315,49 @@ document.addEventListener("DOMContentLoaded", function () {
                         // Для формы в .order-form
                         const orderFormContainer = this.closest('.order-form');
                         const currentOverlay = this.closest('.popup-overlay');
-                        if (orderFormContainer) {
-                            const popupOverlay = orderFormContainer.querySelector('.popup-overlay-order');
-                            const mainForm = orderFormContainer.querySelector('form');
 
-                            if (popupOverlay && mainForm) {
-                                popupOverlay.style.display = 'flex';
-                                console.log('Success overlay shown for order-form');
-                            }
+                        let contextType = '';
+
+                        if (orderFormContainer && !currentOverlay) {
+                            contextType = 'order-form'
+                        } else if (currentOverlay) {
+                            contextType = 'popup-overlay';
+                        } else {
+                            contextType = 'unknown';
                         }
-                        const popupSuccess = currentOverlay.querySelector('.popup__success');
-                        const mainPopup = currentOverlay.querySelector('.popup');
 
-                        if (popupSuccess && mainPopup) {
-                            mainPopup.style.display = 'none';
-                            popupSuccess.style.display = 'flex';
-                            console.log('Success popup shown for:', getFormType(this));
+                        switch (contextType) {
+                            case 'order-form':
+                                // Для статических форм
+                                const popupOverlay = orderFormContainer.querySelector('.popup-overlay-order');
+                                const mainForm = orderFormContainer.querySelector('form');
+
+                                if (popupOverlay && mainForm) {
+                                    popupOverlay.style.display = 'flex';
+                                    console.log('Success overlay shown for order-form');
+                                }
+                                break;
+
+                            case 'popup-overlay':
+                                // Для форм в попапах (calculate, basic, optimal, premium)
+                                const popupSuccess = currentOverlay.querySelector('.popup__success');
+                                const mainPopup = currentOverlay.querySelector('.popup');
+
+                                if (popupSuccess && mainPopup) {
+                                    mainPopup.style.display = 'none';
+                                    popupSuccess.style.display = 'flex';
+                                    console.log('Success popup shown for:', getFormType(this));
+                                }
+                                break;
+
+                            case 'unknown':
+                                // Резервный вариант для непредвиденных случаев
+                                console.warn('Unknown form context, cannot show success popup');
+                                break;
+
+                            default:
+                                console.warn('Unhandled context type:', contextType);
+                                break;
                         }
                     } else if (submitButton) {
                         submitButton.innerHTML = 'Ошибка';
