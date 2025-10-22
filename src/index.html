@@ -33,55 +33,58 @@
   <!-- /Yandex.Metrika counter -->
 
   <script>
-    (function () {
-      const urlParams = new URLSearchParams(window.location.search);
-      const utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
-
-      let hasUTM = false;
-
+    (function() {
+      const utmKeys = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
+    
+      // 1️⃣ Сохраняем utm из URL в sessionStorage
+      const params = new URLSearchParams(window.location.search);
       utmKeys.forEach(key => {
-        if (urlParams.has(key)) hasUTM = true;
+        const value = params.get(key);
+        if (value) {
+          sessionStorage.setItem(key, value);
+        }
       });
-
-      if (hasUTM) {
-        // Сохраняем UTM в sessionStorage
+    
+      // 2️⃣ При клике по ссылке добавляем utm обратно в адрес
+      document.addEventListener("click", function(e) {
+        const link = e.target.closest("a");
+        if (!link) return;
+    
+        // Проверяем: внутренняя ли ссылка (чтобы не трогать внешние)
+        const isInternal = link.hostname === window.location.hostname;
+        if (!isInternal || link.href.includes("#")) return;
+    
+        // Создаём объект URL для редактирования
+        const url = new URL(link.href);
+    
         utmKeys.forEach(key => {
-          const value = urlParams.get(key);
-          if (value) sessionStorage.setItem(key, value);
+          const saved = sessionStorage.getItem(key);
+          if (saved && !url.searchParams.has(key)) {
+            url.searchParams.set(key, saved);
+          }
         });
-
-        // Сохраняем время первого захода, если ещё нет
-        if (!sessionStorage.getItem('utm_first_visit')) {
-          sessionStorage.setItem('utm_first_visit', new Date().toISOString());
+    
+        // Обновляем ссылку перед переходом
+        link.href = url.toString();
+      }, true);
+    
+      // 3️⃣ (опционально) Восстанавливаем utm в URL, если их нет
+      const currentUrl = new URL(window.location.href);
+      let changed = false;
+      utmKeys.forEach(key => {
+        const saved = sessionStorage.getItem(key);
+        if (saved && !currentUrl.searchParams.has(key)) {
+          currentUrl.searchParams.set(key, saved);
+          changed = true;
         }
-
-        // Обновляем актуальные UTM в localStorage из sessionStorage
-        utmKeys.forEach(key => {
-          const sessionValue = sessionStorage.getItem(key);
-          if (sessionValue) localStorage.setItem(key, sessionValue);
-        });
-
-        if (!localStorage.getItem('utm_first_visit')) {
-          localStorage.setItem('utm_first_visit', sessionStorage.getItem('utm_first_visit'));
-        }
-
-        console.log('[UTM] Сохранены актуальные UTM в sessionStorage и localStorage');
-
-      } else {
-        console.log('[UTM] Метки не найдены в URL, оставляем актуальные из localStorage');
-
-        // При отсутствии UTM в URL можно подтянуть их из localStorage в sessionStorage
-        utmKeys.forEach(key => {
-          const stored = localStorage.getItem(key);
-          if (stored) sessionStorage.setItem(key, stored);
-        });
-
-        // подтянем дату первого визита
-        const firstVisit = localStorage.getItem('utm_first_visit');
-        if (firstVisit) sessionStorage.setItem('utm_first_visit', firstVisit);
+      });
+      if (changed) {
+        window.history.replaceState({}, "", currentUrl);
       }
     })();
-  </script>
+    </script>
+    
+    
 
 </head>
 
