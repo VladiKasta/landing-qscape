@@ -1,533 +1,695 @@
 <!doctype html>
 <html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="robots" content="noindex, nofollow" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Разработка интернет-магазина Parfum-Paradise</title>
 
-  <title>Разработка интернет-магазина Parfum-Paradise</title>
+    <link rel="icon" href="../assets/img/Favicon-ex.png" type="image/x-icon" />
+    <link rel="stylesheet" href="../css/pages-style/index.css" />
+    <link rel="stylesheet" href="../css/media.css" />
 
-  <link rel="icon" href="../assets/img/Favicon-ex.png" type="image/x-icon">
-  <link rel="stylesheet" href="../css/pages-style/index.css" />
-  <link rel="stylesheet" href="../css/media.css" />
-
-  <!-- Yandex.Metrika counter -->
-  <script type="text/javascript">
-    (function (m, e, t, r, i, k, a) {
-      m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
-      m[i].l = 1 * new Date();
-      for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
-      k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
-    })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=104667110', 'ym');
-
-    ym(104667110, 'init', { ssr: true, webvisor: true, clickmap: true, ecommerce: "dataLayer", accurateTrackBounce: true, trackLinks: true });
-  </script>
-  <noscript>
-    <div><img src="https://mc.yandex.ru/watch/104667110" style="position:absolute; left:-9999px;" alt="" /></div>
-  </noscript>
-  <!-- /Yandex.Metrika counter -->
-  <script>
-    (function () {
-      const utmKeys = [
-        "utm_source",
-        "utm_medium",
-        "utm_campaign",
-        "utm_term",
-        "utm_content",
-      ];
-
-      // 1️⃣ Сохраняем utm из URL в sessionStorage
-      const params = new URLSearchParams(window.location.search);
-      utmKeys.forEach((key) => {
-        const value = params.get(key);
-        if (value) {
-          sessionStorage.setItem(key, value);
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+      (function (m, e, t, r, i, k, a) {
+        m[i] =
+          m[i] ||
+          function () {
+            (m[i].a = m[i].a || []).push(arguments);
+          };
+        m[i].l = 1 * new Date();
+        for (var j = 0; j < document.scripts.length; j++) {
+          if (document.scripts[j].src === r) {
+            return;
+          }
         }
-      });
-
-      // 2️⃣ При клике по ссылке добавляем utm обратно в адрес
-      document.addEventListener(
-        "click",
-        function (e) {
-          const link = e.target.closest("a");
-          if (!link) return;
-
-          // Проверяем: внутренняя ли ссылка (чтобы не трогать внешние)
-          const isInternal = link.hostname === window.location.hostname;
-          if (!isInternal || link.href.includes("#")) return;
-
-          // Создаём объект URL для редактирования
-          const url = new URL(link.href);
-
-          utmKeys.forEach((key) => {
-            const saved = sessionStorage.getItem(key);
-            if (saved && !url.searchParams.has(key)) {
-              url.searchParams.set(key, saved);
-            }
-          });
-
-          // Обновляем ссылку перед переходом
-          link.href = url.toString();
-        },
-        true,
+        ((k = e.createElement(t)),
+          (a = e.getElementsByTagName(t)[0]),
+          (k.async = 1),
+          (k.src = r),
+          a.parentNode.insertBefore(k, a));
+      })(
+        window,
+        document,
+        "script",
+        "https://mc.yandex.ru/metrika/tag.js?id=104667110",
+        "ym",
       );
 
-      // 3️⃣ (опционально) Восстанавливаем utm в URL, если их нет
-      const currentUrl = new URL(window.location.href);
-      let changed = false;
-      utmKeys.forEach((key) => {
-        const saved = sessionStorage.getItem(key);
-        if (saved && !currentUrl.searchParams.has(key)) {
-          currentUrl.searchParams.set(key, saved);
-          changed = true;
-        }
+      ym(104667110, "init", {
+        ssr: true,
+        webvisor: true,
+        clickmap: true,
+        ecommerce: "dataLayer",
+        accurateTrackBounce: true,
+        trackLinks: true,
       });
-      if (changed) {
-        window.history.replaceState({}, "", currentUrl);
-      }
-    })();
-  </script>
-</head>
-
-<body>
-  <div class="wrapper">
-    @@include('../partials/header.html')
-    @@include('../partials/burger.html')
-
-    <main class="main">
-      <div class="container-bg-grad" data-theme="white">
-        <div class="container">
-          <div class="link-to-main">
-            <a class="text-[18px] md:text-[16px]" data-action="back">Вернуться на главную</a>
-          </div>
-
-          <div class="case__title">
-            <h1 class="text-[52px] leading-[58px] md:text-[28px] md:leading-[32px]">
-              Parfum-Paradise
-            </h1>
-
-            <h2 class="text-[24px] uppercase leading-[32px] md:text-[16px] md:leading-[22px]">
-              Luxury-бутик с бонусами, подарками и доставкой в 1 клик
-            </h2>
-          </div>
-
-          <div class="source">
-            <a class="text-[16px] leading-[140%]" href="https://pp.qscape.ru/" target="_blank">parfum-paradise.ru</a>
-            <span class="text-[16px] leading-[140%]">09.2025</span>
-          </div>
-
-          <div class="case__text">
-            <p class="mt-[65px] text-[18px] md:mt-0 md:text-[16px]">
-              Parfum-Paradise — это не просто магазин, а архив эмоций: 1500+ премиальных
-              брендов, 20 лет на рынке, тысячи историй, начавшихся с одного аромата.
-              Но прежний сайт не передавал глубину бренда: устаревший дизайн, базовые
-              фильтры и тяжёлый процесс покупки превращали выбор в бюрократию. Мы создали
-              digital-бутик, где клиент выбирает не товар, а настроение. Где бонусы —
-              это комплимент, а авторизация — звонком, потому что пароль слишком банален
-              для Chanel №5.
-            </p>
-
-            <div class="case__devices">
-              <img class="laptop-img" src="../assets/img/parfume/parfume-one/Mockup.png" alt="#" />
-              <img class="phone-img" src="../assets/img/parfume/parfume-one/parfume-one/Mockup.png" alt="" />
-            </div>
-          </div>
-        </div>
+    </script>
+    <noscript>
+      <div>
+        <img
+          src="https://mc.yandex.ru/watch/104667110"
+          style="position: absolute; left: -9999px"
+          alt=""
+        />
       </div>
-      <div class="solution__section container">
-        <div class="our__service-list-item">
-          <div class="direction">
-            <div class="list-item-top">
-              <span class="text-[28px] md:text-[22px]">/01</span>
-              <div class="max-w-[518px]">
-                <h2 class="text-[28px] uppercase md:text-[22px]">Задача</h2>
+    </noscript>
+    <!-- /Yandex.Metrika counter -->
 
-                <p class="text-[18px] md:text-[16px]">
-                  Превратить устаревший сайт в цифровой luxury-бутик —
-                  сохранить данные, но добавить эмоции, скорость и лояльность.
-                </p>
-                <p class="text-[18px] md:text-[16px]">
-                  <strong>Цель:</strong> сделать сайт-консультант, который помнит ваши вкусы,
-                  дарит бонусы и подарки, показывает стоимость доставки заранее
-                  и ведёт клиента как персональный парфюмер.
-                </p>
-              </div>
+    <!-- UTM -->
+    <script>
+      (function () {
+        const utmKeys = [
+          "utm_source",
+          "utm_medium",
+          "utm_campaign",
+          "utm_term",
+          "utm_content",
+        ];
+
+        // 1️⃣ Сохраняем utm из URL в sessionStorage
+        const params = new URLSearchParams(window.location.search);
+        utmKeys.forEach((key) => {
+          const value = params.get(key);
+          if (value) {
+            sessionStorage.setItem(key, value);
+          }
+        });
+
+        // 2️⃣ При клике по ссылке добавляем utm обратно в адрес
+        document.addEventListener(
+          "click",
+          function (e) {
+            const link = e.target.closest("a");
+            if (!link) return;
+
+            // Проверяем: внутренняя ли ссылка (чтобы не трогать внешние)
+            const isInternal = link.hostname === window.location.hostname;
+            if (!isInternal || link.href.includes("#")) return;
+
+            // Создаём объект URL для редактирования
+            const url = new URL(link.href);
+
+            utmKeys.forEach((key) => {
+              const saved = sessionStorage.getItem(key);
+              if (saved && !url.searchParams.has(key)) {
+                url.searchParams.set(key, saved);
+              }
+            });
+
+            // Обновляем ссылку перед переходом
+            link.href = url.toString();
+          },
+          true,
+        );
+
+        // 3️⃣ (опционально) Восстанавливаем utm в URL, если их нет
+        const currentUrl = new URL(window.location.href);
+        let changed = false;
+        utmKeys.forEach((key) => {
+          const saved = sessionStorage.getItem(key);
+          if (saved && !currentUrl.searchParams.has(key)) {
+            currentUrl.searchParams.set(key, saved);
+            changed = true;
+          }
+        });
+        if (changed) {
+          window.history.replaceState({}, "", currentUrl);
+        }
+      })();
+    </script>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      @@include('../partials/header.html') @@include('../partials/burger.html')
+
+      <main class="main">
+        <div class="container-bg-grad" data-theme="white">
+          <div class="container">
+            <div class="link-to-main">
+              <a class="text-[18px] md:text-[16px]" data-action="back"
+                >Вернуться на главную</a
+              >
             </div>
 
-            <ul class="text-[18px] md:text-[16px]">
-              <li>
-                Устаревший дизайн, не отражавший премиальность.
-              </li>
-              <li>
-                Перенос 20+ лет данных без потерь.
-              </li>
-              <li>
-                Неудобная авторизация — пароли забывались, корзины бросались.
-              </li>
-              <li>
-                Нет гибкой бонусной системы и автоматических подарков.
-              </li>
-              <li>
-                Доставка не рассчитывалась онлайн.
-              </li>
-              <li>
-                Фильтры ограничены «мужской/женский», без нот, сезонов и настроений.
-              </li>
-            </ul>
-          </div>
-        </div>
+            <div class="case__title">
+              <h1
+                class="text-[52px] leading-[58px] md:text-[28px] md:leading-[32px]"
+              >
+                Parfum-Paradise
+              </h1>
 
-        <div class="our__service-list-item">
-          <div class="direction">
-            <div class="list-item-top">
-              <span class="text-[28px] md:text-[22px]">/02</span>
-              <div class="max-w-[518px]">
-                <h2 class="text-[28px] uppercase md:text-[22px]">Решение</h2>
-
-                <p class="text-[18px] md:text-[16px]">
-                  Интерфейс как парфюмерный орган — чувственный и точный.
-                  Технология — как швейцарские часы.
-                </p>
-              </div>
+              <h2
+                class="text-[24px] uppercase leading-[32px] md:text-[16px] md:leading-[22px]"
+              >
+                Luxury-бутик с бонусами, подарками и доставкой в 1 клик
+              </h2>
             </div>
 
-            <ul class="text-[18px] md:text-[16px]">
-              <li>
-                Полный редизайн в стиле luxury:<br>
-                • бархат, золото, стекло, плавные анимации<br>
-                • главная — витрина бутика с видео и парящими флаконами<br>
-                • шрифты с засечками, как у нишевых брендов
-              </li>
-              <li>
-                Перенос и расширение legacy-данных:<br>
-                • сохранены инфоблоки и фильтры<br>
-                • новые фильтры по нотам, сезонам, настроениям, случаям<br>
-                • «умный поиск»: «как Chanel №5, но с нотой ванили»
-              </li>
-              <li>
-                Обзор функциональных возможностей позволил определить mvp
-                и карту развития площадки
-              </li>
-              <li>
-                Авторизация по звонку:<br>
-                • клиент вводит номер → получает звонок → нажимает «1» → вход выполнен<br>
-                • никакого пароля, капчи и СМС
-              </li>
-              <li>
-                Гибкая бонусная система:<br>
-                • бонусы за покупки, отзывы, дни рождения<br>
-                • можно копить, комбинировать, дарить<br>
-                • история бонусов как личный дневник ароматов
-              </li>
-              <li>
-                Подарки за сумму:<br>
-                • от 5 000 ₽ — выбор из 3 подарков<br>
-                • от 10 000 ₽ — премиум-подарки (мини-флаконы, косметички, сертификаты)<br>
-                • анимация открытия подарка при оформлении заказа
-              </li>
-              <li>
-                Калькулятор доставки в реальном времени:<br>
-                • интеграция с 7 службами доставки<br>
-                • стоимость и сроки видны заранее, ещё в корзине<br>
-                • опция подарочной упаковки с доплатой
-              </li>
-              <li>
-                Архитектура на 1С-Битрикс Бизнес:<br>
-                • готовность к пиковым нагрузкам (8 марта, Новый год)<br>
-                • интеграция с CRM для персональных рекомендаций<br>
-                • API под будущее мобильное приложение<br>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="img-examples__section">
-          <img src="../assets/img/parfume/parfume-two/img.png" alt="" />
-          <img src="../assets/img/parfume/parfume-two/parfume-two/img.png" alt="" />
-        </div>
-
-        <div class="our__service-list-item">
-          <div class="direction">
-            <div class="list-item-top">
-              <span class="text-[28px] md:text-[22px]">/03</span>
-              <div class="max-w-[518px]">
-                <h2 class="text-[28px] uppercase md:text-[22px]">
-                  Результат
-                </h2>
-
-                <p class="text-[18px] md:text-[16px]">
-                  Сайт, который не просто продаёт — он дарит эмоции и возвращает клиентов.
-                </p>
-              </div>
+            <div class="source">
+              <a
+                class="text-[16px] leading-[140%]"
+                href="https://pp.qscape.ru/"
+                target="_blank"
+                >parfum-paradise.ru</a
+              >
+              <span class="text-[16px] leading-[140%]">09.2025</span>
             </div>
 
-            <ul class="text-[18px] md:text-[16px]">
-              <li>
-                Конверсия выросла на 57% благодаря эмоциональному дизайну и фильтрам
-                по настроению.
-              </li>
-              <li>
-                Средний чек увеличился на 39% за счёт бонусов и подарков.
-              </li>
-              <li>
-                Отказы на авторизации упали на 83%— звонок стал самым популярным
-                способом входа.
-              </li>
-              <li>
-                Повторные покупки выросли на 68% — клиенты возвращаются за бонусами и
-                рекомендациями.
-              </li>
-              <li>
-                Скорость оформления заказа сократилась на 70% — калькулятор доставки исключил
-                «сюрпризы» на финальном шаг.
-              </li>
-              <li>
-                Бонус-эффект: сайт стал «ароматическим гидом» — клиенты делятся карточками
-                с нотами и настроениями в соцсетях, блогеры делают обзоры «как выбрать
-                аромат на Parfum-Paradise».
-              </li>
-              <li class="list-style-none">
-                Parfum-Paradise теперь не просто магазин. Это цифровой мир ароматов,
-                где каждый клиент чувствует себя VIP-гостем.
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="img-examples-2__section">
-        <div class="ex-image__wrapper">
-          <img src="../assets/img/parfume/parfume-three/screenshot-222.png" alt="" />
-        </div>
-
-        <div class="ex-image__wrapper-row">
-          <div class="ex-image__wrapper">
-            <img src="../assets/img/parfume/parfume-three/parfume-three/screenshot-234.png" alt="" />
-          </div>
-
-          <div class="ex-image__wrapper">
-            <img src="../assets/img/parfume/parfume-three/parfume-three/parfume-three/screenshot-546.png" alt="" />
-          </div>
-        </div>
-      </div>
-
-      <div class="our__service-list-item container !mb-[164px] !pb-0 !pt-[100px]">
-        <div class="direction">
-          <div class="list-item-top">
-            <span class="text-[28px] md:text-[22px]">/04</span>
-            <div class="max-w-[518px]">
-              <h2 class="text-[28px] uppercase md:text-[22px]">команда</h2>
-
-              <p class="text-[18px] md:text-[16px]">
-                Для выполнения поставленных задач в короткие сроки
-                сформировали проектную команду из технических специалистов,
-                разработчиков, проджект-менеджера со стороны QScape
-                и аналитиков со стороны заказчика
+            <div class="case__text">
+              <p class="mt-[65px] text-[18px] md:mt-0 md:text-[16px]">
+                Parfum-Paradise — это не просто магазин, а архив эмоций: 1500+
+                премиальных брендов, 20 лет на рынке, тысячи историй, начавшихся
+                с одного аромата. Но прежний сайт не передавал глубину бренда:
+                устаревший дизайн, базовые фильтры и тяжёлый процесс покупки
+                превращали выбор в бюрократию. Мы создали digital-бутик, где
+                клиент выбирает не товар, а настроение. Где бонусы — это
+                комплимент, а авторизация — звонком, потому что пароль слишком
+                банален для Chanel №5.
               </p>
+
+              <div class="case__devices">
+                <img
+                  class="laptop-img"
+                  src="../assets/img/parfume/parfume-one/Mockup.png"
+                  alt="#"
+                />
+                <img
+                  class="phone-img"
+                  src="../assets/img/parfume/parfume-one/parfume-one/Mockup.png"
+                  alt=""
+                />
+              </div>
             </div>
-          </div>
-
-          <ul class="grid__list">
-            <div>
-              <span class="case-name text-[20px] md:text-[16px]">Александра Гришагина</span>
-              <span class="case-position text-[16px]">UX/UI Designer</span>
-            </div>
-
-            <div>
-              <span class="case-name text-[20px] md:text-[16px]">Александр Ягодкин</span>
-              <span class="case-position text-[16px]">Frontend-разработчик</span>
-            </div>
-
-            <div>
-              <span class="case-name text-[20px] md:text-[16px]">Владислав Ворошилов</span>
-              <span class="case-position text-[16px]">Frontend-разработчик</span>
-            </div>
-
-            <div>
-              <span class="case-name text-[20px] md:text-[16px]"> Руслан Аскеров</span>
-              <span class="case-position text-[16px]">Backend-разработчик</span>
-            </div>
-
-            <div>
-              <span class="case-name text-[20px] md:text-[16px]">Артём Степанов</span>
-              <span class="case-position text-[16px]">Backend-разработчик</span>
-            </div>
-
-            <div>
-              <span class="case-name text-[20px] md:text-[16px]">Глеб Шевцов</span>
-              <span class="case-position text-[16px]">Backend-разработчик</span>
-            </div>
-
-
-
-            <div>
-              <span class="case-name text-[20px] md:text-[16px]">Ирина Латышева</span>
-              <span class="case-position text-[16px]">Project Manager</span>
-            </div>
-          </ul>
-        </div>
-      </div>
-
-      <div class="case__title-bottom">
-        <div class="container">
-          <div class="link-to-main">
-            <a class="text-[18px] md:text-[16px]" href="../tanzor/">Следущий проект</a>
-          </div>
-          <div class="case__title">
-            <h1 class="text-[52px] leading-[58px] md:text-[28px] md:leading-[32px]">
-              TANZOR
-            </h1>
-
-            <h2 class="text-[24px] uppercase leading-[32px] md:text-[16px] md:leading-[22px]">
-              Редизайн сайта с сохранением фирменного стиля и технологичным UX
-            </h2>
-          </div>
-
-          <div class="source">
-            <a class="text-[16px] leading-[140%]" href="https://www.tanzor.ru/" target="_blank">tanzor.ru</a>
-            <span class="text-[16px] leading-[140%]">09.2024</span>
           </div>
         </div>
-      </div>
+        <div class="solution__section container">
+          <div class="our__service-list-item">
+            <div class="direction">
+              <div class="list-item-top">
+                <span class="text-[28px] md:text-[22px]">/01</span>
+                <div class="max-w-[518px]">
+                  <h2 class="text-[28px] uppercase md:text-[22px]">Задача</h2>
 
-      <div class="container" data-theme="light">
-        <div class="order__container pt-[70px]">
-          <div class="order-info">
-            <h2 class="text-[52px] leading-[58px] !text-[#031422] md:text-[28px] md:leading-[30px]">
-              Обсудим проект?
-            </h2>
-            <div class="order-text">
-              <p class="text-[18px] !text-[#031422] md:text-[16px]">
-                Мы внимательно проанализируем ваш запрос и подготовим
-                индивидуальные рекомендации для максимального роста вашего
-                интернет-магазина на 1С-Битрикс
-              </p>
+                  <p class="text-[18px] md:text-[16px]">
+                    Превратить устаревший сайт в цифровой luxury-бутик —
+                    сохранить данные, но добавить эмоции, скорость и лояльность.
+                  </p>
+                  <p class="text-[18px] md:text-[16px]">
+                    <strong>Цель:</strong> сделать сайт-консультант, который
+                    помнит ваши вкусы, дарит бонусы и подарки, показывает
+                    стоимость доставки заранее и ведёт клиента как персональный
+                    парфюмер.
+                  </p>
+                </div>
+              </div>
+
+              <ul class="text-[18px] md:text-[16px]">
+                <li>Устаревший дизайн, не отражавший премиальность.</li>
+                <li>Перенос 20+ лет данных без потерь.</li>
+                <li>
+                  Неудобная авторизация — пароли забывались, корзины бросались.
+                </li>
+                <li>Нет гибкой бонусной системы и автоматических подарков.</li>
+                <li>Доставка не рассчитывалась онлайн.</li>
+                <li>
+                  Фильтры ограничены «мужской/женский», без нот, сезонов и
+                  настроений.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="our__service-list-item">
+            <div class="direction">
+              <div class="list-item-top">
+                <span class="text-[28px] md:text-[22px]">/02</span>
+                <div class="max-w-[518px]">
+                  <h2 class="text-[28px] uppercase md:text-[22px]">Решение</h2>
+
+                  <p class="text-[18px] md:text-[16px]">
+                    Интерфейс как парфюмерный орган — чувственный и точный.
+                    Технология — как швейцарские часы.
+                  </p>
+                </div>
+              </div>
+
+              <ul class="text-[18px] md:text-[16px]">
+                <li>
+                  Полный редизайн в стиле luxury:<br />
+                  • бархат, золото, стекло, плавные анимации<br />
+                  • главная — витрина бутика с видео и парящими флаконами<br />
+                  • шрифты с засечками, как у нишевых брендов
+                </li>
+                <li>
+                  Перенос и расширение legacy-данных:<br />
+                  • сохранены инфоблоки и фильтры<br />
+                  • новые фильтры по нотам, сезонам, настроениям, случаям<br />
+                  • «умный поиск»: «как Chanel №5, но с нотой ванили»
+                </li>
+                <li>
+                  Обзор функциональных возможностей позволил определить mvp
+                  и карту развития площадки
+                </li>
+                <li>
+                  Авторизация по звонку:<br />
+                  • клиент вводит номер → получает звонок → нажимает «1» → вход
+                  выполнен<br />
+                  • никакого пароля, капчи и СМС
+                </li>
+                <li>
+                  Гибкая бонусная система:<br />
+                  • бонусы за покупки, отзывы, дни рождения<br />
+                  • можно копить, комбинировать, дарить<br />
+                  • история бонусов как личный дневник ароматов
+                </li>
+                <li>
+                  Подарки за сумму:<br />
+                  • от 5 000 ₽ — выбор из 3 подарков<br />
+                  • от 10 000 ₽ — премиум-подарки (мини-флаконы, косметички,
+                  сертификаты)<br />
+                  • анимация открытия подарка при оформлении заказа
+                </li>
+                <li>
+                  Калькулятор доставки в реальном времени:<br />
+                  • интеграция с 7 службами доставки<br />
+                  • стоимость и сроки видны заранее, ещё в корзине<br />
+                  • опция подарочной упаковки с доплатой
+                </li>
+                <li>
+                  Архитектура на 1С-Битрикс Бизнес:<br />
+                  • готовность к пиковым нагрузкам (8 марта, Новый год)<br />
+                  • интеграция с CRM для персональных рекомендаций<br />
+                  • API под будущее мобильное приложение<br />
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="img-examples__section">
+            <img src="../assets/img/parfume/parfume-two/img.png" alt="" />
+            <img
+              src="../assets/img/parfume/parfume-two/parfume-two/img.png"
+              alt=""
+            />
+          </div>
+
+          <div class="our__service-list-item">
+            <div class="direction">
+              <div class="list-item-top">
+                <span class="text-[28px] md:text-[22px]">/03</span>
+                <div class="max-w-[518px]">
+                  <h2 class="text-[28px] uppercase md:text-[22px]">
+                    Результат
+                  </h2>
+
+                  <p class="text-[18px] md:text-[16px]">
+                    Сайт, который не просто продаёт — он дарит эмоции и
+                    возвращает клиентов.
+                  </p>
+                </div>
+              </div>
+
+              <ul class="text-[18px] md:text-[16px]">
+                <li>
+                  Конверсия выросла на 57% благодаря эмоциональному дизайну и
+                  фильтрам по настроению.
+                </li>
+                <li>
+                  Средний чек увеличился на 39% за счёт бонусов и подарков.
+                </li>
+                <li>
+                  Отказы на авторизации упали на 83%— звонок стал самым
+                  популярным способом входа.
+                </li>
+                <li>
+                  Повторные покупки выросли на 68% — клиенты возвращаются за
+                  бонусами и рекомендациями.
+                </li>
+                <li>
+                  Скорость оформления заказа сократилась на 70% — калькулятор
+                  доставки исключил «сюрпризы» на финальном шаг.
+                </li>
+                <li>
+                  Бонус-эффект: сайт стал «ароматическим гидом» — клиенты
+                  делятся карточками с нотами и настроениями в соцсетях, блогеры
+                  делают обзоры «как выбрать аромат на Parfum-Paradise».
+                </li>
+                <li class="list-style-none">
+                  Parfum-Paradise теперь не просто магазин. Это цифровой мир
+                  ароматов, где каждый клиент чувствует себя VIP-гостем.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="img-examples-2__section">
+          <div class="ex-image__wrapper">
+            <img
+              src="../assets/img/parfume/parfume-three/screenshot-222.png"
+              alt=""
+            />
+          </div>
+
+          <div class="ex-image__wrapper-row">
+            <div class="ex-image__wrapper">
+              <img
+                src="../assets/img/parfume/parfume-three/parfume-three/screenshot-234.png"
+                alt=""
+              />
             </div>
 
-            <div class="employee__wrapper">
-              <div class="avatar">
-                <img src="../assets/img/face-2.png" alt="" />
+            <div class="ex-image__wrapper">
+              <img
+                src="../assets/img/parfume/parfume-three/parfume-three/parfume-three/screenshot-546.png"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="our__service-list-item container !mb-[164px] !pb-0 !pt-[100px]"
+        >
+          <div class="direction">
+            <div class="list-item-top">
+              <span class="text-[28px] md:text-[22px]">/04</span>
+              <div class="max-w-[518px]">
+                <h2 class="text-[28px] uppercase md:text-[22px]">команда</h2>
+
+                <p class="text-[18px] md:text-[16px]">
+                  Для выполнения поставленных задач в короткие сроки
+                  сформировали проектную команду из технических специалистов,
+                  разработчиков, проджект-менеджера со стороны QScape
+                  и аналитиков со стороны заказчика
+                </p>
+              </div>
+            </div>
+
+            <ul class="grid__list">
+              <div>
+                <span class="case-name text-[20px] md:text-[16px]"
+                  >Александра Гришагина</span
+                >
+                <span class="case-position text-[16px]">UX/UI Designer</span>
               </div>
 
               <div>
-                <div class="employee__name">
-                  <span class="text-[18px] md:text-[16px] direction-color">Монахов Роман Робертович</span>
-                </div>
-                <div class="employee__position mt-[15px] direction-color">
-                  Генеральный директор
+                <span class="case-name text-[20px] md:text-[16px]"
+                  >Александр Ягодкин</span
+                >
+                <span class="case-position text-[16px]"
+                  >Frontend-разработчик</span
+                >
+              </div>
+
+              <div>
+                <span class="case-name text-[20px] md:text-[16px]"
+                  >Владислав Ворошилов</span
+                >
+                <span class="case-position text-[16px]"
+                  >Frontend-разработчик</span
+                >
+              </div>
+
+              <div>
+                <span class="case-name text-[20px] md:text-[16px]">
+                  Руслан Аскеров</span
+                >
+                <span class="case-position text-[16px]"
+                  >Backend-разработчик</span
+                >
+              </div>
+
+              <div>
+                <span class="case-name text-[20px] md:text-[16px]"
+                  >Артём Степанов</span
+                >
+                <span class="case-position text-[16px]"
+                  >Backend-разработчик</span
+                >
+              </div>
+
+              <div>
+                <span class="case-name text-[20px] md:text-[16px]"
+                  >Глеб Шевцов</span
+                >
+                <span class="case-position text-[16px]"
+                  >Backend-разработчик</span
+                >
+              </div>
+
+              <div>
+                <span class="case-name text-[20px] md:text-[16px]"
+                  >Ирина Латышева</span
+                >
+                <span class="case-position text-[16px]">Project Manager</span>
+              </div>
+            </ul>
+          </div>
+        </div>
+
+        <div class="case__title-bottom">
+          <div class="container">
+            <div class="link-to-main">
+              <a class="text-[18px] md:text-[16px]" href="../tanzor/"
+                >Следущий проект</a
+              >
+            </div>
+            <div class="case__title">
+              <h1
+                class="text-[52px] leading-[58px] md:text-[28px] md:leading-[32px]"
+              >
+                TANZOR
+              </h1>
+
+              <h2
+                class="text-[24px] uppercase leading-[32px] md:text-[16px] md:leading-[22px]"
+              >
+                Редизайн сайта с сохранением фирменного стиля и технологичным UX
+              </h2>
+            </div>
+
+            <div class="source">
+              <a
+                class="text-[16px] leading-[140%]"
+                href="https://www.tanzor.ru/"
+                target="_blank"
+                >tanzor.ru</a
+              >
+              <span class="text-[16px] leading-[140%]">09.2024</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="container" data-theme="light">
+          <div class="order__container pt-[70px]">
+            <div class="order-info">
+              <h2
+                class="text-[52px] leading-[58px] !text-[#031422] md:text-[28px] md:leading-[30px]"
+              >
+                Обсудим проект?
+              </h2>
+              <div class="order-text">
+                <p class="text-[18px] !text-[#031422] md:text-[16px]">
+                  Мы внимательно проанализируем ваш запрос и подготовим
+                  индивидуальные рекомендации для максимального роста вашего
+                  интернет-магазина на 1С-Битрикс
+                </p>
+              </div>
+
+              <div class="employee__wrapper">
+                <div class="avatar">
+                  <img src="../assets/img/face-2.png" alt="" />
                 </div>
 
-                <div class="employee__text mt-[15px]">
-                  <p class="text-[18px] md:text-[16px] direction-color">
-                    «Мы поможем выбрать оптимальное решение под ваш бизнес.»
-                  </p>
+                <div>
+                  <div class="employee__name">
+                    <span class="direction-color text-[18px] md:text-[16px]"
+                      >Монахов Роман Робертович</span
+                    >
+                  </div>
+                  <div class="employee__position direction-color mt-[15px]">
+                    Генеральный директор
+                  </div>
+
+                  <div class="employee__text mt-[15px]">
+                    <p class="direction-color text-[18px] md:text-[16px]">
+                      «Мы поможем выбрать оптимальное решение под ваш бизнес.»
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div class="order-form">
-            <form onsubmit="ym(104667110,'reachGoal','form_portfolio')">
-              <input class="border border-[#D0D0D0] !bg-white direction-color" type="text" name="name"
-                placeholder="Ваше имя" />
+            <div class="order-form">
+              <form onsubmit="ym(104667110,'reachGoal','form_portfolio')">
+                <input
+                  class="direction-color border border-[#D0D0D0] !bg-white"
+                  type="text"
+                  name="name"
+                  placeholder="Ваше имя"
+                />
 
-              <input class="border border-[#D0D0D0] !bg-white direction-color" type="tel" name="phone"
-                placeholder="Номер телефона" pattern="\+7\s?[\(][0-9]{3}[\)]\s?[0-9]{3}-[0-9]{2}-[0-9]{2}" required />
-              <input class="border border-[#D0D0D0] !bg-white direction-color" type="email" name="email"
-                placeholder="Email" />
+                <input
+                  class="direction-color border border-[#D0D0D0] !bg-white"
+                  type="tel"
+                  name="phone"
+                  placeholder="Номер телефона"
+                  pattern="\+7\s?[\(][0-9]{3}[\)]\s?[0-9]{3}-[0-9]{2}-[0-9]{2}"
+                  required
+                />
+                <input
+                  class="direction-color border border-[#D0D0D0] !bg-white"
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                />
 
-              <div class="link__variants">
-                <span class="text-[20px] !text-[#031422] md:text-[16px]">Как лучше связаться?</span>
-                <ul>
-                  <li>
-                    <input class="radio-input" type="radio" name="choice" id="choice4" value="4" />
-                    <label class="radio-label flex items-center gap-5" for="choice4">
-                      <span class="custom-radio"></span>
-                      <span class="radio-text text-[18px] !text-[#031422] md:text-[16px]">Telegram</span>
-                    </label>
-                  </li>
+                <div class="link__variants">
+                  <span class="text-[20px] !text-[#031422] md:text-[16px]"
+                    >Как лучше связаться?</span
+                  >
+                  <ul>
+                    <li>
+                      <input
+                        class="radio-input"
+                        type="radio"
+                        name="choice"
+                        id="choice4"
+                        value="4"
+                      />
+                      <label
+                        class="radio-label flex items-center gap-5"
+                        for="choice4"
+                      >
+                        <span class="custom-radio"></span>
+                        <span
+                          class="radio-text text-[18px] !text-[#031422] md:text-[16px]"
+                          >Telegram</span
+                        >
+                      </label>
+                    </li>
 
-                  <li>
-                    <input class="radio-input" type="radio" name="choice" id="choice5" value="5" />
-                    <label class="radio-label flex items-center gap-5" for="choice5">
-                      <span class="custom-radio"></span>
-                      <span class="radio-text text-[18px] !text-[#031422] md:text-[16px]">Whats App</span>
-                    </label>
-                  </li>
+                    <li>
+                      <input
+                        class="radio-input"
+                        type="radio"
+                        name="choice"
+                        id="choice5"
+                        value="5"
+                      />
+                      <label
+                        class="radio-label flex items-center gap-5"
+                        for="choice5"
+                      >
+                        <span class="custom-radio"></span>
+                        <span
+                          class="radio-text text-[18px] !text-[#031422] md:text-[16px]"
+                          >Whats App</span
+                        >
+                      </label>
+                    </li>
 
-                  <li>
-                    <input class="radio-input" type="radio" name="choice" id="choice6" value="6" />
-                    <label class="radio-label flex items-center gap-5" for="choice6">
-                      <span class="custom-radio"></span>
-                      <span class="radio-text color text-[18px] !text-[#031422] md:text-[16px]">Телефон</span>
-                    </label>
-                  </li>
-                </ul>
-              </div>
+                    <li>
+                      <input
+                        class="radio-input"
+                        type="radio"
+                        name="choice"
+                        id="choice6"
+                        value="6"
+                      />
+                      <label
+                        class="radio-label flex items-center gap-5"
+                        for="choice6"
+                      >
+                        <span class="custom-radio"></span>
+                        <span
+                          class="radio-text color text-[18px] !text-[#031422] md:text-[16px]"
+                          >Телефон</span
+                        >
+                      </label>
+                    </li>
+                  </ul>
+                </div>
 
-              <span class="btn-label text-[12px] !text-[#031422] md:text-[12px]">Нажимая кнопку, я даю согласие на
-                обработку моих персональных
-                данных</span>
-              <button id="open-popup" type="submit" class="text-[18px] md:text-[16px]">
-                Оставить заявкy
-                <img src="../assets/icons/arrowBtn.png" alt="" />
-              </button>
-            </form>
+                <span
+                  class="btn-label text-[12px] !text-[#031422] md:text-[12px]"
+                  >Нажимая кнопку, я даю согласие на обработку моих персональных
+                  данных</span
+                >
+                <button
+                  id="open-popup"
+                  type="submit"
+                  class="text-[18px] md:text-[16px]"
+                >
+                  Оставить заявкy
+                  <img src="../assets/icons/arrowBtn.png" alt="" />
+                </button>
+              </form>
 
-            <div class="popup-overlay-order" style="display: none;">
-              <div class="popup__success__order">
-                <div class="popup__success__order-content flex-col items-center gap-[12px]">
-                  <button class="popup-close__order" id="popup-close">
-                    <img src="../assets/icons/x.png" alt="" />
-                  </button>
-                  <h2
-                    class="text-[hsba(231, 25%, 27%, 1)] mx-auto max-w-[474px] text-center text-[28px] uppercase leading-[36px] md:text-[16px]">
-                    ваш запрос успешно отправлен
-                  </h2>
-                  <p
-                    class="md:text-16px text-[hsba(231, 25%, 27%, 1)] mb-[30px] mt-[30px] text-center text-[20px] leading-[150%]">
-                    В течение 30 минут наш менеджер вам перезвонит
-                  </p>
-                  <button type="submit"
-                    class="mx-auto mt-[27px] flex items-center justify-center rounded-[170px] bg-black px-[50px] py-[17px] text-center text-[18px] text-[#ececed] md:text-[16px]"
-                    id="popup-close">
-                    ок
-                  </button>
+              <div class="popup-overlay-order" style="display: none">
+                <div class="popup__success__order">
+                  <div
+                    class="popup__success__order-content flex-col items-center gap-[12px]"
+                  >
+                    <button class="popup-close__order" id="popup-close">
+                      <img src="../assets/icons/x.png" alt="" />
+                    </button>
+                    <h2
+                      class="text-[hsba(231, 25%, 27%, 1)] mx-auto max-w-[474px] text-center text-[28px] uppercase leading-[36px] md:text-[16px]"
+                    >
+                      ваш запрос успешно отправлен
+                    </h2>
+                    <p
+                      class="md:text-16px text-[hsba(231, 25%, 27%, 1)] mb-[30px] mt-[30px] text-center text-[20px] leading-[150%]"
+                    >
+                      В течение 30 минут наш менеджер вам перезвонит
+                    </p>
+                    <button
+                      type="submit"
+                      class="mx-auto mt-[27px] flex items-center justify-center rounded-[170px] bg-black px-[50px] py-[17px] text-center text-[18px] text-[#ececed] md:text-[16px]"
+                      id="popup-close"
+                    >
+                      ок
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </main>
+      </main>
 
-    @@include('../partials/footer.html')
-  </div>
+      @@include('../partials/footer.html')
+    </div>
 
-  <!-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> -->
 
-  <script>
-    function smoothScroll(el) {
-      const target = el?.getAttribute("data-scroll-to");
-      if (!target) return;
+    <script>
+      function smoothScroll(el) {
+        const target = el?.getAttribute("data-scroll-to");
+        if (!target) return;
 
-      if (location.pathname !== "/") {
-        // редиректим на главную с параметром
-        location.href = `/?scrollTo=${encodeURIComponent(target)}`;
-        return;
+        if (location.pathname !== "/") {
+          // редиректим на главную с параметром
+          location.href = `/?scrollTo=${encodeURIComponent(target)}`;
+          return;
+        }
+
+        window.history.pushState(null, null, `#${target}`);
+
+        const tagetElement = document.getElementById(target);
+        if (tagetElement) {
+          targetElement.scrollIntoView({ behavior: "smooth" });
+        }
       }
+    </script>
 
-      window.history.pushState(null, null, `#${target}`);
-
-      const tagetElement = document.getElementById(target);
-      if (tagetElement) {
-        targetElement.scrollIntoView({ behavior: "smooth" });
-      }
-    }
-  </script>
-
-  <script type="module" src="../js/script.js"></script>
-  <script src="../js/mailer.js"></script>
-</body>
-
+    <script type="module" src="../js/script.js"></script>
+    <script src="../js/mailer.js"></script>
+  </body>
 </html>

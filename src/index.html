@@ -32,46 +32,57 @@
   </noscript>
   <!-- /Yandex.Metrika counter -->
 
+  <!-- UTM -->
   <script>
-    (function() {
-      const utmKeys = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
-    
+    (function () {
+      const utmKeys = [
+        "utm_source",
+        "utm_medium",
+        "utm_campaign",
+        "utm_term",
+        "utm_content",
+      ];
+
       // 1️⃣ Сохраняем utm из URL в sessionStorage
       const params = new URLSearchParams(window.location.search);
-      utmKeys.forEach(key => {
+      utmKeys.forEach((key) => {
         const value = params.get(key);
         if (value) {
           sessionStorage.setItem(key, value);
         }
       });
-    
+
       // 2️⃣ При клике по ссылке добавляем utm обратно в адрес
-      document.addEventListener("click", function(e) {
-        const link = e.target.closest("a");
-        if (!link) return;
-    
-        // Проверяем: внутренняя ли ссылка (чтобы не трогать внешние)
-        const isInternal = link.hostname === window.location.hostname;
-        if (!isInternal || link.href.includes("#")) return;
-    
-        // Создаём объект URL для редактирования
-        const url = new URL(link.href);
-    
-        utmKeys.forEach(key => {
-          const saved = sessionStorage.getItem(key);
-          if (saved && !url.searchParams.has(key)) {
-            url.searchParams.set(key, saved);
-          }
-        });
-    
-        // Обновляем ссылку перед переходом
-        link.href = url.toString();
-      }, true);
-    
+      document.addEventListener(
+        "click",
+        function (e) {
+          const link = e.target.closest("a");
+          if (!link) return;
+
+          // Проверяем: внутренняя ли ссылка (чтобы не трогать внешние)
+          const isInternal = link.hostname === window.location.hostname;
+          if (!isInternal || link.href.includes("#")) return;
+
+          // Создаём объект URL для редактирования
+          const url = new URL(link.href);
+
+          utmKeys.forEach((key) => {
+            const saved = sessionStorage.getItem(key);
+            if (saved && !url.searchParams.has(key)) {
+              url.searchParams.set(key, saved);
+            }
+          });
+
+          // Обновляем ссылку перед переходом
+          link.href = url.toString();
+        },
+        true,
+      );
+
       // 3️⃣ (опционально) Восстанавливаем utm в URL, если их нет
       const currentUrl = new URL(window.location.href);
       let changed = false;
-      utmKeys.forEach(key => {
+      utmKeys.forEach((key) => {
         const saved = sessionStorage.getItem(key);
         if (saved && !currentUrl.searchParams.has(key)) {
           currentUrl.searchParams.set(key, saved);
@@ -82,10 +93,7 @@
         window.history.replaceState({}, "", currentUrl);
       }
     })();
-    </script>
-    
-    
-
+  </script>
 </head>
 
 <body>

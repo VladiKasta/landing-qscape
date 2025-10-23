@@ -7,28 +7,122 @@
 
     <title>Разработка корпоративного сайта Tanzor</title>
 
-      <link rel="icon" href="../assets/img/Favicon-ex.png" type="image/x-icon">
+    <link rel="icon" href="../assets/img/Favicon-ex.png" type="image/x-icon" />
     <link rel="stylesheet" href="../css/pages-style/index.css" />
     <link rel="stylesheet" href="../css/media.css" />
 
-      <!-- Yandex.Metrika counter -->
-      <script type="text/javascript">
-          (function(m,e,t,r,i,k,a){
-              m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-              m[i].l=1*new Date();
-              for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-              k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-          })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=104667110', 'ym');
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+      (function (m, e, t, r, i, k, a) {
+        m[i] =
+          m[i] ||
+          function () {
+            (m[i].a = m[i].a || []).push(arguments);
+          };
+        m[i].l = 1 * new Date();
+        for (var j = 0; j < document.scripts.length; j++) {
+          if (document.scripts[j].src === r) {
+            return;
+          }
+        }
+        ((k = e.createElement(t)),
+          (a = e.getElementsByTagName(t)[0]),
+          (k.async = 1),
+          (k.src = r),
+          a.parentNode.insertBefore(k, a));
+      })(
+        window,
+        document,
+        "script",
+        "https://mc.yandex.ru/metrika/tag.js?id=104667110",
+        "ym",
+      );
 
-          ym(104667110, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
-      </script>
-      <noscript><div><img src="https://mc.yandex.ru/watch/104667110" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-      <!-- /Yandex.Metrika counter -->
+      ym(104667110, "init", {
+        ssr: true,
+        webvisor: true,
+        clickmap: true,
+        ecommerce: "dataLayer",
+        accurateTrackBounce: true,
+        trackLinks: true,
+      });
+    </script>
+    <noscript
+      ><div>
+        <img
+          src="https://mc.yandex.ru/watch/104667110"
+          style="position: absolute; left: -9999px"
+          alt=""
+        /></div
+    ></noscript>
+    <!-- /Yandex.Metrika counter -->
+
+    <!-- UTM -->
+    <script>
+      (function () {
+        const utmKeys = [
+          "utm_source",
+          "utm_medium",
+          "utm_campaign",
+          "utm_term",
+          "utm_content",
+        ];
+
+        // 1️⃣ Сохраняем utm из URL в sessionStorage
+        const params = new URLSearchParams(window.location.search);
+        utmKeys.forEach((key) => {
+          const value = params.get(key);
+          if (value) {
+            sessionStorage.setItem(key, value);
+          }
+        });
+
+        // 2️⃣ При клике по ссылке добавляем utm обратно в адрес
+        document.addEventListener(
+          "click",
+          function (e) {
+            const link = e.target.closest("a");
+            if (!link) return;
+
+            // Проверяем: внутренняя ли ссылка (чтобы не трогать внешние)
+            const isInternal = link.hostname === window.location.hostname;
+            if (!isInternal || link.href.includes("#")) return;
+
+            // Создаём объект URL для редактирования
+            const url = new URL(link.href);
+
+            utmKeys.forEach((key) => {
+              const saved = sessionStorage.getItem(key);
+              if (saved && !url.searchParams.has(key)) {
+                url.searchParams.set(key, saved);
+              }
+            });
+
+            // Обновляем ссылку перед переходом
+            link.href = url.toString();
+          },
+          true,
+        );
+
+        // 3️⃣ (опционально) Восстанавливаем utm в URL, если их нет
+        const currentUrl = new URL(window.location.href);
+        let changed = false;
+        utmKeys.forEach((key) => {
+          const saved = sessionStorage.getItem(key);
+          if (saved && !currentUrl.searchParams.has(key)) {
+            currentUrl.searchParams.set(key, saved);
+            changed = true;
+          }
+        });
+        if (changed) {
+          window.history.replaceState({}, "", currentUrl);
+        }
+      })();
+    </script>
   </head>
   <body>
     <div class="wrapper">
-      @@include('../partials/header.html')
-        @@include('../partials/burger.html')
+      @@include('../partials/header.html') @@include('../partials/burger.html')
 
       <main class="main">
         <div class="container-bg-grad" data-theme="white">
@@ -57,18 +151,24 @@
             </div>
 
             <div class="source">
-              <a class="text-[16px] leading-[140%]" href="https://www.tanzor.ru/" target="_blank">tanzor.ru</a>
+              <a
+                class="text-[16px] leading-[140%]"
+                href="https://www.tanzor.ru/"
+                target="_blank"
+                >tanzor.ru</a
+              >
               <span class="text-[16px] leading-[140%]">09.2024</span>
             </div>
 
             <div class="case__text">
               <p class="mt-[65px] text-[18px] md:mt-0 md:text-[16px]">
-                С 1994 года компания «ТАНЗОР» занимается разработкой и производством
-                специализированных материалов: от УФ-лаков и красок до биоразлагаемых
-                покрытий.Старый сайт компании не справлялся с своей задачей. Его дизайн
-                и структура устарели, из-за чего посетители не могли в полной мере
-                оценить expertise и достижения компании.
-                <br>
+                С 1994 года компания «ТАНЗОР» занимается разработкой и
+                производством специализированных материалов: от УФ-лаков и
+                красок до биоразлагаемых покрытий.Старый сайт компании не
+                справлялся с своей задачей. Его дизайн и структура устарели,
+                из-за чего посетители не могли в полной мере оценить expertise и
+                достижения компании.
+                <br />
                 Вместо косметического редизайна мы создали принципиально новый
                 онлайн-ресурс — удобный и современный инструмент, который точно
                 представляет деятельность и уровень «ТАНЗОРА».
@@ -98,32 +198,32 @@
                   <h2 class="text-[28px] uppercase md:text-[22px]">Задача</h2>
 
                   <p class="text-[18px] md:text-[16px]">
-                    Создать современный и функциональный сайт, который будет удобен
-                    для ключевых специалистов: инженеров, закупщиков и экологов.
-                    Мы стремились, чтобы каждый нашел необходимую информацию быстро
-                    и легко, а сам ресурс соответствовал международным стандартам.
+                    Создать современный и функциональный сайт, который будет
+                    удобен для ключевых специалистов: инженеров, закупщиков и
+                    экологов. Мы стремились, чтобы каждый нашел необходимую
+                    информацию быстро и легко, а сам ресурс соответствовал
+                    международным стандартам.
                   </p>
                   <p class="text-[18px] md:text-[16px]">
-                    <strong>Цель:</strong> сделать сайт не «корпоративной визиткой», а инженерным
-                    порталом — где клиент за 3 клика находит нужный лак, понимает
-                    его применение, видит экологический след и оформляет заказ
-                    как профессионал.
+                    <strong>Цель:</strong> сделать сайт не «корпоративной
+                    визиткой», а инженерным порталом — где клиент за 3 клика
+                    находит нужный лак, понимает его применение, видит
+                    экологический след и оформляет заказ как профессионал.
                   </p>
                 </div>
               </div>
 
               <ul class="text-[18px] md:text-[16px]">
                 <li class="list-style-none">
-                  ТАНЗОР работает с клиентами, для которых важны не картинки,
-                  а спецификации, не «скидки», а совместимость и экологичность.
-                  Но сайт этого не отражал:
+                  ТАНЗОР работает с клиентами, для которых важны не картинки, а
+                  спецификации, не «скидки», а совместимость и экологичность. Но
+                  сайт этого не отражал:
                 </li>
-                  <li class="list-style-none">
-                      Но сайт этого не отражал:
-                  </li>
+                <li class="list-style-none">Но сайт этого не отражал:</li>
                 <li>
-                  Дизайн устарел — не соответствовал статусу компании, участвовавшей
-                  в Drupa и создавшей первое в России УФ-производство.
+                  Дизайн устарел — не соответствовал статусу компании,
+                  участвовавшей в Drupa и создавшей первое в России
+                  УФ-производство.
                 </li>
                 <li>
                   Нет чёткой визуальной иерархии: 30 лет истории, 9 городов, 4
@@ -131,19 +231,21 @@
                 </li>
                 <li>
                   Фильтры товаров — не заточены под технические параметры: тип
-                  печати, вязкость, совместимость с оборудованием, экологические сертификаты.
+                  печати, вязкость, совместимость с оборудованием, экологические
+                  сертификаты.
                 </li>
                 <li>
-                  Личный кабинет — как для розницы: нет разделения B2B (спецификации,
-                  отсрочки, аналитика) и B2C (история, избранное).
+                  Личный кабинет — как для розницы: нет разделения B2B
+                  (спецификации, отсрочки, аналитика) и B2C (история,
+                  избранное).
                 </li>
                 <li>
-                  Оформление заказа — без технических подсказок: «Этот лак совместим с
-                  вашим станком?», «Нужна ли дополнительная сушка?»
+                  Оформление заказа — без технических подсказок: «Этот лак
+                  совместим с вашим станком?», «Нужна ли дополнительная сушка?»
                 </li>
                 <li>
-                  Нет визуального акцента на экологичности — хотя это ключевое конкурентное
-                  преимущество.
+                  Нет визуального акцента на экологичности — хотя это ключевое
+                  конкурентное преимущество.
                 </li>
               </ul>
             </div>
@@ -157,9 +259,10 @@
                   <h2 class="text-[28px] uppercase md:text-[22px]">Решение</h2>
 
                   <p class="text-[18px] md:text-[16px]">
-                    Мы разработали интерфейс, который сочетает в себе три ключевые идеи:
-                    фундаментальность научного журнала, структурированность промышленного
-                    каталога и принципиальность экологического манифеста. Все это воплощено
+                    Мы разработали интерфейс, который сочетает в себе три
+                    ключевые идеи: фундаментальность научного журнала,
+                    структурированность промышленного каталога и
+                    принципиальность экологического манифеста. Все это воплощено
                     в единой, гармоничной дизайн-системе.
                   </p>
                 </div>
@@ -167,97 +270,108 @@
 
               <ul class="text-[18px] md:text-[16px]">
                 <li class="list-style-none">
-                  Каждый элемент интерфейса был продуман для решения конкретных бизнес-задач и передачи ценностей бренда.
+                  Каждый элемент интерфейса был продуман для решения конкретных
+                  бизнес-задач и передачи ценностей бренда.
                 </li>
                 <li>
-                  <strong>Главная страница — как панель управления инновациями:</strong>
+                  <strong
+                    >Главная страница — как панель управления
+                    инновациями:</strong
+                  >
                 </li>
                 <li>
                   Лента достижений: «1996 — первые УФ-лаки в России», «2021 —
-                  первое производство УФ-красок полного цикла» — с анимированными
-                  иконками и ссылками на подробности.
+                  первое производство УФ-красок полного цикла» — с
+                  анимированными иконками и ссылками на подробности.
                 </li>
                 <li>
                   Интерактивная карта сети продаж — с фильтром по типу продукции
                   и наличию лабораторий.
                 </li>
                 <li>
-                  Блок «Безотходное производство» — с видео-визуализацией цикла переработки.
+                  Блок «Безотходное производство» — с видео-визуализацией цикла
+                  переработки.
                 </li>
                 <li>
                   <strong>Фирменный стиль:</strong>
                 </li>
                 <li>
-                  Сохранена корпоративная палитра (графит, глубокий синий, акценты меди), но
-                  обновлена типографика — более строгая, техническая.
+                  Сохранена корпоративная палитра (графит, глубокий синий,
+                  акценты меди), но обновлена типографика — более строгая,
+                  техническая.
                 </li>
                 <li>
-                  Иконографика — как в научных журналах: схемы, молекулы, графики вязкости,
-                  значки экологичности.
+                  Иконографика — как в научных журналах: схемы, молекулы,
+                  графики вязкости, значки экологичности.
                 </li>
                 <li>
-                  Анимации используются не для украшения, а для объяснения сложных процессов:
-                  как происходит УФ-отверждение или разлагается биопокрытие.
+                  Анимации используются не для украшения, а для объяснения
+                  сложных процессов: как происходит УФ-отверждение или
+                  разлагается биопокрытие.
                 </li>
 
                 <li>
-                  <strong>Фильтрация товаров — как подбор реагентов в лаборатории:</strong>
+                  <strong
+                    >Фильтрация товаров — как подбор реагентов в
+                    лаборатории:</strong
+                  >
                 </li>
                 <li>
-                   Группировка по: типу печати (офсет, флексо, цифровая), оборудованию
-                  (Heidelberg, Sakata INX), вязкости, блеску, экологическому сертификату (REACH,
-                  GOTS).
+                  Группировка по: типу печати (офсет, флексо, цифровая),
+                  оборудованию (Heidelberg, Sakata INX), вязкости, блеску,
+                  экологическому сертификату (REACH, GOTS).
                 </li>
                 <li>
-                  «Умные» подсказки: «Этот лак требует сушки при 80°C», «Не совместим с
-                  оборудованием X».
+                  «Умные» подсказки: «Этот лак требует сушки при 80°C», «Не
+                  совместим с оборудованием X».
                 </li>
                 <li>
-                  Режим «Сравнить 4 позиции» — с таблицей технических характеристик и экологического
-                  следа.
+                  Режим «Сравнить 4 позиции» — с таблицей технических
+                  характеристик и экологического следа.
                 </li>
 
                 <li>
                   <strong>Личный кабинет (B2B / B2C):</strong>
                 </li>
                 <li>
-                   Для корпоративных клиентов (B2B): доступна история заказов и спецификаций,
-                  настройка отсрочки платежа, выгрузка данных в Excel и PDF, а также API для
-                  интеграции с корпоративными ERP-системами.
+                  Для корпоративных клиентов (B2B): доступна история заказов и
+                  спецификаций, настройка отсрочки платежа, выгрузка данных в
+                  Excel и PDF, а также API для интеграции с корпоративными
+                  ERP-системами.
                 </li>
                 <li>
-                  Для частных клиентов (B2C): реализованы стандартные функции: избранное,
-                  быстрый повтор
-                  заказа и подписка на уведомления о новинках.
+                  Для частных клиентов (B2C): реализованы стандартные функции:
+                  избранное, быстрый повтор заказа и подписка на уведомления о
+                  новинках.
                 </li>
 
                 <li>
                   <strong>Оформление заказа с техническим аудитом:</strong>
                 </li>
                 <li>
-                  Чек-лист совместимости: «У вас есть УФ-сушилка?», «Нужна консультация
-                  по нанесению?»
+                  Чек-лист совместимости: «У вас есть УФ-сушилка?», «Нужна
+                  консультация по нанесению?»
                 </li>
                 <li>
-                  Блок «Экологический след этого заказа» — с расчётом CO₂ и переработанных
-                  материалов.
+                  Блок «Экологический след этого заказа» — с расчётом CO₂ и
+                  переработанных материалов.
                 </li>
-                <li>
-                  Возможность прикрепить техзадание или ТЗ от дизайнера.
-                </li>
+                <li>Возможность прикрепить техзадание или ТЗ от дизайнера.</li>
 
                 <li>
-                  <strong>Страница «Нам не всё равно» в формате цифрового манифеста:</strong>
+                  <strong
+                    >Страница «Нам не всё равно» в формате цифрового
+                    манифеста:</strong
+                  >
+                </li>
+                <li>Интерактивный таймлайн экологических инициатив.</li>
+                <li>
+                  Видео интервью с химиками: «Как мы создали биоразлагаемое
+                  покрытие».
                 </li>
                 <li>
-                  Интерактивный таймлайн экологических инициатив.
-                </li>
-                <li>
-                  Видео интервью с химиками: «Как мы создали биоразлагаемое покрытие».
-                </li>
-                <li>
-                  Наглядное сравнение «Пластик vs. Наше покрытие» дополнено анимацией, показывающей разницу в
-                  скорости разложения.
+                  Наглядное сравнение «Пластик vs. Наше покрытие» дополнено
+                  анимацией, показывающей разницу в скорости разложения.
                 </li>
               </ul>
             </div>
@@ -265,7 +379,10 @@
 
           <div class="img-examples__section">
             <img src="../assets/img/tanzor/tanzor-two/img.png" alt="" />
-            <img src="../assets/img/tanzor/tanzor-two/tanzor-two/img.png" alt="" />
+            <img
+              src="../assets/img/tanzor/tanzor-two/tanzor-two/img.png"
+              alt=""
+            />
           </div>
 
           <div class="our__service-list-item">
@@ -278,38 +395,40 @@
                   </h2>
 
                   <p class="text-[18px] md:text-[16px]">
-                    Нам удалось создать не просто новый дизайн, а полностью изменить восприятие
-                    бренда. ТАНЗОР теперь позиционируется не как поставщик, а как лидер, формирующий
-                    будущее всей индустрии.
+                    Нам удалось создать не просто новый дизайн, а полностью
+                    изменить восприятие бренда. ТАНЗОР теперь позиционируется не
+                    как поставщик, а как лидер, формирующий будущее всей
+                    индустрии.
                   </p>
                 </div>
               </div>
 
               <ul class="text-[18px] md:text-[16px]">
+                <li class="list-style-none">Описание результата:</li>
+                <li>
+                  Узнаваемость бренда в digital-среде выросла на 70% — за счёт
+                  сохранения ДНК и современной подачи.
+                </li>
+                <li>
+                  Время подбора товара сократилось на 65% — благодаря «умным»
+                  фильтрам и техническим подсказкам.
+                </li>
+                <li>
+                  Рост запросов на экологичные решения — на 52% — за счёт
+                  визуализации и прозрачности «зелёных» технологий.
+                </li>
+                <li>
+                  Дополнительный эффект реализации: сайт стал использоваться как
+                  учебное пособие — преподаватели полиграфических вузов
+                  направляют студентов «изучать фильтры на ТАНЗОР — там лучше,
+                  чем в методичках». Партнёры (Sakata INX, drupa) начали
+                  цитировать дизайн как «новый стандарт B2B в индустрии».
+                </li>
                 <li class="list-style-none">
-                  Описание результата:
-                </li>
-                <li>
-                 Узнаваемость бренда в digital-среде выросла на 70% — за счёт сохранения ДНК
-                  и современной подачи.
-                </li>
-                <li>
-                 Время подбора товара сократилось на 65% — благодаря «умным» фильтрам и техническим
-                  подсказкам.
-                </li>
-                <li>
-                  Рост запросов на экологичные решения — на 52% — за счёт визуализации и прозрачности
-                  «зелёных» технологий.
-                </li>
-                <li>Дополнительный эффект реализации: сайт стал использоваться как учебное
-                  пособие — преподаватели полиграфических вузов направляют студентов «изучать
-                  фильтры на ТАНЗОР — там лучше, чем в методичках». Партнёры (Sakata INX, drupa)
-                  начали цитировать дизайн как «новый стандарт B2B в индустрии».
-                </li>
-                <li class="list-style-none">
-                  ТАНЗОР теперь не просто компания. Это цифровой авангард промышленной науки —
-                  где каждый пиксель несёт смысл, каждый фильтр — точность, а каждый раздел —
-                  ответственность перед будущим.
+                  ТАНЗОР теперь не просто компания. Это цифровой авангард
+                  промышленной науки — где каждый пиксель несёт смысл, каждый
+                  фильтр — точность, а каждый раздел — ответственность перед
+                  будущим.
                 </li>
               </ul>
             </div>
@@ -363,17 +482,15 @@
                 <span class="case-name text-[20px] md:text-[16px]"
                   >Александра Гришагина</span
                 >
-                <span class="case-position text-[16px]"
-                  >UX/UI Designer</span
-                >
+                <span class="case-position text-[16px]">UX/UI Designer</span>
               </div>
 
               <div>
                 <span class="case-name text-[20px] md:text-[16px]"
                   >Владислав Ворошилов</span
                 >
-                <span class="case-position text-[16px]"
-                  > Frontend-разработчик</span
+                <span class="case-position text-[16px]">
+                  Frontend-разработчик</span
                 >
               </div>
 
@@ -381,12 +498,14 @@
                 <span class="case-name text-[20px] md:text-[16px]"
                   >Глеб Шевцов</span
                 >
-                <span class="case-position text-[16px]">Backend-разработчик</span>
+                <span class="case-position text-[16px]"
+                  >Backend-разработчик</span
+                >
               </div>
 
               <div>
-                <span class="case-name text-[20px] md:text-[16px]"
-                > Ирина Латышева</span
+                <span class="case-name text-[20px] md:text-[16px]">
+                  Ирина Латышева</span
                 >
                 <span class="case-position text-[16px]"> Project Manager</span>
               </div>
@@ -411,12 +530,18 @@
               <h2
                 class="text-[24px] uppercase leading-[32px] md:text-[16px] md:leading-[22px]"
               >
-                B2B-маркетплейс для лидера алмазного инструмента с автоматизацией
+                B2B-маркетплейс для лидера алмазного инструмента с
+                автоматизацией
               </h2>
             </div>
 
             <div class="source">
-              <a class="text-[16px] leading-[140%]" href="http://terekalmaz.qscape.ru/" target="_blank">terekalmaz.ru</a>
+              <a
+                class="text-[16px] leading-[140%]"
+                href="http://terekalmaz.qscape.ru/"
+                target="_blank"
+                >terekalmaz.ru</a
+              >
               <span class="text-[16px] leading-[140%]">06.2025</span>
             </div>
           </div>
@@ -445,16 +570,16 @@
 
                 <div>
                   <div class="employee__name">
-                    <span class="text-[18px] md:text-[16px] direction-color"
-                    >Монахов Роман Робертович</span
+                    <span class="direction-color text-[18px] md:text-[16px]"
+                      >Монахов Роман Робертович</span
                     >
                   </div>
-                  <div class="employee__position mt-[15px] direction-color">
+                  <div class="employee__position direction-color mt-[15px]">
                     Генеральный директор
                   </div>
 
                   <div class="employee__text mt-[15px]">
-                    <p class="text-[18px] md:text-[16px] direction-color">
+                    <p class="direction-color text-[18px] md:text-[16px]">
                       «Мы поможем выбрать оптимальное решение под ваш бизнес.»
                     </p>
                   </div>
@@ -465,25 +590,25 @@
             <div class="order-form">
               <form onsubmit="ym(104667110,'reachGoal','form_portfolio')">
                 <input
-                        class="border border-[#D0D0D0] !bg-white direction-color"
-                        type="text"
-                        name="name"
-                        placeholder="Ваше имя"
+                  class="direction-color border border-[#D0D0D0] !bg-white"
+                  type="text"
+                  name="name"
+                  placeholder="Ваше имя"
                 />
 
                 <input
-                        class="border border-[#D0D0D0] !bg-white direction-color"
-                        type="tel"
-                        name="phone"
-                        placeholder="Номер телефона"
-                        pattern="\+7\s?[\(][0-9]{3}[\)]\s?[0-9]{3}-[0-9]{2}-[0-9]{2}"
-                        required
+                  class="direction-color border border-[#D0D0D0] !bg-white"
+                  type="tel"
+                  name="phone"
+                  placeholder="Номер телефона"
+                  pattern="\+7\s?[\(][0-9]{3}[\)]\s?[0-9]{3}-[0-9]{2}-[0-9]{2}"
+                  required
                 />
                 <input
-                        class="border border-[#D0D0D0] !bg-white direction-color"
-                        type="email"
-                        name="email"
-                        placeholder="Email"
+                  class="direction-color border border-[#D0D0D0] !bg-white"
+                  type="email"
+                  name="email"
+                  placeholder="Email"
                 />
 
                 <div class="link__variants">
@@ -493,60 +618,60 @@
                   <ul>
                     <li>
                       <input
-                              class="radio-input"
-                              type="radio"
-                              name="choice"
-                              id="choice4"
-                              value="4"
+                        class="radio-input"
+                        type="radio"
+                        name="choice"
+                        id="choice4"
+                        value="4"
                       />
                       <label
-                              class="radio-label flex items-center gap-5"
-                              for="choice4"
+                        class="radio-label flex items-center gap-5"
+                        for="choice4"
                       >
                         <span class="custom-radio"></span>
                         <span
-                                class="radio-text text-[18px] !text-[#031422] md:text-[16px]"
-                        >Telegram</span
+                          class="radio-text text-[18px] !text-[#031422] md:text-[16px]"
+                          >Telegram</span
                         >
                       </label>
                     </li>
 
                     <li>
                       <input
-                              class="radio-input"
-                              type="radio"
-                              name="choice"
-                              id="choice5"
-                              value="5"
+                        class="radio-input"
+                        type="radio"
+                        name="choice"
+                        id="choice5"
+                        value="5"
                       />
                       <label
-                              class="radio-label flex items-center gap-5"
-                              for="choice5"
+                        class="radio-label flex items-center gap-5"
+                        for="choice5"
                       >
                         <span class="custom-radio"></span>
                         <span
-                                class="radio-text text-[18px] !text-[#031422] md:text-[16px]"
-                        >Whats App</span
+                          class="radio-text text-[18px] !text-[#031422] md:text-[16px]"
+                          >Whats App</span
                         >
                       </label>
                     </li>
 
                     <li>
                       <input
-                              class="radio-input"
-                              type="radio"
-                              name="choice"
-                              id="choice6"
-                              value="6"
+                        class="radio-input"
+                        type="radio"
+                        name="choice"
+                        id="choice6"
+                        value="6"
                       />
                       <label
-                              class="radio-label flex items-center gap-5"
-                              for="choice6"
+                        class="radio-label flex items-center gap-5"
+                        for="choice6"
                       >
                         <span class="custom-radio"></span>
                         <span
-                                class="radio-text color text-[18px] !text-[#031422] md:text-[16px]"
-                        >Телефон</span
+                          class="radio-text color text-[18px] !text-[#031422] md:text-[16px]"
+                          >Телефон</span
                         >
                       </label>
                     </li>
@@ -567,24 +692,34 @@
                   <img src="../assets/icons/arrowBtn.png" alt="" />
                 </button>
               </form>
-                <div class="popup-overlay-order" style="display: none;">
-                    <div class="popup__success__order">
-                        <div class="popup__success__order-content flex-col items-center gap-[12px]">
-                            <button class="popup-close__order" id="popup-close">
-                                <img src="../assets/icons/x.png" alt="" />
-                            </button>
-                            <h2 class="text-[hsba(231, 25%, 27%, 1)] mx-auto max-w-[474px] text-center text-[28px] uppercase leading-[36px] md:text-[16px]">
-                                ваш запрос успешно отправлен
-                            </h2>
-                            <p class="md:text-16px text-[hsba(231, 25%, 27%, 1)] mb-[30px] mt-[30px] text-center text-[20px] leading-[150%]">
-                                В течение 30 минут наш менеджер вам перезвонит
-                            </p>
-                            <button type="submit" class="mx-auto mt-[27px] flex items-center justify-center rounded-[170px] bg-black px-[50px] py-[17px] text-center text-[18px] text-[#ececed] md:text-[16px]" id="popup-close">
-                                ок
-                            </button>
-                        </div>
-                    </div>
+              <div class="popup-overlay-order" style="display: none">
+                <div class="popup__success__order">
+                  <div
+                    class="popup__success__order-content flex-col items-center gap-[12px]"
+                  >
+                    <button class="popup-close__order" id="popup-close">
+                      <img src="../assets/icons/x.png" alt="" />
+                    </button>
+                    <h2
+                      class="text-[hsba(231, 25%, 27%, 1)] mx-auto max-w-[474px] text-center text-[28px] uppercase leading-[36px] md:text-[16px]"
+                    >
+                      ваш запрос успешно отправлен
+                    </h2>
+                    <p
+                      class="md:text-16px text-[hsba(231, 25%, 27%, 1)] mb-[30px] mt-[30px] text-center text-[20px] leading-[150%]"
+                    >
+                      В течение 30 минут наш менеджер вам перезвонит
+                    </p>
+                    <button
+                      type="submit"
+                      class="mx-auto mt-[27px] flex items-center justify-center rounded-[170px] bg-black px-[50px] py-[17px] text-center text-[18px] text-[#ececed] md:text-[16px]"
+                      id="popup-close"
+                    >
+                      ок
+                    </button>
+                  </div>
                 </div>
+              </div>
             </div>
           </div>
         </div>
