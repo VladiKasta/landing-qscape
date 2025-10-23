@@ -9,20 +9,20 @@ import popupTrigger from "./popup.js";
 import initSwipers from "./swipers.js";
 
 document.addEventListener("DOMContentLoaded", function () {
-    headerIntersection();
-    burgerTrigger();
-    popupTrigger();
-    inputMask();
-    dropdownTrigger();
-    accordion();
-    initSwipers();
-    animateStats();
-    animateFirstBall();
-    animateTextBlock();
-    circleAnimation();
-    animateSecondBall();
-    initCompareAccordion();
-    backLink();
+  headerIntersection();
+  burgerTrigger();
+  popupTrigger();
+  inputMask();
+  dropdownTrigger();
+  accordion();
+  initSwipers();
+  animateStats();
+  animateFirstBall();
+  animateTextBlock();
+  circleAnimation();
+  animateSecondBall();
+  initCompareAccordion();
+  backLink();
 
   function backLink() {
     if (!document.querySelectorAll('a[data-action="back"]')) return;
@@ -130,44 +130,46 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }*/
 
-    function initCompareAccordion() {
-        const container = document.querySelector('.hidden-blocks-container');
-        const button = document.querySelector('.accordion-header-detail');
-        const buttonText = button.querySelector('p');
+  function initCompareAccordion() {
+    const container = document.querySelector(".hidden-blocks-container");
+    const button = document.querySelector(".accordion-header-detail");
+    const buttonText = button.querySelector("p");
 
-        if (!container || !button) {
-            console.error('Элементы аккордеона не найдены');
-            return;
-        }
-
-        let isExpanded = false;
-
-        function toggleAccordion() {
-            if (!isExpanded) {
-                // Разворачиваем контейнер
-                const hiddenBlocks = container.querySelectorAll('.compare__headers-detail');
-                const blockHeight = hiddenBlocks[0]?.offsetHeight + 40; // высота блока + margin
-                const totalHeight = hiddenBlocks.length * blockHeight;
-
-                container.style.maxHeight = `${totalHeight}px`;
-                container.classList.add('expanded');
-                button.classList.add('expanded');
-                buttonText.textContent = 'Скрыть детали';
-                isExpanded = true;
-            } else {
-                const startHeight = container.scrollHeight;
-                const scrollOffset = startHeight; // Вычисляем высоту для компенсации
-
-                container.style.maxHeight = '0';
-                container.classList.remove('expanded');
-                button.classList.remove('expanded');
-                buttonText.textContent = 'Показать больше деталей';
-
-                window.scrollBy({ top: -scrollOffset, behavior: 'smooth' });
-                isExpanded = false;
-            }
-        }
-
-        button.addEventListener('click', toggleAccordion);
+    if (!container || !button) {
+      console.error("Элементы аккордеона не найдены");
+      return;
     }
+
+    let isExpanded = false;
+
+    function toggleAccordion() {
+      if (!isExpanded) {
+        // Разворачиваем контейнер
+        const hiddenBlocks = container.querySelectorAll(
+          ".compare__headers-detail",
+        );
+        const blockHeight = hiddenBlocks[0]?.offsetHeight + 40; // высота блока + margin
+        const totalHeight = hiddenBlocks.length * blockHeight;
+
+        container.style.maxHeight = `${totalHeight}px`;
+        container.classList.add("expanded");
+        button.classList.add("expanded");
+        buttonText.textContent = "Скрыть детали";
+        isExpanded = true;
+      } else {
+        const startHeight = container.scrollHeight;
+        const scrollOffset = startHeight; // Вычисляем высоту для компенсации
+
+        container.style.maxHeight = "0";
+        container.classList.remove("expanded");
+        button.classList.remove("expanded");
+        buttonText.textContent = "Показать больше деталей";
+
+        window.scrollBy({ top: -scrollOffset, behavior: "smooth" });
+        isExpanded = false;
+      }
+    }
+
+    button.addEventListener("click", toggleAccordion);
+  }
 });
