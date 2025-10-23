@@ -8,6 +8,10 @@ document.addEventListener("DOMContentLoaded", function () {
   let popupLeadSource = "";
   const popupSourceMap = new WeakMap();
 
+  // собираем полный актуальный url, 
+  // чтобы в колонке FROM(UF_CRM_1493286595) была всегда полная информация о том, с какого адреса была отправлена форма ОС
+  const fullUrl = window.location.href.split("?")[0];
+
   function nowTs() {
     return Date.now();
   }
@@ -268,7 +272,7 @@ document.addEventListener("DOMContentLoaded", function () {
           ...(utmData.utm_content && {
             UF_CRM_1493286561: utmData.utm_content,
           }),
-          UF_CRM_1493286595: window.location.href.split("?")[0],
+          UF_CRM_1493286595: fullUrl,
           UF_CRM_FORMNAME: sourceString,
           EMAIL: formData.get("email")
             ? [{ VALUE: formData.get("email"), VALUE_TYPE: "WORK" }]
