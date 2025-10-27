@@ -15,9 +15,9 @@ const paths = {
 		html: "src/**/*.html", // все HTML, включая partials
 		partials: "src/partials/**/*.html", // сами partials
 		scss: [
-    "src/scss/**/*.scss", // рекурсивно все SCSS файлы
-    "!src/scss/media.scss"
-],
+			"src/scss/**/*.scss", // рекурсивно все SCSS файлы
+			"!src/scss/media.scss",
+		],
 		media: "src/scss/media.scss", // отдельный путь
 		js: ["node_modules/inputmask/dist/inputmask.min.js", "src/js/**/*.js"],
 	},
@@ -96,6 +96,19 @@ function assets() {
 		.pipe(browserSync.stream())
 }
 
+function staticFiles() {
+	return gulp
+		.src([
+			"src/*.webmanifest",
+			"src/*.ico",
+			"src/robots.txt",
+			"src/.htaccess",
+			"src/sitemap.xml",
+		])
+		.pipe(gulp.dest(paths.dist.html))
+		.pipe(browserSync.stream())
+}
+
 // Сервер + вотчеры
 function serve() {
 	browserSync.init({
@@ -117,7 +130,8 @@ function serve() {
 }
 
 // Сборка
-const build = gulp.series(cleanDist, gulp.parallel(html, scss, mediaScss, assets, js))
+const build = gulp.series(cleanDist, gulp.parallel(html, scss, mediaScss, assets, js, staticFiles))
+
 const dev = gulp.series(build, serve)
 
 // Экспорт задач
@@ -126,6 +140,7 @@ exports.html = html
 exports.scss = scss
 exports.mediaScss = mediaScss
 exports.js = js
+exports.staticFiles = staticFiles
 exports.assets = assets
 exports.build = build
 exports.default = dev
